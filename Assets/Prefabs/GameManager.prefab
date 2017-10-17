@@ -9,18 +9,18 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1126322123768308}
+  m_RootGameObject: {fileID: 1239928802300448}
   m_IsPrefabParent: 1
---- !u!1 &1126322123768308
+--- !u!1 &1239928802300448
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4606093217117694}
-  - component: {fileID: 114535970986682154}
-  - component: {fileID: 114060626180720282}
+  - component: {fileID: 4954112090884948}
+  - component: {fileID: 114266288097134208}
+  - component: {fileID: 114165650080408084}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -28,43 +28,47 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4606093217117694
+--- !u!4 &4954112090884948
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1126322123768308}
+  m_GameObject: {fileID: 1239928802300448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114060626180720282
+--- !u!114 &114165650080408084
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1126322123768308}
+  m_GameObject: {fileID: 1239928802300448}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fb63e03072c147a189fd12642f724ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 1775176582337696, guid: 0508a5139aeff40969453f0043487987, type: 2}
+  enemies: {fileID: 0}
+  enemyInitialCount: 50
+  enemySpawnRate: 0.02
+  powerUps: {fileID: 0}
   heartPowerUp: {fileID: 1451698221322482, guid: 48e240c00d39041d09a5a371c1cf84a3,
     type: 2}
-  powerUps: {fileID: 0}
---- !u!114 &114535970986682154
+  heartPowerUpSpawnRate: 0.005
+--- !u!114 &114266288097134208
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1126322123768308}
+  m_GameObject: {fileID: 1239928802300448}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a7db147720a24ca796731d00b987bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   boardScript: {fileID: 0}
-  heartPowerUpSpawnRate: 0.005

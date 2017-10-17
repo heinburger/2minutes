@@ -6,6 +6,8 @@ TagManager:
   tags:
   - HeartPowerUp
   - Boundry
+  - EnemyBoundry
+  - Enemy
   layers:
   - Default
   - TransparentFX
