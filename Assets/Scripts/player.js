@@ -3,16 +3,18 @@
 var rb2D : Rigidbody2D;
 var animator : Animator;
 
-var initialInvincibilityTime : int;
 var isInvincible : boolean;
-var hitScaleRatio : float;
+var initialInvincibilityTime : int;
+var starPowerUpInvincibilityTime : int;
+
+var heartPowerUpShrinkRatio : float;
+var enemyHitGrowRatio : float;
 
 function Start () {
 	rb2D = GetComponent.<Rigidbody2D>();
 	animator = GetComponent.<Animator>();
+	setInvincibilityFor(initialInvincibilityTime);
 
-	setInvincibility();
-	Invoke("clearInvincibility", initialInvincibilityTime);
 }
 
 function Update () {
@@ -21,7 +23,7 @@ function Update () {
 
 function OnTriggerEnter2D (other : Collider2D) {
 	if (other.tag == "HeartPowerUp") {
-		shrink();
+		shrinkBy(heartPowerUpShrinkRatio);
 		Destroy(other.gameObject);
 	}
 }
@@ -29,7 +31,7 @@ function OnTriggerEnter2D (other : Collider2D) {
 function OnCollisionEnter2D (other : Collision2D) {
 	if (other.gameObject.tag == "Enemy") {
 		if (!isInvincible) {
-			grow();
+			growBy(enemyHitGrowRatio);
 			Destroy(other.gameObject);
 		} else {
 			Physics2D.IgnoreCollision(other.gameObject.GetComponent.<Collider2D>(), GetComponent.<Collider2D>(), true);
@@ -42,16 +44,11 @@ function OnCollisionExit2D (other : Collision2D) {
 		Physics2D.IgnoreCollision(other.gameObject.GetComponent.<Collider2D>(), GetComponent.<Collider2D>(), false);
 	}
 }
-//
-//
-//
-//
-//
-// custom stuff
 
-function setInvincibility () {
+function setInvincibilityFor (time : int) {
 	isInvincible = true;
 	animator.SetBool("isInvincible", true);
+	Invoke("clearInvincibility", time);
 }
 
 function clearInvincibility () {
@@ -59,10 +56,10 @@ function clearInvincibility () {
 	animator.SetBool("isInvincible", false);
 }
 
-function grow () {
-	transform.localScale += new Vector3(transform.localScale[0] * hitScaleRatio, transform.localScale[1] * hitScaleRatio, 0);
+function growBy (amount : float) {
+	transform.localScale += new Vector3(transform.localScale[0] * amount, transform.localScale[1] * amount, 0);
 }
 
-function shrink () {
-	transform.localScale -= new Vector3(transform.localScale[0] * hitScaleRatio, transform.localScale[1] * hitScaleRatio, 0);
+function shrinkBy (amount : float) {
+	transform.localScale -= new Vector3(transform.localScale[0] * amount, transform.localScale[1] * amount, 0);
 }

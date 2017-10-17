@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1775176582337696, guid: 0508a5139aeff40969453f0043487987, type: 2}
   enemies: {fileID: 0}
-  enemyInitialCount: 50
+  enemyInitialCount: 323
   enemySpawnRate: 0.02
   powerUps: {fileID: 0}
   heartPowerUp: {fileID: 1451698221322482, guid: 48e240c00d39041d09a5a371c1cf84a3,

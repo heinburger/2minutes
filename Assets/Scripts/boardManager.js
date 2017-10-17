@@ -14,7 +14,7 @@ public function setupBoard () {
 	enemies = new GameObject("Enemies").transform;
 	spawnHeartPowerUp();
 	for (var i : int = 0; i < enemyInitialCount; i++) {
-		var randPosition : Vector3 = getRandomPositionOnBoard();
+		var randPosition : Vector3 = getRandomPositionOffBoard();
 		spawnEnemyAt(randPosition);
 	}
 }

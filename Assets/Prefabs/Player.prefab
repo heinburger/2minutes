@@ -119,9 +119,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
   animator: {fileID: 0}
-  initialInvincibilityTime: 4
   isInvincible: 0
-  hitScaleRatio: 0.1
+  initialInvincibilityTime: 4
+  starPowerUpInvincibilityTime: 5
+  heartPowerUpShrinkRatio: 0.2
+  enemyHitGrowRatio: 0.2
 --- !u!212 &212603697391444534
 SpriteRenderer:
   m_ObjectHideFlags: 1
