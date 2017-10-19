@@ -19,10 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4954112090884948}
-  - component: {fileID: 114266288097134208}
-  - component: {fileID: 114165650080408084}
+  - component: {fileID: 114793288259942246}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: MainManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114165650080408084
+--- !u!114 &114793288259942246
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,26 +48,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1239928802300448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fb63e03072c147a189fd12642f724ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 42ac9417bfd5c480bb0bd475f2d230b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1775176582337696, guid: 0508a5139aeff40969453f0043487987, type: 2}
-  enemies: {fileID: 0}
-  enemyInitialCount: 40
-  enemySpawnRate: 0.08
-  powerUps: {fileID: 0}
-  heartPowerUp: {fileID: 1451698221322482, guid: 48e240c00d39041d09a5a371c1cf84a3,
-    type: 2}
-  heartPowerUpSpawnRate: 0.005
---- !u!114 &114266288097134208
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1239928802300448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a7db147720a24ca796731d00b987bcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boardScript: {fileID: 0}
