@@ -14,16 +14,9 @@ public function setupBoard () {
 	enemies = new GameObject("Enemies").transform;
 	spawnHeartPowerUp();
 	for (var i : int = 0; i < enemyInitialCount; i++) {
-		var randPosition : Vector3 = getRandomPositionOffBoard();
+		var randPosition : Vector3 = getRandomPositionOnBoard();
 		spawnEnemyAt(randPosition);
 	}
-}
-
-// boundries
-function calculateBoundries () {
-	var camDistance : float = Vector3.Distance(transform.position, Camera.main.transform.position);
-	var bottomCorner : Vector2 = Camera.main.ViewportToWorldPoint(new Vector3(0,0, camDistance));
-	var topCorner : Vector2 = Camera.main.ViewportToWorldPoint(new Vector3(1,1, camDistance));
 }
 
 // spawns
@@ -51,9 +44,19 @@ function spawnEnemyAt (position : Vector3) {
 }
 
 function getRandomPositionOnBoard () : Vector3 {
-	return new Vector3(Random.Range(-5,5), Random.Range(-5,5), 0);
+	return new Vector3(Random.Range(-5.0, 5.0), Random.Range(-3.5, 3.5), 0);
 }
 
 function getRandomPositionOffBoard () : Vector3 {
-	return new Vector3(Random.Range(-5,-6), Random.Range(-5,-6), 0);
+	return Random.value < 0.5
+		? randomPositionOffBoardLeft()
+		: randomPositionOffBoardTop();
+}
+
+function randomPositionOffBoardLeft () : Vector3 {
+	return new Vector3(Random.Range(-5.5, -7.8), Random.Range(-5.9, 5.9), 0);
+}
+
+function randomPositionOffBoardTop () : Vector3 {
+	return new Vector3(Random.Range(-7.8, 7.8), Random.Range(4.1, 5.9), 0);
 }

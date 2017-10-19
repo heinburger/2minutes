@@ -1,50 +1,69 @@
 ﻿#pragma strict
 
-var rb2D : Rigidbody2D;
-var animator : Animator;
-
 var isInvincible : boolean;
 var initialInvincibilityTime : int;
 var starPowerUpInvincibilityTime : int;
+var heartPowerUpShrinkFactor : float;
+var enemyHitGrowFactor : float;
+var scaleFactorFrameAdjustment : float;
 
-var heartPowerUpShrinkRatio : float;
-var enemyHitGrowRatio : float;
+private var scaleFactorPositive : float = 0;
+private var scaleFactorNegative : float = 0;
 
+private var rb2D : Rigidbody2D;
+private var animator : Animator;
+
+// --------------------------------------------------------------------- UNITY METHODS
 function Start () {
 	rb2D = GetComponent.<Rigidbody2D>();
 	animator = GetComponent.<Animator>();
 	setInvincibilityFor(initialInvincibilityTime);
-
 }
 
 function Update () {
-	rb2D.MovePosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+	handleScaling();
+	handleMovement();
 }
 
 function OnTriggerEnter2D (other : Collider2D) {
 	if (other.tag == "HeartPowerUp") {
-		shrinkBy(heartPowerUpShrinkRatio);
+		scaleFactorNegative += heartPowerUpShrinkFactor;
 		Destroy(other.gameObject);
 	}
 }
 
 function OnCollisionEnter2D (other : Collision2D) {
 	if (other.gameObject.tag == "Enemy") {
-		if (!isInvincible) {
-			growBy(enemyHitGrowRatio);
-			Destroy(other.gameObject);
-		} else {
-			Physics2D.IgnoreCollision(other.gameObject.GetComponent.<Collider2D>(), GetComponent.<Collider2D>(), true);
-		}
+		scaleFactorPositive += enemyHitGrowFactor;
+		other.gameObject.SetActive(false);
+		Destroy(other.gameObject);
 	}
 }
 
-function OnCollisionExit2D (other : Collision2D) {
-	if (other.gameObject.tag == "Enemy") {
-		Physics2D.IgnoreCollision(other.gameObject.GetComponent.<Collider2D>(), GetComponent.<Collider2D>(), false);
-	}
+// --------------------------------------------------------------------- HANDLER METHODS
+function handleMovement () {
+	rb2D.MovePosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 }
 
+function handleScaling () {
+	if (scaleFactorPositive > 0) {
+		scaleFactorPositive -= scaleFactorFrameAdjustment;
+	} else {
+		scaleFactorPositive = 0;
+	}
+
+	if (scaleFactorNegative > 0) {
+		scaleFactorNegative -= scaleFactorFrameAdjustment;
+	} else {
+		scaleFactorNegative = 0;
+
+	}
+	var scale : float = scaleFactorPositive - scaleFactorNegative;
+	transform.localScale += new Vector3(transform.localScale[0] * scale, transform.localScale[1] * scale, 0);
+}
+
+
+// --------------------------------------------------------------------- TRIGGER AND FLAG METHODS
 function setInvincibilityFor (time : int) {
 	isInvincible = true;
 	animator.SetBool("isInvincible", true);
@@ -54,12 +73,4 @@ function setInvincibilityFor (time : int) {
 function clearInvincibility () {
 	isInvincible = false;
 	animator.SetBool("isInvincible", false);
-}
-
-function growBy (amount : float) {
-	transform.localScale += new Vector3(transform.localScale[0] * amount, transform.localScale[1] * amount, 0);
-}
-
-function shrinkBy (amount : float) {
-	transform.localScale -= new Vector3(transform.localScale[0] * amount, transform.localScale[1] * amount, 0);
 }

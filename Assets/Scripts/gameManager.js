@@ -29,10 +29,15 @@ function initGame () {
 	boardScript.setupBoard();
 }
 
+
+function handleGameOver () {
+		
+}
+
 function setTimeText (time : float) {
-	var jsTime = Mathf.Floor(time * 1000);
-	var milli = jsTime % 1000;
-	var sec = Mathf.Floor(jsTime / 1000) % 60;
-	var min = Mathf.Floor(jsTime / 60000);
+	var jsTime : int = Mathf.Floor(time * 1000);
+	var milli : int = jsTime % 1000;
+	var sec : int = Mathf.Floor(jsTime / 1000) % 60;
+	var min : int = Mathf.Floor(jsTime / 60000);
 	timeText.text = min + ":" + sec + ":" + milli;
 }

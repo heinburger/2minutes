@@ -55,12 +55,12 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -117,13 +117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa994e71a3eb4e59b4c06eaee1effad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb2D: {fileID: 0}
-  animator: {fileID: 0}
   isInvincible: 0
   initialInvincibilityTime: 4
   starPowerUpInvincibilityTime: 5
-  heartPowerUpShrinkRatio: 0.2
-  enemyHitGrowRatio: 0.2
+  heartPowerUpShrinkFactor: 0.1
+  enemyHitGrowFactor: 0.1
+  scaleFactorFrameAdjustment: 0.02
 --- !u!212 &212603697391444534
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -154,7 +153,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -593099179
-  m_SortingLayer: -3
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9e1980b7464584d8d9f3c37cdb8cb498, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

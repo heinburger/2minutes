@@ -42,14 +42,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Player
-    uniqueID: 3701868117
+  - name: Background
+    uniqueID: 590134903
     locked: 0
   - name: PowerUps
     uniqueID: 604685611
     locked: 0
   - name: Enemies
     uniqueID: 2823499345
+    locked: 0
+  - name: Player
+    uniqueID: 3701868117
     locked: 0
   - name: Default
     uniqueID: 0
