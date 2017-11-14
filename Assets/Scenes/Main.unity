@@ -648,7 +648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1752726774
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -750,6 +750,26 @@ Prefab:
     - target: {fileID: 61065210309175772, guid: 0894a645a16094bfdae283f48222352b,
         type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212603697391444534, guid: 0894a645a16094bfdae283f48222352b,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212603697391444534, guid: 0894a645a16094bfdae283f48222352b,
+        type: 2}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212603697391444534, guid: 0894a645a16094bfdae283f48222352b,
+        type: 2}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114280778051441062, guid: 0894a645a16094bfdae283f48222352b,
+        type: 2}
+      propertyPath: isInvincible
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
