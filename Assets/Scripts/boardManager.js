@@ -19,6 +19,16 @@ public function setupBoard () {
 	}
 }
 
+public function setupIdle () {
+	if (!enemies) {
+		enemies = new GameObject("Enemies").transform;
+	}
+	for (var i : int = 0; i < 15; i++) {
+		var randPosition : Vector3 = getRandomPositionOnBoard();
+		spawnEnemyAt(randPosition);
+	}
+}
+
 // spawns
 function continuousSpawner () {
 	if (Random.value < enemySpawnRate) {
