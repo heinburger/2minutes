@@ -1,6 +1,6 @@
 ﻿#pragma strict
 
-var isInvincible : boolean;
+var isInvincible : boolean = true;
 var initialInvincibilityTime : int;
 var starPowerUpInvincibilityTime : int;
 var heartPowerUpShrinkFactor : float;
@@ -14,6 +14,10 @@ private var rb2D : Rigidbody2D;
 private var animator : Animator;
 
 // --------------------------------------------------------------------- UNITY METHODS
+function Awake () {
+	isInvincible = true;
+}
+
 function Start () {
 	rb2D = GetComponent.<Rigidbody2D>();
 	animator = GetComponent.<Animator>();
@@ -33,7 +37,7 @@ function OnTriggerEnter2D (other : Collider2D) {
 }
 
 function OnCollisionEnter2D (other : Collision2D) {
-	if (other.gameObject.tag == "Enemy") {
+	if (!isInvincible && other.gameObject.tag == "Enemy") {
 		scaleFactorPositive += enemyHitGrowFactor;
 		other.gameObject.SetActive(false);
 		Destroy(other.gameObject);

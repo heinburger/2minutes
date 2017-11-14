@@ -9,14 +9,23 @@ private var playerScript : player;
 
 function Start () {
 	player = GameObject.FindGameObjectWithTag("Player");
-	playerScript = player.GetComponent.<player>();
+	if (player) {
+		playerScript = player.GetComponent.<player>();
+		Physics2D.IgnoreCollision(GameObject.Find("PlayerBoundry").GetComponent.<Collider2D>(), GetComponent.<Collider2D>());
+	}
+
 	rb2D = GetComponent.<Rigidbody2D>();
 	animator = GetComponent.<Animator>();
 	rb2D.velocity = new Vector2(Random.Range(-1.0, 1.0) * speedX, Random.Range(-1.0, 1.0) * speedY);
-	Physics2D.IgnoreCollision(GameObject.Find("PlayerBoundry").GetComponent.<Collider2D>(), GetComponent.<Collider2D>());
 }
 
 function Update () {
+	if (player) {
+		handlePlayerCollisions();
+	}
+}
+
+function handlePlayerCollisions () {
 	if (playerScript.isInvincible) {
 		Physics2D.IgnoreCollision(player.GetComponent.<Collider2D>(), GetComponent.<Collider2D>(), true);
 	} else {

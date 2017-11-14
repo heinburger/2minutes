@@ -1,20 +1,14 @@
 ﻿#pragma strict
 
-static var instance : gameManager = null;
-var boardScript : boardManager;
+private var boardScript : boardManager;
+
 private var timeText : UnityEngine.UI.Text;
+private var player : GameObject;
+private var playerScript : player;
 
 function Awake () {
-	if (instance == null) {
-		instance = this;
-	} else if (instance != this) {
-		Destroy(gameObject); 
-	}
-
-	DontDestroyOnLoad(gameObject);
-
 	timeText = GameObject.Find("TimeText").GetComponent.<UnityEngine.UI.Text>();
-	boardScript = GetComponent.<boardManager>();
+	boardScript = GameObject.Find("Spawner").GetComponent.<boardManager>();
 
 	initGame();
 }
@@ -23,15 +17,20 @@ function Update () {
 	var time = Time.realtimeSinceStartup;
 	setTimeText(time);
 	boardScript.continuousSpawner();
+	handleGameOver();
 }
 
 function initGame () {
+	player = GameObject.FindGameObjectWithTag("Player");
+	playerScript = player.GetComponent.<player>();
 	boardScript.setupBoard();
 }
 
 
 function handleGameOver () {
-		
+	if (player.transform.localScale[0] > 6) {
+		SceneManagement.SceneManager.LoadScene("GameOver");
+	}
 }
 
 function setTimeText (time : float) {
