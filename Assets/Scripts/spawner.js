@@ -9,41 +9,30 @@ var powerUps : Transform;
 var heartPowerUp : GameObject;
 var heartPowerUpSpawnRate : float;
 
-public function setupBoard () {
+function Awake () {
 	powerUps = new GameObject("PowerUps").transform;
 	enemies = new GameObject("Enemies").transform;
-	spawnHeartPowerUp();
 	for (var i : int = 0; i < enemyInitialCount; i++) {
 		var randPosition : Vector3 = getRandomPositionOnBoard();
 		spawnEnemyAt(randPosition);
 	}
 }
 
-public function setupIdle () {
-	if (!enemies) {
-		enemies = new GameObject("Enemies").transform;
-	}
-	for (var i : int = 0; i < 15; i++) {
-		var randPosition : Vector3 = getRandomPositionOnBoard();
-		spawnEnemyAt(randPosition);
-	}
-}
-
 // spawns
-function continuousSpawner () {
+function Update () {
 	if (Random.value < enemySpawnRate) {
 		var randPosition : Vector3 = getRandomPositionOffBoard();
 		spawnEnemyAt(randPosition);
 	}
 	if (Random.value < heartPowerUpSpawnRate) {
-		spawnHeartPowerUp();
+		var randPositionHeart : Vector3 = getRandomPositionOnBoard();
+		spawnHeartPowerUpAt(randPositionHeart);
 	}
 }
 
-function spawnHeartPowerUp () {
+function spawnHeartPowerUpAt (position : Vector3) {
 	var toInstantiate : GameObject = heartPowerUp;
-	var randPosition : Vector3 = getRandomPositionOnBoard();
-	var instance : GameObject = Instantiate(toInstantiate, randPosition, Quaternion.identity);
+	var instance : GameObject = Instantiate(toInstantiate, position, Quaternion.identity);
 	instance.transform.SetParent(powerUps);
 }
 

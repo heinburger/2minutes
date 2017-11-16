@@ -11,7 +11,6 @@ function Start () {
 	player = GameObject.FindGameObjectWithTag("Player");
 	if (player) {
 		playerScript = player.GetComponent.<player>();
-		Physics2D.IgnoreCollision(GameObject.Find("PlayerBoundry").GetComponent.<Collider2D>(), GetComponent.<Collider2D>());
 	}
 
 	rb2D = GetComponent.<Rigidbody2D>();

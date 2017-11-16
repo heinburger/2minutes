@@ -1,16 +1,9 @@
 ﻿#pragma strict
 
-var boardScript : boardManager;
-private var startBtn : UnityEngine.UI.Button;
+var GameManager : GameObject;
 
 function Awake () {
-    startBtn = GameObject.Find("btn_StartBtn").GetComponent.<UnityEngine.UI.Button>();
-    startBtn.onClick.AddListener(startGame);
-
-    boardScript.setupIdle();
+	if (GameManager.Instance() == null) {
+		Instantiate(GameManager);
+	}
 }
-
-function startGame () {
-	SceneManagement.SceneManager.LoadScene("Main");
-}
-
