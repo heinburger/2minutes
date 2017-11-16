@@ -1,9 +1,9 @@
 ﻿#pragma strict
 
-var GameManager : GameObject;
+var GameManager : gameManager;
 
 function Awake () {
-	if (GameManager.Instance() == null) {
+	if (GameManager.instance == null) {
 		Instantiate(GameManager);
 	}
 }

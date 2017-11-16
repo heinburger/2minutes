@@ -13,7 +13,3 @@ function Awake () {
 
 	DontDestroyOnLoad(gameObject);
 }
-
-public function Instance () {
-	return instance;
-}
