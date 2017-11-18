@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - HeartPowerUp
-  - Boundry
-  - EnemyBoundry
   - Enemy
+  - BoundryX
+  - BoundryY
   layers:
   - Default
   - TransparentFX

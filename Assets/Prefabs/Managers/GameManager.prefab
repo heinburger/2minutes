@@ -51,4 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb20a0cbf288f46a0b4148e86222ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BoundryX: {fileID: 1360708884263060, guid: abc79fc662e49480480e22dd470ea742, type: 2}
+  BoundryY: {fileID: 1304769788737266, guid: a51c857ca7ec2428fb12a90e19324440, type: 2}
   time: 0

@@ -2,6 +2,7 @@
 
 static var instance : gameManager;
 
+
 var time : float = 0f;
 
 function Awake () {
