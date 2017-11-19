@@ -150,7 +150,7 @@ Prefab:
     - target: {fileID: 114351806810499906, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84,
         type: 2}
       propertyPath: enemyInitialCount
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114351806810499906, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84,
         type: 2}
@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 1283794270}
   - component: {fileID: 1283794269}
   - component: {fileID: 1283794274}
+  - component: {fileID: 1283794275}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -330,7 +331,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.84
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -372,6 +373,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManager: {fileID: 114008632354678694, guid: 51d219d3caeca4e439fd8f55f6320fea,
     type: 2}
+--- !u!114 &1283794275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1283794268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e8fb6c85b9a4dd3afc9c845b459ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pixelsToUnits: 64
+  cameraComponent: {fileID: 0}
 --- !u!1 &1381780285
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,8 +505,8 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 64
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1024, y: 768}
   m_ScreenMatchMode: 0
@@ -607,6 +621,16 @@ Prefab:
         type: 2}
       propertyPath: isInvincible
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114280778051441062, guid: 0894a645a16094bfdae283f48222352b,
+        type: 2}
+      propertyPath: growthSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114280778051441062, guid: 0894a645a16094bfdae283f48222352b,
+        type: 2}
+      propertyPath: shrinkSpeed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0894a645a16094bfdae283f48222352b, type: 2}
