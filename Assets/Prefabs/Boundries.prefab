@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4452643858880534}
   - component: {fileID: 114069979358774634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boundries
   m_TagString: Untagged
   m_Icon: {fileID: 0}

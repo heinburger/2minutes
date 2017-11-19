@@ -1,31 +1,16 @@
 ﻿#pragma strict
 
+var GameManager : gameManager;
+
 private var timeText : UnityEngine.UI.Text;
-private var player : GameObject;
-private var playerScript : player;
 
 function Awake () {
 	timeText = GameObject.Find("TimeText").GetComponent.<UnityEngine.UI.Text>();
-
-	initGame();
 }
 
 function Update () {
-	var time = Time.realtimeSinceStartup;
+	var time = GameManager.instance.time;
 	setTimeText(time);
-	handleGameOver();
-}
-
-function initGame () {
-	player = GameObject.FindGameObjectWithTag("Player");
-	playerScript = player.GetComponent.<player>();
-}
-
-
-function handleGameOver () {
-	if (player.transform.localScale[0] > 50) {
-		SceneManagement.SceneManager.LoadScene("GameOver");
-	}
 }
 
 function setTimeText (time : float) {

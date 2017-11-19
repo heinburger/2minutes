@@ -1,5 +1,7 @@
 ﻿#pragma strict
 
+var GameManager : gameManager;
+
 var isInvincible : boolean = true;
 var initialInvincibilityTime : int;
 var starPowerUpInvincibilityTime : int;
@@ -29,6 +31,7 @@ function Start () {
 function Update () {
 	handleScaling();
 	handleMovement();
+	handleGameOver();
 }
 
 function OnTriggerEnter2D (other : Collider2D) {
@@ -59,6 +62,13 @@ function handleScaling () {
 		transform.localScale += transform.localScale * factor * growthSpeed * Time.deltaTime;
 	} else if (magnitude < (0f - padding)) { // shrink
 		transform.localScale += transform.localScale * factor * shrinkSpeed * Time.deltaTime;
+	}
+}
+
+function handleGameOver () {
+	if (transform.localScale.x > 50) {
+		Debug.Log('gameover');
+		GameManager.instance.isGameOver = true;
 	}
 }
 

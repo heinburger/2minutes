@@ -1,5 +1,7 @@
 ﻿#pragma strict
 
+var GameManager : gameManager;
+
 private var restartBtn : UnityEngine.UI.Button;
 
 function Awake () {
@@ -8,6 +10,6 @@ function Awake () {
 }
 
 function restartGame () {
-	SceneManagement.SceneManager.LoadScene("Main");
+	GameManager.instance.initGame();
 }
 
