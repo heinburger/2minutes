@@ -2,12 +2,15 @@
 
 static var instance : gameManager;
 
+var gameRunning : boolean = false;
 var time : float = 0f;
 var timeFormatted : String = "00:00:000";
 var lastGameTimeFormatted : String;
 var isGameOver : boolean = false;
-
-private var startTime : float = 0f;
+var hasHighestTime : boolean = false;
+var isHighestTime : boolean = false;
+var highestTime : float;
+var highestTimeFormatted : String;
 
 // --------------------------------------------------------------------- UNITY METHODS
 function Awake () {
@@ -18,32 +21,48 @@ function Awake () {
 	}
 
 	DontDestroyOnLoad(gameObject);
+	highestTime = PlayerPrefs.GetFloat("highestTime");
+	highestTimeFormatted = formatTime(highestTime);
+	hasHighestTime = !!highestTime;
 }
 
 function Update () {
-	calcTime();
-	checkGameOver();
+	if (gameRunning) {
+		checkGameOver();
+		calcTime();
+	}
 }
 
 // --------------------------------------------------------------------- GAME METHODS
 
 function initGame () {
 	SceneManagement.SceneManager.LoadScene("Main");
-	startTime = 0f;
+	time = 0f;
+	gameRunning = true;
 	isGameOver = false;
+	isHighestTime = false;
 }
 
 function checkGameOver () {
 	if (isGameOver) {
+		gameRunning = false;
 		SceneManagement.SceneManager.LoadScene("GameOver");
 		lastGameTimeFormatted = timeFormatted;
-		isGameOver = false;
+		if (isHighestTime) {
+			hasHighestTime = true;
+			highestTime = time;
+			highestTimeFormatted = timeFormatted;
+			PlayerPrefs.SetFloat("highestTime", time);
+		}
 	}
 }
 
 function calcTime () {
 	time += Time.deltaTime;
 	timeFormatted = formatTime(time);
+	if (!isHighestTime && time > highestTime) {
+		isHighestTime = true;
+	}
 }
 
 function formatTime (time : float) {

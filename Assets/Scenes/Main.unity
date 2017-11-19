@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 0}
+  timeText: {fileID: 1381780287}
 --- !u!4 &594950235
 Transform:
   m_ObjectHideFlags: 0

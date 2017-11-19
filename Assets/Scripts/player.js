@@ -29,9 +29,9 @@ function Start () {
 }
 
 function Update () {
+	handleGameOver();
 	handleScaling();
 	handleMovement();
-	handleGameOver();
 }
 
 function OnTriggerEnter2D (other : Collider2D) {

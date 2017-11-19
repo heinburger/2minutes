@@ -439,6 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 0}
+  startBtn: {fileID: 706629010}
 --- !u!4 &967830558
 Transform:
   m_ObjectHideFlags: 0
