@@ -289,7 +289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &786983756
 RectTransform:
   m_ObjectHideFlags: 0
@@ -471,7 +471,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.84
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e8fb6c85b9a4dd3afc9c845b459ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelsToUnits: 70
+  pixelsToUnits: 64
   cameraComponent: {fileID: 0}
 --- !u!1 &1618047498
 GameObject:
@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 70
+  m_ReferencePixelsPerUnit: 64
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1024, y: 768}
   m_ScreenMatchMode: 0
@@ -667,7 +667,7 @@ Prefab:
     - target: {fileID: 114351806810499906, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84,
         type: 2}
       propertyPath: enemyInitialCount
-      value: 15
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84, type: 2}

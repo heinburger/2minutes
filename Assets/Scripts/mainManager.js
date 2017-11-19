@@ -1,5 +1,8 @@
 ﻿#pragma strict
 
+var BoundryX : GameObject;
+var BoundryY : GameObject;
+
 private var timeText : UnityEngine.UI.Text;
 private var player : GameObject;
 private var playerScript : player;
@@ -19,13 +22,21 @@ function Update () {
 function initGame () {
 	player = GameObject.FindGameObjectWithTag("Player");
 	playerScript = player.GetComponent.<player>();
+	addBoundries();
 }
 
 
 function handleGameOver () {
-	if (player.transform.localScale[0] > 6) {
+	if (player.transform.localScale[0] > 50) {
 		SceneManagement.SceneManager.LoadScene("GameOver");
 	}
+}
+
+function addBoundries () {
+	Instantiate(BoundryX, Camera.main.ScreenToWorldPoint(Vector3(0, 0, 0)), Quaternion.identity);
+	Instantiate(BoundryY, Camera.main.ScreenToWorldPoint(Vector3(0, 0, 0)), Quaternion.identity);
+	Instantiate(BoundryX, Camera.main.ScreenToWorldPoint(Vector3(Screen.width, Screen.height, 0)), Quaternion.identity);
+	Instantiate(BoundryY, Camera.main.ScreenToWorldPoint(Vector3(Screen.width, Screen.height, 0)), Quaternion.identity);
 }
 
 function setTimeText (time : float) {

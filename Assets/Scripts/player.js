@@ -3,12 +3,13 @@
 var isInvincible : boolean = true;
 var initialInvincibilityTime : int;
 var starPowerUpInvincibilityTime : int;
-var heartPowerUpShrinkFactor : float;
-var enemyHitGrowFactor : float;
-var scaleFactorFrameAdjustment : float;
 
-private var scaleFactorPositive : float = 0;
-private var scaleFactorNegative : float = 0;
+var shrinkSpeed : float;
+var growthSpeed : float;
+var heartPowerUpShrinkAmount : float;
+var enemyHitGrowthAmount : float;
+
+private var scaleTo : Vector3;
 
 private var rb2D : Rigidbody2D;
 private var animator : Animator;
@@ -16,6 +17,7 @@ private var animator : Animator;
 // --------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	isInvincible = true;
+	scaleTo = transform.localScale;
 }
 
 function Start () {
@@ -31,14 +33,14 @@ function Update () {
 
 function OnTriggerEnter2D (other : Collider2D) {
 	if (other.tag == "HeartPowerUp") {
-		scaleFactorNegative += heartPowerUpShrinkFactor;
+		scaleTo -= scaleTo * heartPowerUpShrinkAmount;
 		Destroy(other.gameObject);
 	}
 }
 
 function OnCollisionEnter2D (other : Collision2D) {
 	if (!isInvincible && other.gameObject.tag == "Enemy") {
-		scaleFactorPositive += enemyHitGrowFactor;
+		scaleTo += scaleTo * enemyHitGrowthAmount;
 		other.gameObject.SetActive(false);
 		Destroy(other.gameObject);
 	}
@@ -50,20 +52,14 @@ function handleMovement () {
 }
 
 function handleScaling () {
-	if (scaleFactorPositive > 0) {
-		scaleFactorPositive -= scaleFactorFrameAdjustment;
-	} else {
-		scaleFactorPositive = 0;
+	var padding : float = 0.1;
+	var magnitude : float = scaleTo.x - transform.localScale.x;
+	var factor : float = magnitude > 50f ? 50f : magnitude;
+	if (magnitude > (0f + padding)) { // grow
+		transform.localScale += transform.localScale * factor * growthSpeed * Time.deltaTime;
+	} else if (magnitude < (0f - padding)) { // shrink
+		transform.localScale += transform.localScale * factor * shrinkSpeed * Time.deltaTime;
 	}
-
-	if (scaleFactorNegative > 0) {
-		scaleFactorNegative -= scaleFactorFrameAdjustment;
-	} else {
-		scaleFactorNegative = 0;
-
-	}
-	var scale : float = scaleFactorPositive - scaleFactorNegative;
-	transform.localScale += new Vector3(transform.localScale[0] * scale, transform.localScale[1] * scale, 0);
 }
 
 

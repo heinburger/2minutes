@@ -18,5 +18,6 @@ function startGame () {
 function addBoundries () {
 	Instantiate(BoundryX, Camera.main.ScreenToWorldPoint(Vector3(0, 0, 0)), Quaternion.identity);
 	Instantiate(BoundryY, Camera.main.ScreenToWorldPoint(Vector3(0, 0, 0)), Quaternion.identity);
-
+	Instantiate(BoundryX, Camera.main.ScreenToWorldPoint(Vector3(Screen.width, Screen.height, 0)), Quaternion.identity);
+	Instantiate(BoundryY, Camera.main.ScreenToWorldPoint(Vector3(Screen.width, Screen.height, 0)), Quaternion.identity);
 }
