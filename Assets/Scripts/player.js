@@ -30,7 +30,7 @@ function Start () {
 
 function Update () {
 	handleGameOver();
-	handleScaling();
+	// handleScaling();
 	handleMovement();
 }
 
@@ -57,6 +57,7 @@ function handleMovement () {
 function handleScaling () {
 	var padding : float = 0.1;
 	var magnitude : float = scaleTo.x - transform.localScale.x;
+	Debug.Log(transform.localScale);
 	var factor : float = magnitude > 50f ? 50f : magnitude;
 	if (magnitude > (0f + padding)) { // grow
 		transform.localScale += transform.localScale * factor * growthSpeed * Time.deltaTime;
@@ -66,7 +67,7 @@ function handleScaling () {
 }
 
 function handleGameOver () {
-	if (transform.localScale.x > 50) {
+	if (transform.localScale.x > 50f) {
 		Debug.Log('gameover');
 		GameManager.instance.isGameOver = true;
 	}
