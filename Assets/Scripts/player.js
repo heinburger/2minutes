@@ -2,6 +2,7 @@
 
 var GameManager : gameManager;
 
+var cursorOffset : float = 0f;
 var isInvincible : boolean = true;
 var initialInvincibilityTime : int;
 var starPowerUpInvincibilityTime : int;
@@ -54,7 +55,7 @@ function OnCollisionEnter2D (other : Collision2D) {
 // --------------------------------------------------------------------- HANDLER METHODS
 function handleMovement () {
 	var target : Vector2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-	transform.position = new Vector3(target.x, target.y, 0f);
+	transform.position = new Vector3(target.x, target.y + cursorOffset, 0f);
 }
 
 function handleScaling () {

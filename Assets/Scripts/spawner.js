@@ -19,7 +19,7 @@ function Awake () {
 }
 
 // spawns
-function Update () {
+function FixedUpdate () {
 	if (Random.value < enemySpawnRate) {
 		var randPosition : Vector3 = getRandomPositionOffBoard();
 		spawnEnemyAt(randPosition);
@@ -43,19 +43,56 @@ function spawnEnemyAt (position : Vector3) {
 }
 
 function getRandomPositionOnBoard () : Vector3 {
-	return new Vector3(Random.Range(-5.0, 5.0), Random.Range(-3.5, 3.5), 0);
+	var onScreenPt : Vector3 = new Vector3(Random.Range(0f, Screen.width), Random.Range(0f, Screen.height), 0f);
+	var position : Vector3 = Camera.main.ScreenToWorldPoint(onScreenPt);
+	position.z = 0f;
+	return position;
 }
 
 function getRandomPositionOffBoard () : Vector3 {
-	return Random.value < 0.5
-		? randomPositionOffBoardLeft()
-		: randomPositionOffBoardTop();
+	if (Random.value < 0.5f) {
+		return Random.value < 0.5f
+			? randomPositionOffBoardLeft()
+			: randomPositionOffBoardTop();
+	} else {
+		return Random.value < 0.5f
+			? randomPositionOffBoardRight()
+			: randomPositionOffBoardBottom();
+	}
 }
 
 function randomPositionOffBoardLeft () : Vector3 {
-	return new Vector3(Random.Range(-5.5, -7.8), Random.Range(-5.9, 5.9), 0);
+	var halfWidth : float = 0.5f;
+	var edgeScreenLeft : Vector3 = new Vector3(0f, Random.Range(0f, Screen.height), 0f);
+	var position : Vector3 = Camera.main.ScreenToWorldPoint(edgeScreenLeft);
+	position.x -= halfWidth;
+	position.z = 0f;
+	return position;
+}
+
+function randomPositionOffBoardRight () : Vector3 {
+	var halfWidth : float = 0.5f;
+	var edgeScreenRight : Vector3 = new Vector3(Screen.width, Random.Range(0, Screen.height), 0f);
+	var position : Vector3 = Camera.main.ScreenToWorldPoint(edgeScreenRight);
+	position.x += halfWidth;
+	position.z = 0f;
+	return position;
 }
 
 function randomPositionOffBoardTop () : Vector3 {
-	return new Vector3(Random.Range(-7.8, 7.8), Random.Range(4.1, 5.9), 0);
+	var halfHeight : float = 0.5f;
+	var edgeScreenTop : Vector3 = new Vector3(Random.Range(0f, Screen.width), Screen.height, 0f);
+	var position : Vector3 = Camera.main.ScreenToWorldPoint(edgeScreenTop);
+	position.y += halfHeight;
+	position.z = 0f;
+	return position;
+}
+
+function randomPositionOffBoardBottom () : Vector3 {
+	var halfHeight : float = 0.5f;
+	var edgeScreenBottom : Vector3 = new Vector3(Random.Range(0f, Screen.width), 0f, 0f);
+	var position : Vector3 = Camera.main.ScreenToWorldPoint(edgeScreenBottom);
+	position.y -= halfHeight;
+	position.z = 0f;
+	return position;
 }
