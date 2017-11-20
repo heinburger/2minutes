@@ -29,9 +29,11 @@ function Start () {
 }
 
 function Update () {
-	handleGameOver();
-	// handleScaling();
-	handleMovement();
+	if (GameManager.instance.gameRunning) {
+		handleGameOver();
+		handleScaling();
+		handleMovement();
+	}
 }
 
 function OnTriggerEnter2D (other : Collider2D) {
@@ -51,14 +53,14 @@ function OnCollisionEnter2D (other : Collision2D) {
 
 // --------------------------------------------------------------------- HANDLER METHODS
 function handleMovement () {
-	rb2D.MovePosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+	var target : Vector2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+	transform.position = new Vector3(target.x, target.y, 0f);
 }
 
 function handleScaling () {
 	var padding : float = 0.1;
 	var magnitude : float = scaleTo.x - transform.localScale.x;
-	Debug.Log(transform.localScale);
-	var factor : float = magnitude > 50f ? 50f : magnitude;
+	var factor : float = magnitude > 20f ? 20f : magnitude;
 	if (magnitude > (0f + padding)) { // grow
 		transform.localScale += transform.localScale * factor * growthSpeed * Time.deltaTime;
 	} else if (magnitude < (0f - padding)) { // shrink
@@ -68,7 +70,6 @@ function handleScaling () {
 
 function handleGameOver () {
 	if (transform.localScale.x > 50f) {
-		Debug.Log('gameover');
 		GameManager.instance.isGameOver = true;
 	}
 }
