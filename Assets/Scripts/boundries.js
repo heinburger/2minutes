@@ -1,19 +1,20 @@
 ﻿#pragma strict
-
-var BoundryX : GameObject;
-var BoundryY : GameObject;
+var offFrameUnits : float;
+var Top : BoxCollider2D;
+var Bottom : BoxCollider2D;
+var Right : BoxCollider2D;
+var Left : BoxCollider2D;
 
 function Awake () {
-	addBoundries();
-}
+	Top.size = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 2f, 0f, 0f)).x, 1f);
+	Top.offset = new Vector2(0f, Camera.main.ScreenToWorldPoint(new Vector3(0f, Screen.height, 0f)).y + 0.5f + offFrameUnits);
 
-function addBoundries () {
-	var left : GameObject = Instantiate(BoundryX, Camera.main.ScreenToWorldPoint(Vector3(0, 0, 0)), Quaternion.identity);
-	var bottom : GameObject = Instantiate(BoundryY, Camera.main.ScreenToWorldPoint(Vector3(0, 0, 0)), Quaternion.identity);
-	var right : GameObject = Instantiate(BoundryX, Camera.main.ScreenToWorldPoint(Vector3(Screen.width, Screen.height, 0)), Quaternion.identity);
-	var top : GameObject = Instantiate(BoundryY, Camera.main.ScreenToWorldPoint(Vector3(Screen.width, Screen.height, 0)), Quaternion.identity);
-	left.transform.SetParent(gameObject.transform);
-	bottom.transform.SetParent(gameObject.transform);
-	right.transform.SetParent(gameObject.transform);
-	top.transform.SetParent(gameObject.transform);
+	Bottom.size = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 2f, 0f, 0f)).x, 1f);
+	Bottom.offset = new Vector2(0f, Camera.main.ScreenToWorldPoint(new Vector3(0f, 0f, 0f)).y - 0.5f - offFrameUnits);
+
+	Left.size = new Vector2(1f, Camera.main.ScreenToWorldPoint(new Vector3(0f, Screen.height * 2f, 0f)).y);
+	Left.offset = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(0, 0f, 0f)).x - 0.5f - offFrameUnits, 0f);
+
+	Right.size = new Vector2(1f, Camera.main.ScreenToWorldPoint(new Vector3(0f, Screen.height * 2f, 0f)).y);
+	Right.offset = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f)).x + 0.5f + offFrameUnits, 0f);
 }
