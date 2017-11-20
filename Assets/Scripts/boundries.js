@@ -1,4 +1,5 @@
 ﻿#pragma strict
+
 var offFrameUnits : float;
 var Top : BoxCollider2D;
 var Bottom : BoxCollider2D;
