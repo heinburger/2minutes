@@ -157,10 +157,6 @@ Prefab:
       propertyPath: Player
       value: 
       objectReference: {fileID: 214730784}
-    - target: {fileID: 1149040687071280, guid: e77579316ef6147e6aba3f2f2af3dfa6, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e77579316ef6147e6aba3f2f2af3dfa6, type: 2}
   m_IsPrefabParent: 0
@@ -254,6 +250,26 @@ Prefab:
     - target: {fileID: 4118748379211892, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114351806810499906, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84,
+        type: 2}
+      propertyPath: starPowerUpStartTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114351806810499906, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84,
+        type: 2}
+      propertyPath: forcefieldPowerUpStartTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114351806810499906, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84,
+        type: 2}
+      propertyPath: forcefieldPowerUpSpawnRate
+      value: 0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 114351806810499906, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84,
+        type: 2}
+      propertyPath: starPowerUpSpawnRate
+      value: 0.003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84, type: 2}

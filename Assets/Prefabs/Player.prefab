@@ -118,7 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 0}
-  cursorOffset: 0
+  PlayerForcefield: {fileID: 0}
+  cursorOffset: 2
   isInvincible: 0
   initialInvincibilityTime: 4
   starPowerUpInvincibilityTime: 3
@@ -126,6 +127,7 @@ MonoBehaviour:
   growthSpeed: 1
   heartPowerUpShrinkAmount: 0.15
   enemyHitGrowthAmount: 0.1
+  forcefieldPowerUpTime: 0
 --- !u!212 &212603697391444534
 SpriteRenderer:
   m_ObjectHideFlags: 1
