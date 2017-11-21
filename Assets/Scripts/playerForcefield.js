@@ -1,21 +1,22 @@
 ﻿#pragma strict
 
 var Player : GameObject;
-var active : boolean = false;
-var maxThrust : float = 100f;
-var gain : float = 5f;
-var adjustVelocity : float = 10f;
-var maxVelocity : float = 100f;
+var maxThrust : float;
+var gain : float;
+var adjustVelocity : float;
+var maxVelocity : float;
 
 private var rb2D : Rigidbody2D;
+private var timeLeft : float = 0f;
 
 function Awake () {
   rb2D = GetComponent.<Rigidbody2D>();
-  Physics2D.IgnoreCollision(Player.GetComponent.<Collider2D>(), GetComponent.<Collider2D>());
+  transform.position = Player.transform.position;
 }
 
 function Update () {
   transform.localScale = Player.transform.localScale;
+  handleActive();
 }
 
 function FixedUpdate () {
@@ -26,8 +27,18 @@ function FixedUpdate () {
   rb2D.AddForce(force);
 }
 
-function activateFor (time : int) {
-	// isInvincible = true;
-	// animator.SetBool("isInvincible", true);
-	// Invoke("clearInvincibility", time);
+function handleActive () {
+  timeLeft = timeLeft < 0f ? 0f : timeLeft - Time.deltaTime;
+  if (timeLeft <= 0f) {
+    gameObject.SetActive(false);
+  }
+}
+
+function activateFor (time : float) {
+  gameObject.SetActive(true);
+  Physics2D.IgnoreCollision(Player.GetComponent.<Collider2D>(), GetComponent.<Collider2D>());
+  if (timeLeft <= 0f) {
+    transform.position = Player.transform.position;
+  }
+  timeLeft += time;
 }

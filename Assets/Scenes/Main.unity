@@ -157,6 +157,10 @@ Prefab:
       propertyPath: Player
       value: 
       objectReference: {fileID: 214730784}
+    - target: {fileID: 1149040687071280, guid: e77579316ef6147e6aba3f2f2af3dfa6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e77579316ef6147e6aba3f2f2af3dfa6, type: 2}
   m_IsPrefabParent: 0
@@ -739,6 +743,11 @@ Prefab:
       propertyPath: PlayerForcefield
       value: 
       objectReference: {fileID: 303890460}
+    - target: {fileID: 114280778051441062, guid: 0894a645a16094bfdae283f48222352b,
+        type: 2}
+      propertyPath: forcefieldPowerUpTime
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0894a645a16094bfdae283f48222352b, type: 2}
   m_IsPrefabParent: 0
