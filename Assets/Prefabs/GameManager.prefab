@@ -51,5 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb20a0cbf288f46a0b4148e86222ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  gameRunning: 1
   time: 0
+  timeFormatted: 00:00:000
+  lastGameTimeFormatted: 
+  isGameOver: 0
+  hasHighestTime: 0
+  isHighestTime: 0
+  highestTime: 0
+  highestTimeFormatted: 

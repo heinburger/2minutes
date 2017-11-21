@@ -1,10 +1,10 @@
 ﻿#pragma strict
 
-var rb2D : Rigidbody2D;
-var animator : Animator;
 var thrust : float;
 private var player : GameObject;
 private var playerScript : player;
+private var rb2D : Rigidbody2D;
+private var animator : Animator;
 
 function Awake () {
 	player = GameObject.FindGameObjectWithTag("Player");

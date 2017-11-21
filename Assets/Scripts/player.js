@@ -1,26 +1,29 @@
 ﻿#pragma strict
 
 var GameManager : gameManager;
+var PlayerForcefield : GameObject;
 
 var cursorOffset : float = 0f;
 var isInvincible : boolean = true;
 var initialInvincibilityTime : int;
 var starPowerUpInvincibilityTime : int;
-
 var shrinkSpeed : float;
 var growthSpeed : float;
 var heartPowerUpShrinkAmount : float;
 var enemyHitGrowthAmount : float;
+var forcefieldPowerUpTime : float;
 
 private var scaleTo : Vector3;
 
 private var rb2D : Rigidbody2D;
 private var animator : Animator;
+private var playerForcefieldScript : playerForcefield;
 
 // --------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	isInvincible = true;
 	scaleTo = transform.localScale;
+	playerForcefieldScript = PlayerForcefield.GetComponent.<playerForcefield>();
 }
 
 function Start () {
@@ -42,9 +45,17 @@ function OnTriggerEnter2D (other : Collider2D) {
 		scaleTo -= scaleTo * heartPowerUpShrinkAmount;
 		Destroy(other.gameObject);
 	}
+	if (other.tag == "StarPowerUp") {
+		setInvincibilityFor(starPowerUpInvincibilityTime);
+		Destroy(other.gameObject);
+	}
 }
 
 function OnCollisionEnter2D (other : Collision2D) {
+	if (other.gameObject.tag == "ForcefieldPowerUp") {
+		playerForcefieldScript.activateFor(forcefieldPowerUpTime);
+		Destroy(other.gameObject);
+	}
 	if (!isInvincible && other.gameObject.tag == "Enemy") {
 		scaleTo += scaleTo * enemyHitGrowthAmount;
 		other.gameObject.SetActive(false);
@@ -55,7 +66,8 @@ function OnCollisionEnter2D (other : Collision2D) {
 // --------------------------------------------------------------------- HANDLER METHODS
 function handleMovement () {
 	var target : Vector2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-	transform.position = new Vector3(target.x, target.y + cursorOffset, 0f);
+	var newPosition : Vector3 = new Vector3(target.x, target.y + cursorOffset, 0f);
+	transform.position = newPosition;
 }
 
 function handleScaling () {

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4118748379211892}
   - component: {fileID: 114351806810499906}
+  - component: {fileID: 114612498803815772}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -51,11 +52,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb63e03072c147a189fd12642f724ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameManager: {fileID: 0}
+  position: {fileID: 0}
   enemy: {fileID: 1775176582337696, guid: 0508a5139aeff40969453f0043487987, type: 2}
   enemies: {fileID: 0}
-  enemyInitialCount: 0
-  enemySpawnRate: 0
+  enemyInitialCount: 20
+  enemySpawnRate: 0.08
   powerUps: {fileID: 0}
   heartPowerUp: {fileID: 1451698221322482, guid: 48e240c00d39041d09a5a371c1cf84a3,
     type: 2}
-  heartPowerUpSpawnRate: 0
+  heartPowerUpStartTime: 0
+  heartPowerUpSpawnRate: 0.005
+  starPowerUp: {fileID: 1451698221322482, guid: 6bf8f126850834e36aeb94c9bf50652b,
+    type: 2}
+  starPowerUpStartTime: 0
+  starPowerUpSpawnRate: 0.005
+  forcefieldPowerUp: {fileID: 1451698221322482, guid: 7ad93276d764641b091c3b8177a4b170,
+    type: 2}
+  forcefieldPowerUpStartTime: 0
+  forcefieldPowerUpSpawnRate: 0.005
+--- !u!114 &114612498803815772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975902767435372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4208676b74a2a47a3b1b31502b04056e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

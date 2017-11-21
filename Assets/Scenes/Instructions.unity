@@ -849,6 +849,21 @@ Prefab:
       propertyPath: enemyInitialCount
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114351806810499906, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84,
+        type: 2}
+      propertyPath: enemySpawnRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114351806810499906, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84,
+        type: 2}
+      propertyPath: heartPowerUpSpawnRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114351806810499906, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84,
+        type: 2}
+      propertyPath: forcefieldPowerUpSpawnRate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4cfdbfa1b25cf4be69b4cfae02cfaa84, type: 2}
   m_IsPrefabParent: 0

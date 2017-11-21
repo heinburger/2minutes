@@ -1,5 +1,8 @@
 ﻿#pragma strict
 
+var GameManager : gameManager;
+var position : position;
+
 var enemy : GameObject;
 var enemies : Transform;
 var enemyInitialCount : int;
@@ -7,32 +10,49 @@ var enemySpawnRate : float;
 
 var powerUps : Transform;
 var heartPowerUp : GameObject;
+var heartPowerUpStartTime : float;
 var heartPowerUpSpawnRate : float;
+var starPowerUp : GameObject;
+var starPowerUpStartTime : float;
+var starPowerUpSpawnRate : float;
+var forcefieldPowerUp : GameObject;
+var forcefieldPowerUpStartTime : float;
+var forcefieldPowerUpSpawnRate : float;
 
+// --------------------------------------------------------------------- UNITY METHODS
 function Awake () {
+	position = GetComponent.<position>();
 	powerUps = new GameObject("PowerUps").transform;
 	enemies = new GameObject("Enemies").transform;
 	for (var i : int = 0; i < enemyInitialCount; i++) {
-		var randPosition : Vector3 = getRandomPositionOnBoard();
+		var randPosition : Vector3 = position.getRandomPositionOnBoard();
 		spawnEnemyAt(randPosition);
 	}
 }
 
-// spawns
 function FixedUpdate () {
+	var time : float = GameManager.instance.time;
 	if (Random.value < enemySpawnRate) {
-		var randPosition : Vector3 = getRandomPositionOffBoard();
+		var randPosition : Vector3 = position.getRandomPositionOffBoard();
 		spawnEnemyAt(randPosition);
 	}
-	if (Random.value < heartPowerUpSpawnRate) {
-		var randPositionHeart : Vector3 = getRandomPositionOnBoard();
-		spawnHeartPowerUpAt(randPositionHeart);
+	if (time >= heartPowerUpStartTime && Random.value < heartPowerUpSpawnRate) {
+		var randPositionHeart : Vector3 = position.getRandomPositionOnBoard();
+		spawnPowerUpAt(randPositionHeart, heartPowerUp);
+	}
+	if (time >= starPowerUpStartTime && Random.value < starPowerUpSpawnRate) {
+		var randPositionStar : Vector3 = position.getRandomPositionOnBoard();
+		spawnPowerUpAt(randPositionStar, starPowerUp);
+	}
+	if (time >= forcefieldPowerUpStartTime && Random.value < forcefieldPowerUpSpawnRate) {
+		var randPositionForcefield : Vector3 = position.getRandomPositionOnBoard();
+		spawnPowerUpAt(randPositionForcefield, forcefieldPowerUp);
 	}
 }
 
-function spawnHeartPowerUpAt (position : Vector3) {
-	var toInstantiate : GameObject = heartPowerUp;
-	var instance : GameObject = Instantiate(toInstantiate, position, Quaternion.identity);
+// --------------------------------------------------------------------- SPAWN METHODS
+function spawnPowerUpAt (position : Vector3, powerUp : GameObject) {
+	var instance : GameObject = Instantiate(powerUp, position, Quaternion.identity);
 	instance.transform.SetParent(powerUps);
 }
 
@@ -40,59 +60,4 @@ function spawnEnemyAt (position : Vector3) {
 	var toInstantiate : GameObject = enemy;
 	var instance : GameObject = Instantiate(toInstantiate, position, Quaternion.identity);
 	instance.transform.SetParent(enemies);
-}
-
-function getRandomPositionOnBoard () : Vector3 {
-	var onScreenPt : Vector3 = new Vector3(Random.Range(0f, Screen.width), Random.Range(0f, Screen.height), 0f);
-	var position : Vector3 = Camera.main.ScreenToWorldPoint(onScreenPt);
-	position.z = 0f;
-	return position;
-}
-
-function getRandomPositionOffBoard () : Vector3 {
-	if (Random.value < 0.5f) {
-		return Random.value < 0.5f
-			? randomPositionOffBoardLeft()
-			: randomPositionOffBoardTop();
-	} else {
-		return Random.value < 0.5f
-			? randomPositionOffBoardRight()
-			: randomPositionOffBoardBottom();
-	}
-}
-
-function randomPositionOffBoardLeft () : Vector3 {
-	var halfWidth : float = 0.5f;
-	var edgeScreenLeft : Vector3 = new Vector3(0f, Random.Range(0f, Screen.height), 0f);
-	var position : Vector3 = Camera.main.ScreenToWorldPoint(edgeScreenLeft);
-	position.x -= halfWidth;
-	position.z = 0f;
-	return position;
-}
-
-function randomPositionOffBoardRight () : Vector3 {
-	var halfWidth : float = 0.5f;
-	var edgeScreenRight : Vector3 = new Vector3(Screen.width, Random.Range(0, Screen.height), 0f);
-	var position : Vector3 = Camera.main.ScreenToWorldPoint(edgeScreenRight);
-	position.x += halfWidth;
-	position.z = 0f;
-	return position;
-}
-
-function randomPositionOffBoardTop () : Vector3 {
-	var halfHeight : float = 0.5f;
-	var edgeScreenTop : Vector3 = new Vector3(Random.Range(0f, Screen.width), Screen.height, 0f);
-	var position : Vector3 = Camera.main.ScreenToWorldPoint(edgeScreenTop);
-	position.y += halfHeight;
-	position.z = 0f;
-	return position;
-}
-
-function randomPositionOffBoardBottom () : Vector3 {
-	var halfHeight : float = 0.5f;
-	var edgeScreenBottom : Vector3 = new Vector3(Random.Range(0f, Screen.width), 0f, 0f);
-	var position : Vector3 = Camera.main.ScreenToWorldPoint(edgeScreenBottom);
-	position.y -= halfHeight;
-	position.z = 0f;
-	return position;
 }

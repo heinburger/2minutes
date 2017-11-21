@@ -2,7 +2,7 @@
 
 static var instance : gameManager;
 
-var gameRunning : boolean = false;
+var gameRunning : boolean = true;
 var time : float = 0f;
 var timeFormatted : String = "00:00:000";
 var lastGameTimeFormatted : String;
