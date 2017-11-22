@@ -1,7 +1,7 @@
 ﻿#pragma strict
 
 var GameManager : gameManager;
-var SpriteRenderer : SpriteRenderer;
+private var SpriteRenderer : SpriteRenderer;
 
 var lifeTime : float;
 private var timeLeft : float;

@@ -127,7 +127,7 @@ MonoBehaviour:
   growthSpeed: 1
   heartPowerUpShrinkAmount: 0.15
   enemyHitGrowthAmount: 0.1
-  forcefieldPowerUpTime: 0
+  forcefieldPowerUpTime: 5
 --- !u!212 &212603697391444534
 SpriteRenderer:
   m_ObjectHideFlags: 1

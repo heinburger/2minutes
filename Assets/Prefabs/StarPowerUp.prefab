@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 61012572349240942}
   - component: {fileID: 50350124875128926}
   - component: {fileID: 212009180361475810}
+  - component: {fileID: 114260070715709192}
   m_Layer: 8
   m_Name: StarPowerUp
   m_TagString: StarPowerUp
@@ -87,6 +88,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &114260070715709192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1451698221322482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d3dc26c04914e82a02192aa0093b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
+    type: 2}
+  SpriteRenderer: {fileID: 0}
+  lifeTime: 10
 --- !u!212 &212009180361475810
 SpriteRenderer:
   m_ObjectHideFlags: 1
