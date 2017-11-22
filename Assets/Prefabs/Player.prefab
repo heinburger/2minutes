@@ -117,9 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa994e71a3eb4e59b4c06eaee1effad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameManager: {fileID: 0}
+  GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
+    type: 2}
   PlayerForcefield: {fileID: 0}
-  cursorOffset: 2
   isInvincible: 0
   initialInvincibilityTime: 4
   starPowerUpInvincibilityTime: 3

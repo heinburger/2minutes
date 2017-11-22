@@ -8,16 +8,17 @@ var SpawnParent : GameObject;
 
 var offscreen : boolean;
 var initialCount : int;
+var continuousSpawnDelay : float;
 var continuousSpawn : boolean;
 private var spawnerRunning : boolean = false;
-var initialSpawnRate : float;
-var spawnRate : float;
+var spawnTimeMin : float;
+var spawnTimeMax : float;
+var spawnTimeFixed : float;
 var spawnAcceleration : float;
 
 // --------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	positionUtils = GetComponent.<positionUtils>();
-	spawnRate = initialSpawnRate;
 	var parentName = SpawnObject.name + "Spawns";
 	SpawnParent = SpawnParent || GameObject.Find(parentName);
 	if (!SpawnParent) {
@@ -27,6 +28,7 @@ function Awake () {
 }
 
 function Update () {
+	continuousSpawn = continuousSpawn || continuousSpawnDelay > GameManager.instance.time;
 	if (continuousSpawn && !spawnerRunning) {
 		spawnCoroutine();
 	}
@@ -37,8 +39,10 @@ function spawnCoroutine () {
 	spawnerRunning = true;
 	while (spawnerRunning) {
 		spawnerRunning = continuousSpawn;
-		var rate : float = spawnRate > 0f ? spawnRate : Time.deltaTime;
-		yield WaitForSeconds(1f / rate);
+		var time : float = spawnTimeFixed > 0f
+			? spawnTimeFixed
+			: Random.Range(spawnTimeMin, spawnTimeMax);
+		yield WaitForSeconds(time);
 		spawn();
 	}
 }
