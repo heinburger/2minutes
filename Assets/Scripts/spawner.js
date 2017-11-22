@@ -1,78 +1,63 @@
 ﻿#pragma strict
 
 var GameManager : gameManager;
-var position : position;
+private var positionUtils : positionUtils;
 
-// key/door? - princess
-// mystery potion - could be any powerup
-// shield ?
-// enemies carry poison ones****
-// snail/spiderweb
-// magnet
-// poison mushroom
-// bomb
-// timer
-// darkness
-// hole
-// arrow (direction to apply force to all enemies)
+var SpawnObject : GameObject;
+var SpawnParent : GameObject;
 
-var spawn : boolean;
-var enemy : GameObject;
-var enemies : Transform;
-var enemyInitialCount : int;
-var enemySpawnRate : float;
-
-var powerUps : Transform;
-var heartPowerUp : GameObject;
-var heartPowerUpStartTime : float;
-var heartPowerUpSpawnRate : float;
-var starPowerUp : GameObject;
-var starPowerUpStartTime : float;
-var starPowerUpSpawnRate : float;
-var forcefieldPowerUp : GameObject;
-var forcefieldPowerUpStartTime : float;
-var forcefieldPowerUpSpawnRate : float;
+var offscreen : boolean;
+var initialCount : int;
+var continuousSpawn : boolean;
+private var spawnerRunning : boolean = false;
+var initialSpawnRate : float;
+var spawnRate : float;
+var spawnAcceleration : float;
 
 // --------------------------------------------------------------------- UNITY METHODS
 function Awake () {
-	position = GetComponent.<position>();
-	powerUps = new GameObject("PowerUps").transform;
-	enemies = new GameObject("Enemies").transform;
-	for (var i : int = 0; i < enemyInitialCount; i++) {
-		var randPosition : Vector3 = position.getRandomPositionOnBoard();
-		spawnEnemyAt(randPosition);
+	positionUtils = GetComponent.<positionUtils>();
+	spawnRate = initialSpawnRate;
+	var parentName = SpawnObject.name + "Spawns";
+	SpawnParent = SpawnParent || GameObject.Find(parentName);
+	if (!SpawnParent) {
+		SpawnParent = new GameObject(parentName);
+	}
+	spawnInitial();
+}
+
+function Update () {
+	if (continuousSpawn && !spawnerRunning) {
+		spawnCoroutine();
 	}
 }
 
-function FixedUpdate () {
-	var time : float = GameManager.instance.time;
-	if (Random.value < enemySpawnRate) {
-		Debug.Log(Time.realtimeSinceStartup);
-		var randPosition : Vector3 = position.getRandomPositionOffBoard();
-		spawnEnemyAt(randPosition);
-	}
-	if (time >= heartPowerUpStartTime && Random.value < heartPowerUpSpawnRate) {
-		var randPositionHeart : Vector3 = position.getRandomPositionOnBoard();
-		spawnPowerUpAt(randPositionHeart, heartPowerUp);
-	}
-	if (time >= starPowerUpStartTime && Random.value < starPowerUpSpawnRate) {
-		var randPositionStar : Vector3 = position.getRandomPositionOnBoard();
-		spawnPowerUpAt(randPositionStar, starPowerUp);
-	}
-	if (time >= forcefieldPowerUpStartTime && Random.value < forcefieldPowerUpSpawnRate) {
-		var randPositionForcefield : Vector3 = position.getRandomPositionOnBoard();
-		spawnPowerUpAt(randPositionForcefield, forcefieldPowerUp);
+// --------------------------------------------------------------------- COROUTINES
+function spawnCoroutine () {
+	spawnerRunning = true;
+	while (spawnerRunning) {
+		spawnerRunning = continuousSpawn;
+		var rate : float = spawnRate > 0f ? spawnRate : Time.deltaTime;
+		yield WaitForSeconds(1f / rate);
+		spawn();
 	}
 }
 
 // --------------------------------------------------------------------- SPAWN METHODS
-function spawnPowerUpAt (position : Vector3, powerUp : GameObject) {
-	var instance : GameObject = Instantiate(powerUp, position, Quaternion.identity);
-	instance.transform.SetParent(powerUps);
+function spawnInitial () {
+	if (initialCount > 0) {
+		for (var i : int = 0; i < initialCount; i++) {
+			spawn();
+		}
+	}
 }
 
-function spawnEnemyAt (position : Vector3) {
-	var toInstantiate : GameObject = enemy;
-	var instance : GameObject = Instantiate(toInstantiate, position, Quaternion.identity);
-	instance.transform.SetParent(enemies);
+function spawn () {
+	var position : Vector3 = offscreen
+		? positionUtils.getRandomPositionOffBoard()
+		: positionUtils.getRandomPositionOnBoard();
+	var instance : GameObject = Instantiate(SpawnObject, position, Quaternion.identity);
+	if (SpawnParent) {
+		instance.transform.SetParent(SpawnParent.transform);
+	}
 }
