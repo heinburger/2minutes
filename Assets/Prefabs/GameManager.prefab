@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameRunning: 1
-  cursorOffset: 3
+  cursorOffset: 0
   time: 0
   timeFormatted: 00:00:000
   lastGameTimeFormatted: 

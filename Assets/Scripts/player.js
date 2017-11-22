@@ -64,15 +64,13 @@ function OnCollisionEnter2D (other : Collision2D) {
 
 // --------------------------------------------------------------------- HANDLER METHODS
 function handleMovement () {
-	var translatedMousePosition : Vector2 = Input.mousePosition;
-	var cameraSpaceOffset = Camera.main.orthographicSize * GameManager.instance.cursorOffset;
-	var shrinkZone : float = 4f * cameraSpaceOffset;
-	var shrinkRatio = Input.mousePosition.y > 0f ? Input.mousePosition.y / shrinkZone : 1f;
-	var offsetY : float = shrinkRatio > 1f ? cameraSpaceOffset : cameraSpaceOffset * shrinkRatio;
-	translatedMousePosition.y += offsetY;
-
-	var target : Vector2 = Camera.main.ScreenToWorldPoint(translatedMousePosition);
-	var newPosition : Vector3 = new Vector3(target.x, target.y, 0f);
+	var target : Vector2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+	var offset : float = GameManager.instance.cursorOffset;
+	var shrinkRatio : float = Input.mousePosition.y > 0f
+		? (Input.mousePosition.y / Camera.main.orthographicSize) / (offset * 4f)
+		: 1f;
+	var offsetY : float = shrinkRatio > 1f ? offset : offset * shrinkRatio;
+	var newPosition : Vector3 = new Vector3(target.x, target.y + offsetY, 0f);
 	transform.position = newPosition;
 }
 

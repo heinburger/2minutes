@@ -3,6 +3,20 @@
 var GameManager : gameManager;
 var position : position;
 
+// key/door? - princess
+// mystery potion - could be any powerup
+// shield ?
+// enemies carry poison ones****
+// snail/spiderweb
+// magnet
+// poison mushroom
+// bomb
+// timer
+// darkness
+// hole
+// arrow (direction to apply force to all enemies)
+
+var spawn : boolean;
 var enemy : GameObject;
 var enemies : Transform;
 var enemyInitialCount : int;
@@ -33,6 +47,7 @@ function Awake () {
 function FixedUpdate () {
 	var time : float = GameManager.instance.time;
 	if (Random.value < enemySpawnRate) {
+		Debug.Log(Time.realtimeSinceStartup);
 		var randPosition : Vector3 = position.getRandomPositionOffBoard();
 		spawnEnemyAt(randPosition);
 	}
