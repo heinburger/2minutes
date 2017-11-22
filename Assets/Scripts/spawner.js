@@ -24,6 +24,9 @@ function Awake () {
 	if (!SpawnParent) {
 		SpawnParent = new GameObject(parentName);
 	}
+}
+
+function Start () {
 	spawnInitial();
 }
 
