@@ -1,6 +1,7 @@
 ﻿#pragma strict
 
 static var instance : audioManager;
+var sounds : Sound[];
 
 // --------------------------------------------------------------------- UNITY METHODS
 function Awake () {
@@ -11,10 +12,29 @@ function Awake () {
 	}
 
 	DontDestroyOnLoad(gameObject);
-}
 
-function Update () {
+	for (var s : Sound in sounds) {
+		s.source = gameObject.AddComponent.<AudioSource>();
+		s.source.clip = s.clip;
 
+		s.source.volume = s.volume;
+		s.source.pitch = s.pitch;
+		s.source.loop = s.loop;
+	}
 }
 
 // --------------------------------------------------------------------- AUDIO METHODS
+function play (name : String) {
+	var soundToPlay : Sound;
+	for (var s : Sound in sounds) {
+		if (s.name == name) {
+			soundToPlay = s;
+		}
+	}
+	if (soundToPlay == null) {
+		Debug.LogWarning("Sound: " + name + " does not exist");
+	} else {
+		soundToPlay.source.Play();
+	}
+
+}

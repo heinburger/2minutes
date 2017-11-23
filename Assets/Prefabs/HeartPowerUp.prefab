@@ -101,8 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
     type: 2}
-  SpriteRenderer: {fileID: 0}
+  AudioManager: {fileID: 0}
   lifeTime: 10
+  pickUpSound: heartPickUp
 --- !u!212 &212009180361475810
 SpriteRenderer:
   m_ObjectHideFlags: 1

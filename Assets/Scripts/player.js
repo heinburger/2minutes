@@ -40,22 +40,21 @@ function Update () {
 function OnTriggerEnter2D (other : Collider2D) {
 	if (other.tag == "HeartPowerUp") {
 		scaleTo -= scaleTo * heartPowerUpShrinkAmount;
-		Destroy(other.gameObject);
+		other.gameObject.GetComponent.<powerUp>().pickUp();
 	}
 	if (other.tag == "StarPowerUp") {
 		setInvincibilityFor(starPowerUpInvincibilityTime);
-		Destroy(other.gameObject);
+		other.gameObject.GetComponent.<powerUp>().pickUp();
 	}
 }
 
 function OnCollisionEnter2D (other : Collision2D) {
 	if (other.gameObject.tag == "ForcefieldPowerUp") {
 		playerForcefieldScript.activateFor(forcefieldPowerUpTime);
-		Destroy(other.gameObject);
+		other.gameObject.GetComponent.<powerUp>().pickUp();
 	}
 	if (!isInvincible && other.gameObject.tag == "Enemy") {
 		scaleTo += scaleTo * enemyHitGrowthAmount;
-		other.gameObject.SetActive(false);
 		Destroy(other.gameObject);
 	}
 }

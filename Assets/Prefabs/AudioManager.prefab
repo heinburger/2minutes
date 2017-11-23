@@ -51,3 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0274db05c227c4a668e7cef7184742b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sounds:
+  - name: heartPickUp
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 6a5a6f548fed64e7281c7099ff0930df, type: 3}
+    loop: 0
+    volume: 23.2
+    pitch: 6.6
