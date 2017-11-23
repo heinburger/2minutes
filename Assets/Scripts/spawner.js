@@ -31,7 +31,9 @@ function Start () {
 }
 
 function Update () {
-	continuousSpawn = continuousSpawn || continuousSpawnDelay > GameManager.instance.time;
+	continuousSpawn = continuousSpawn || (
+		continuousSpawnDelay != 0f && continuousSpawnDelay < GameManager.instance.time
+	);
 	if (continuousSpawn && !spawnerRunning) {
 		spawnCoroutine();
 	}

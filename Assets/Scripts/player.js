@@ -4,8 +4,9 @@ var GameManager : gameManager;
 var PlayerForcefield : GameObject;
 
 var isInvincible : boolean = true;
-var initialInvincibilityTime : int;
-var starPowerUpInvincibilityTime : int;
+var initialInvincibilityTime : float;
+var invinvibilityTimeLeft : float;
+var starPowerUpInvincibilityTime : float;
 var shrinkSpeed : float;
 var growthSpeed : float;
 var heartPowerUpShrinkAmount : float;
@@ -20,20 +21,17 @@ private var playerForcefieldScript : playerForcefield;
 
 // --------------------------------------------------------------------- UNITY METHODS
 function Awake () {
-	isInvincible = true;
-	scaleTo = transform.localScale;
-	playerForcefieldScript = PlayerForcefield.GetComponent.<playerForcefield>();
-}
-
-function Start () {
 	rb2D = GetComponent.<Rigidbody2D>();
 	animator = GetComponent.<Animator>();
+	playerForcefieldScript = PlayerForcefield.GetComponent.<playerForcefield>();
 	setInvincibilityFor(initialInvincibilityTime);
+	scaleTo = transform.localScale;
 }
 
 function Update () {
 	if (GameManager.instance.gameRunning) {
 		handleGameOver();
+		handlePowers();
 		handleScaling();
 		handleMovement();
 	}
@@ -63,11 +61,21 @@ function OnCollisionEnter2D (other : Collision2D) {
 }
 
 // --------------------------------------------------------------------- HANDLER METHODS
+function handlePowers () {
+	if (invinvibilityTimeLeft > 0f) {
+		invinvibilityTimeLeft -= Time.deltaTime;
+	} else {
+		isInvincible = false;
+		invinvibilityTimeLeft = 0f;
+		animator.SetBool("isInvincible", false);
+	}
+}
+
 function handleMovement () {
 	var target : Vector2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 	var offset : float = GameManager.instance.cursorOffset;
 	var shrinkRatio : float = Input.mousePosition.y > 0f
-		? (Input.mousePosition.y / Camera.main.orthographicSize) / (offset * 4f)
+		? (Input.mousePosition.y / Camera.main.orthographicSize) / (offset * 8f)
 		: 1f;
 	var offsetY : float = shrinkRatio > 1f ? offset : offset * shrinkRatio;
 	var newPosition : Vector3 = new Vector3(target.x, target.y + offsetY, 0f);
@@ -93,13 +101,8 @@ function handleGameOver () {
 
 
 // --------------------------------------------------------------------- TRIGGER AND FLAG METHODS
-function setInvincibilityFor (time : int) {
+function setInvincibilityFor (time : float) {
+	invinvibilityTimeLeft += time;
 	isInvincible = true;
 	animator.SetBool("isInvincible", true);
-	Invoke("clearInvincibility", time);
-}
-
-function clearInvincibility () {
-	isInvincible = false;
-	animator.SetBool("isInvincible", false);
 }

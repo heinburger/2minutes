@@ -9,31 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1139773775741316}
+  m_RootGameObject: {fileID: 1013255878927762}
   m_IsPrefabParent: 1
---- !u!1 &1139773775741316
+--- !u!1 &1013255878927762
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4460676539400336}
-  - component: {fileID: 114986245305438768}
-  - component: {fileID: 114447316255522172}
+  - component: {fileID: 4528660993716734}
+  - component: {fileID: 114964371806552568}
+  - component: {fileID: 114742311633548738}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: StarSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4460676539400336
+--- !u!4 &4528660993716734
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1139773775741316}
+  m_GameObject: {fileID: 1013255878927762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,12 +41,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114447316255522172
+--- !u!114 &114742311633548738
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1139773775741316}
+  m_GameObject: {fileID: 1013255878927762}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1cb3248d1e0484c32b070bfe166a6ad9, type: 3}
@@ -54,20 +54,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
     type: 2}
-  SpawnObject: {fileID: 0}
+  SpawnObject: {fileID: 1451698221322482, guid: 6bf8f126850834e36aeb94c9bf50652b,
+    type: 2}
   SpawnParent: {fileID: 0}
   offscreen: 0
   initialCount: 0
+  continuousSpawnDelay: 35
   continuousSpawn: 0
-  initialSpawnRate: 0
-  spawnRate: 0
+  spawnTimeMin: 2
+  spawnTimeMax: 10
+  spawnTimeFixed: 0
   spawnAcceleration: 0
---- !u!114 &114986245305438768
+--- !u!114 &114964371806552568
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1139773775741316}
+  m_GameObject: {fileID: 1013255878927762}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4208676b74a2a47a3b1b31502b04056e, type: 3}
