@@ -1,9 +1,10 @@
 ﻿#pragma strict
 
 var GameManager : gameManager;
+var AudioManager : audioManager;
 var PlayerForcefield : GameObject;
 
-var isInvincible : boolean = true;
+var isInvincible : boolean;
 var initialInvincibilityTime : float;
 var invincibilityTimeLeft : float;
 var starPowerUpInvincibilityTime : float;
@@ -18,12 +19,19 @@ private var scaleTo : Vector3;
 private var rb2D : Rigidbody2D;
 private var animator : Animator;
 private var playerForcefieldScript : playerForcefield;
+private var invincibleAudioSource : AudioSource;
+private var absorbAudioSource : AudioSource;
 
 // --------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	rb2D = GetComponent.<Rigidbody2D>();
 	animator = GetComponent.<Animator>();
+
 	playerForcefieldScript = PlayerForcefield.GetComponent.<playerForcefield>();
+	var audioSources = GetComponents(AudioSource);
+	invincibleAudioSource = audioSources[0];
+	absorbAudioSource = audioSources[1];
+	isInvincible = true;
 	setInvincibilityFor(initialInvincibilityTime);
 	scaleTo = transform.localScale;
 }
@@ -40,21 +48,24 @@ function Update () {
 function OnTriggerEnter2D (other : Collider2D) {
 	if (other.tag == "HeartPowerUp") {
 		scaleTo -= scaleTo * heartPowerUpShrinkAmount;
-		other.gameObject.GetComponent.<powerUp>().pickUp();
+		AudioManager.instance.play("heartPickUp");
+		Destroy(other.gameObject);
 	}
 	if (other.tag == "StarPowerUp") {
 		setInvincibilityFor(starPowerUpInvincibilityTime);
-		other.gameObject.GetComponent.<powerUp>().pickUp();
+		Destroy(other.gameObject);
 	}
 }
 
 function OnCollisionEnter2D (other : Collision2D) {
 	if (other.gameObject.tag == "ForcefieldPowerUp") {
 		playerForcefieldScript.activateFor(forcefieldPowerUpTime);
-		other.gameObject.GetComponent.<powerUp>().pickUp();
+		AudioManager.instance.play("forcefieldPickUp");
+		Destroy(other.gameObject);
 	}
 	if (!isInvincible && other.gameObject.tag == "Enemy") {
 		scaleTo += scaleTo * enemyHitGrowthAmount;
+		absorbAudioSource.Play();
 		Destroy(other.gameObject);
 	}
 }
@@ -65,6 +76,7 @@ function handlePowers () {
 	if (invincibilityTimeLeft <= 0f) {
 		isInvincible = false;
 		animator.SetBool("isInvincible", false);
+		invincibleAudioSource.Stop();
 	}
 }
 
@@ -99,6 +111,9 @@ function handleGameOver () {
 
 // --------------------------------------------------------------------- TRIGGER AND FLAG METHODS
 function setInvincibilityFor (time : float) {
+	if (!isInvincible) {
+		invincibleAudioSource.Play();
+	}
 	invincibilityTimeLeft += time;
 	isInvincible = true;
 	animator.SetBool("isInvincible", true);

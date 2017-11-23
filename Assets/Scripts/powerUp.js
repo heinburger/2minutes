@@ -1,11 +1,9 @@
 ﻿#pragma strict
 
 var GameManager : gameManager;
-var AudioManager : audioManager;
 private var SpriteRenderer : SpriteRenderer;
 
 var lifeTime : float;
-var pickUpSound : String;
 
 private var timeLeft : float;
 private var spawnTime : float;
@@ -40,11 +38,6 @@ function Update () {
 			lowLifeAnimationCoroutine();
 		}
 	}
-}
-
-function pickUp () {
-	AudioManager.instance.play(pickUpSound);
-	Destroy(gameObject);
 }
 
 function lowLifeAnimationCoroutine () {

@@ -52,9 +52,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: heartPickUp
-    source: {fileID: 0}
+  - source: {fileID: 0}
+    name: heartPickUp
     clip: {fileID: 8300000, guid: 6a5a6f548fed64e7281c7099ff0930df, type: 3}
     loop: 0
-    volume: 23.2
-    pitch: 6.6
+    volume: 0.501
+    pitch: 3
+  - source: {fileID: 0}
+    name: forcefieldPickUp
+    clip: {fileID: 8300000, guid: 605ee1c8d8ec1400383f8d27057ecc4a, type: 3}
+    loop: 0
+    volume: 0.602
+    pitch: 0.76

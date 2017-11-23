@@ -36,5 +36,18 @@ function play (name : String) {
 	} else {
 		soundToPlay.source.Play();
 	}
+}
 
+function stop (name : String) {
+	var soundToPlay : Sound;
+	for (var s : Sound in sounds) {
+		if (s.name == name) {
+			soundToPlay = s;
+		}
+	}
+	if (soundToPlay == null) {
+		Debug.LogWarning("Sound: " + name + " does not exist");
+	} else {
+		soundToPlay.source.Stop();
+	}
 }

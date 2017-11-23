@@ -886,7 +886,7 @@ Prefab:
     - target: {fileID: 114323416153484524, guid: b37fc04cbe2c645d8b08f1092493191f,
         type: 2}
       propertyPath: initialCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114323416153484524, guid: b37fc04cbe2c645d8b08f1092493191f,
         type: 2}
