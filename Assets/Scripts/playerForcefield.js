@@ -8,6 +8,7 @@ var maxVelocity : float;
 
 private var rb2D : Rigidbody2D;
 private var timeLeft : float = 0f;
+private var playerToLarge : boolean;
 
 function Awake () {
   rb2D = GetComponent.<Rigidbody2D>();
@@ -16,6 +17,7 @@ function Awake () {
 
 function Update () {
   transform.localScale = Player.transform.localScale;
+  playerToLarge = Player.transform.localScale.x > 30f;
   handleActive();
 }
 
@@ -29,16 +31,18 @@ function FixedUpdate () {
 
 function handleActive () {
   timeLeft = timeLeft < 0f ? 0f : timeLeft - Time.deltaTime;
-  if (timeLeft <= 0f) {
+  if (timeLeft <= 0f || playerToLarge) {
     gameObject.SetActive(false);
   }
 }
 
 function activateFor (time : float) {
-  gameObject.SetActive(true);
-  Physics2D.IgnoreCollision(Player.GetComponent.<Collider2D>(), GetComponent.<Collider2D>());
-  if (timeLeft <= 0f) {
-    transform.position = Player.transform.position;
+  if (!playerToLarge) {
+    gameObject.SetActive(true);
+    Physics2D.IgnoreCollision(Player.GetComponent.<Collider2D>(), GetComponent.<Collider2D>());
+    if (timeLeft <= 0f) {
+      transform.position = Player.transform.position;
+    }
+    timeLeft += time;
   }
-  timeLeft += time;
 }

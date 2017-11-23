@@ -5,7 +5,7 @@ var PlayerForcefield : GameObject;
 
 var isInvincible : boolean = true;
 var initialInvincibilityTime : float;
-var invinvibilityTimeLeft : float;
+var invincibilityTimeLeft : float;
 var starPowerUpInvincibilityTime : float;
 var shrinkSpeed : float;
 var growthSpeed : float;
@@ -62,11 +62,9 @@ function OnCollisionEnter2D (other : Collision2D) {
 
 // --------------------------------------------------------------------- HANDLER METHODS
 function handlePowers () {
-	if (invinvibilityTimeLeft > 0f) {
-		invinvibilityTimeLeft -= Time.deltaTime;
-	} else {
+	invincibilityTimeLeft = invincibilityTimeLeft < 0f ? 0f : invincibilityTimeLeft - Time.deltaTime;
+	if (invincibilityTimeLeft <= 0f) {
 		isInvincible = false;
-		invinvibilityTimeLeft = 0f;
 		animator.SetBool("isInvincible", false);
 	}
 }
@@ -102,7 +100,7 @@ function handleGameOver () {
 
 // --------------------------------------------------------------------- TRIGGER AND FLAG METHODS
 function setInvincibilityFor (time : float) {
-	invinvibilityTimeLeft += time;
+	invincibilityTimeLeft += time;
 	isInvincible = true;
 	animator.SetBool("isInvincible", true);
 }
