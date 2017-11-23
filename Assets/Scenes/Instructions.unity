@@ -480,7 +480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d146848e9a70d452e9533e3ed9318024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameManager: {fileID: 0}
+  GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
+    type: 2}
   startBtn: {fileID: 706629010}
 --- !u!4 &967830558
 Transform:
@@ -689,6 +690,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
+    type: 2}
+  AudioManager: {fileID: 114122309087782278, guid: bb6047978812c409bae1a9bd8d2b6b91,
     type: 2}
 --- !u!1001 &1602660789
 Prefab:

@@ -272,7 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ac9417bfd5c480bb0bd475f2d230b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameManager: {fileID: 0}
+  GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
+    type: 2}
   timeText: {fileID: 1381780287}
 --- !u!4 &594950235
 Transform:
@@ -498,6 +499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
+    type: 2}
+  AudioManager: {fileID: 114122309087782278, guid: bb6047978812c409bae1a9bd8d2b6b91,
     type: 2}
 --- !u!1 &1381780285
 GameObject:
