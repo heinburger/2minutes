@@ -91,9 +91,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   maxThrust: 10000
-  gain: 50
-  adjustVelocity: 10
-  maxVelocity: 100000
+  gain: 30
+  adjustVelocity: 28
+  maxVelocity: 10000
 --- !u!212 &212740731815206212
 SpriteRenderer:
   m_ObjectHideFlags: 1

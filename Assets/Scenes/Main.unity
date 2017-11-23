@@ -190,30 +190,6 @@ Prefab:
       propertyPath: Player
       value: 
       objectReference: {fileID: 214730784}
-    - target: {fileID: 114133733397467902, guid: e77579316ef6147e6aba3f2f2af3dfa6,
-        type: 2}
-      propertyPath: maxThrust
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1149040687071280, guid: e77579316ef6147e6aba3f2f2af3dfa6, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114133733397467902, guid: e77579316ef6147e6aba3f2f2af3dfa6,
-        type: 2}
-      propertyPath: maxVelocity
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 114133733397467902, guid: e77579316ef6147e6aba3f2f2af3dfa6,
-        type: 2}
-      propertyPath: adjustVelocity
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 114133733397467902, guid: e77579316ef6147e6aba3f2f2af3dfa6,
-        type: 2}
-      propertyPath: gain
-      value: 25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e77579316ef6147e6aba3f2f2af3dfa6, type: 2}
   m_IsPrefabParent: 0
@@ -916,6 +892,11 @@ Prefab:
     - target: {fileID: 4856256184341324, guid: 127c8511c84074ef2bda6f15dde97cc3, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114392998162258554, guid: 127c8511c84074ef2bda6f15dde97cc3,
+        type: 2}
+      propertyPath: spawnTimeFixed
+      value: 0.23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 127c8511c84074ef2bda6f15dde97cc3, type: 2}
