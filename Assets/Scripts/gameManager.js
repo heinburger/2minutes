@@ -27,7 +27,7 @@ function Awake () {
 	hasHighestTime = !!highestTime;
 	cursorOffset = SystemInfo.deviceType == DeviceType.Desktop
 		? 0f
-		: 1f;
+		: 1.5f;
 }
 
 function Update () {
