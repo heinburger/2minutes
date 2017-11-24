@@ -3,6 +3,8 @@
 var GameManager : gameManager;
 var AudioManager : audioManager;
 var PlayerForcefield : GameObject;
+var PlayerCrown : GameObject;
+var PlayerInvincibleTrail : GameObject;
 
 var isInvincible : boolean;
 var initialInvincibilityTime : float;
@@ -29,8 +31,8 @@ function Awake () {
 
 	playerForcefieldScript = PlayerForcefield.GetComponent.<playerForcefield>();
 	var audioSources = GetComponents(AudioSource);
-	invincibleAudioSource = audioSources[0];
-	absorbAudioSource = audioSources[1];
+	invincibleAudioSource = audioSources[0] as AudioSource;
+	absorbAudioSource = audioSources[1] as AudioSource;
 	isInvincible = true;
 	setInvincibilityFor(initialInvincibilityTime);
 	scaleTo = transform.localScale;
@@ -77,6 +79,7 @@ function handlePowers () {
 		isInvincible = false;
 		animator.SetBool("isInvincible", false);
 		invincibleAudioSource.Stop();
+		PlayerInvincibleTrail.SetActive(false);
 	}
 }
 
@@ -88,7 +91,7 @@ function handleMovement () {
 		: 1f;
 	var offsetY : float = shrinkRatio > 1f ? offset : offset * shrinkRatio;
 	var newPosition : Vector3 = new Vector3(target.x, target.y + offsetY, 0f);
-	transform.position = newPosition;
+	transform.position = Vector3.MoveTowards(transform.position, newPosition, 50f * Time.deltaTime);
 }
 
 function handleScaling () {
@@ -113,6 +116,7 @@ function handleGameOver () {
 function setInvincibilityFor (time : float) {
 	if (!isInvincible) {
 		invincibleAudioSource.Play();
+		PlayerInvincibleTrail.SetActive(true);
 	}
 	invincibilityTimeLeft += time;
 	isInvincible = true;

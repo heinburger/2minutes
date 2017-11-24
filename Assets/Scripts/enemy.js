@@ -1,5 +1,6 @@
 ﻿#pragma strict
 
+var AudioManager : audioManager;
 var thrust : float;
 
 private var player : GameObject;
@@ -31,7 +32,7 @@ function Update () {
 
 function OnCollisionEnter2D (other : Collision2D) {
 	if (other.gameObject.tag == "PlayerForcefield") {
-		bounceAudioSource.Play();
+		AudioManager.instance.playThrottledAudio(bounceAudioSource);
 	}
 }
 

@@ -1,7 +1,10 @@
 ﻿#pragma strict
 
 static var instance : audioManager;
+
 var sounds : Sound[];
+var throttleAudioLimit : float;
+private var throttleAudio : boolean = false;
 
 // --------------------------------------------------------------------- UNITY METHODS
 function Awake () {
@@ -24,6 +27,19 @@ function Awake () {
 }
 
 // --------------------------------------------------------------------- AUDIO METHODS
+function playThrottledAudio (source : AudioSource) {
+	if (!throttleAudio) {
+		source.Play();
+		startThrottleAudioCoroutine();
+	}
+}
+
+function startThrottleAudioCoroutine () {
+	throttleAudio = true;
+	yield WaitForSeconds(throttleAudioLimit);
+	throttleAudio = false;
+}
+
 function play (name : String) {
 	var soundToPlay : Sound;
 	for (var s : Sound in sounds) {

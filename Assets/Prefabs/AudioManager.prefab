@@ -64,3 +64,4 @@ MonoBehaviour:
     loop: 0
     volume: 0.602
     pitch: 0.76
+  throttleAudioLimit: 0.05
