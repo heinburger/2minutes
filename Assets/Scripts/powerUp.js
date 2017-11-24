@@ -23,7 +23,7 @@ private var animating : boolean = false;
 // hole
 // arrow (direction to apply force to all enemies)
 
-function Awake () {
+function Start () {
 	spawnTime = GameManager.instance.time;
 	SpriteRenderer = GetComponent.<SpriteRenderer>();
 }
