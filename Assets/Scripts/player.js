@@ -91,7 +91,11 @@ function handleMovement () {
 		: 1f;
 	var offsetY : float = shrinkRatio > 1f ? offset : offset * shrinkRatio;
 	var newPosition : Vector3 = new Vector3(target.x, target.y + offsetY, 0f);
-	transform.position = Vector3.MoveTowards(transform.position, newPosition, 50f * Time.deltaTime);
+	if (offset) {
+		transform.position = Vector3.MoveTowards(transform.position, newPosition, 50f * Time.deltaTime);
+	} else {
+		transform.position = newPosition;
+	}
 }
 
 function handleScaling () {
