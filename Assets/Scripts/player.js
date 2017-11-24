@@ -45,7 +45,7 @@ function Update () {
 		handleGameOver();
 		handlePowers();
 		handleScaling();
-		if (GameManager.isMobile) {
+		if (GameManager.instance.isMobile) {
 			handleMovementMobile();
 		} else {
 			handleMovement();
@@ -106,7 +106,7 @@ function handleMovementMobile () {
 	if (clickTimer > 0.2f) {
 		// takes 1 second
 		var percent = (clickTimer - 0.2f) < 1f ? clickTimer - 0.2f : 1f;
-		var offset : float = GameManager.instance.cursorOffset * percent;
+		var offset : float = 1.5f * percent;
 		var shrinkRatio : float = Input.mousePosition.y > 0f
 			? (Input.mousePosition.y / Camera.main.orthographicSize) / (offset * 8f)
 			: 1f;

@@ -4,7 +4,6 @@ static var instance : gameManager;
 
 var isMobile : boolean;
 var gameRunning : boolean = true;
-var cursorOffset : float;
 var time : float = 0f;
 var timeFormatted : String = "00:00:000";
 var lastGameTimeFormatted : String;
@@ -24,10 +23,10 @@ function Awake () {
 	DontDestroyOnLoad(gameObject);
 
 	isMobile = SystemInfo.deviceType != DeviceType.Desktop;
+	print(isMobile);
 	highestTime = PlayerPrefs.GetFloat("highestTime");
 	highestTimeFormatted = formatTime(highestTime);
 	hasHighestTime = !!highestTime;
-	cursorOffset = isMobile ? 0f : 1.5f;
 }
 
 function Update () {
