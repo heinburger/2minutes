@@ -191,6 +191,7 @@ MonoBehaviour:
   GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
     type: 2}
   lifeTime: 1.5
+  force: 100
 --- !u!212 &212880663548215728
 SpriteRenderer:
   m_ObjectHideFlags: 1
