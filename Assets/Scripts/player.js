@@ -71,6 +71,11 @@ function OnCollisionEnter2D (other : Collision2D) {
 		AudioManager.instance.play("forcefieldPickUp");
 		Destroy(other.gameObject);
 	}
+	if (other.gameObject.tag == "CrownPowerUp") {
+		AudioManager.instance.play("crownClapping");
+		PlayerCrown.SetActive(true);
+		Destroy(other.gameObject);
+	}
 	if (!isInvincible && other.gameObject.tag == "Enemy") {
 		scaleTo += scaleTo * enemyHitGrowthAmount;
 		absorbAudioSource.Play();

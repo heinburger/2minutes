@@ -7,7 +7,9 @@ var SpawnObject : GameObject;
 var SpawnParent : GameObject;
 
 var offscreen : boolean;
+var initialSpawnDelay : float;
 var initialCount : int;
+private var initialSpawned : boolean = false;
 var continuousSpawnDelay : float;
 var continuousSpawn : boolean;
 private var spawnerRunning : boolean = false;
@@ -27,7 +29,9 @@ function Awake () {
 }
 
 function Start () {
-	spawnInitial();
+	if (!initialSpawnDelay) {
+		spawnInitial();
+	}
 }
 
 function Update () {
@@ -36,6 +40,9 @@ function Update () {
 	);
 	if (continuousSpawn && !spawnerRunning) {
 		spawnCoroutine();
+	}
+	if (!initialSpawned && initialSpawnDelay < GameManager.instance.time) {
+		spawnInitial();
 	}
 }
 
@@ -54,6 +61,7 @@ function spawnCoroutine () {
 
 // --------------------------------------------------------------------- SPAWN METHODS
 function spawnInitial () {
+	initialSpawned = true;
 	if (initialCount > 0) {
 		for (var i : int = 0; i < initialCount; i++) {
 			spawn();

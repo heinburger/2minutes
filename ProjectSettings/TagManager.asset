@@ -12,6 +12,7 @@ TagManager:
   - PlayerForcefield
   - Explosion
   - Bomb
+  - CrownPowerUp
   layers:
   - Default
   - TransparentFX

@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0274db05c227c4a668e7cef7184742b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throttleAudioLimit: 0.09
   sounds:
   - source: {fileID: 0}
     name: heartPickUp
@@ -64,4 +65,9 @@ MonoBehaviour:
     loop: 0
     volume: 0.602
     pitch: 0.76
-  throttleAudioLimit: 0.05
+  - source: {fileID: 0}
+    name: crownClapping
+    clip: {fileID: 8300000, guid: ce85f6819db394d46bf1186d05493f5f, type: 3}
+    loop: 0
+    volume: 0.602
+    pitch: 1

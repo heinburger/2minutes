@@ -2,8 +2,9 @@
 
 static var instance : audioManager;
 
-var sounds : Sound[];
 var throttleAudioLimit : float;
+var sounds : Sound[];
+
 private var throttleAudio : boolean = false;
 
 // --------------------------------------------------------------------- UNITY METHODS
@@ -28,12 +29,16 @@ function Awake () {
 
 // --------------------------------------------------------------------- AUDIO METHODS
 function playThrottledAudio (source : AudioSource) {
-	if (!throttleAudio && source != null) {
+	if (!throttleAudio && source.enabled) {
 		source.Play();
 		throttleAudio = true;
-		yield WaitForSeconds(throttleAudioLimit);
-		throttleAudio = false;
+		throttleCoroutine();
 	}
+}
+
+function throttleCoroutine () {
+	yield WaitForSeconds(throttleAudioLimit);
+	throttleAudio = false;
 }
 
 function play (name : String) {
