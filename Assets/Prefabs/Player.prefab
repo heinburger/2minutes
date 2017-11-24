@@ -285,7 +285,7 @@ MonoBehaviour:
     type: 2}
   PlayerForcefield: {fileID: 0}
   isInvincible: 0
-  initialInvincibilityTime: 4
+  initialInvincibilityTime: 1.5
   invincibilityTimeLeft: 0
   starPowerUpInvincibilityTime: 3
   shrinkSpeed: 1

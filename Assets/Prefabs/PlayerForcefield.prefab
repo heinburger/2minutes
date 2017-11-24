@@ -29,7 +29,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4581064576502408
 Transform:
   m_ObjectHideFlags: 1
@@ -89,8 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51bb43e941291486eafff3a2dc5ede48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioManager: {fileID: 114122309087782278, guid: bb6047978812c409bae1a9bd8d2b6b91,
-    type: 2}
   Player: {fileID: 0}
   maxThrust: 10000
   gain: 30
