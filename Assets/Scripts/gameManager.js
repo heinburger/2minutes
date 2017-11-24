@@ -23,7 +23,7 @@ function Awake () {
 	}
 	DontDestroyOnLoad(gameObject);
 
-	isMobile = SystemInfo.deviceType == DeviceType.Desktop;
+	isMobile = SystemInfo.deviceType != DeviceType.Desktop;
 	highestTime = PlayerPrefs.GetFloat("highestTime");
 	highestTimeFormatted = formatTime(highestTime);
 	hasHighestTime = !!highestTime;
