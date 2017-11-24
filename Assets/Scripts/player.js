@@ -45,7 +45,11 @@ function Update () {
 		handleGameOver();
 		handlePowers();
 		handleScaling();
-		handleMovementMobile();
+		if (GameManager.isMobile) {
+			handleMovementMobile();
+		} else {
+			handleMovement();
+		}
 	}
 }
 
