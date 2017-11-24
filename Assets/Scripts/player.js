@@ -72,7 +72,7 @@ function OnCollisionEnter2D (other : Collision2D) {
 
 // --------------------------------------------------------------------- HANDLER METHODS
 function handlePowers () {
-	invincibilityTimeLeft = invincibilityTimeLeft < 0f ? 0f : invincibilityTimeLeft - Time.deltaTime;
+	invincibilityTimeLeft = invincibilityTimeLeft <= 0f ? 0f : invincibilityTimeLeft - Time.deltaTime;
 	if (invincibilityTimeLeft <= 0f) {
 		isInvincible = false;
 		animator.SetBool("isInvincible", false);

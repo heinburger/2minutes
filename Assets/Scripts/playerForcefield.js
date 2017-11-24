@@ -30,7 +30,7 @@ function FixedUpdate () {
 }
 
 function handleActive () {
-  timeLeft = timeLeft < 0f ? 0f : timeLeft - Time.deltaTime;
+  timeLeft = timeLeft <= 0f ? 0f : timeLeft - Time.deltaTime;
   if (timeLeft <= 0f || playerToLarge) {
     gameObject.SetActive(false);
   }
