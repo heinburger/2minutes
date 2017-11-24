@@ -858,11 +858,6 @@ Prefab:
       propertyPath: PlayerForcefield
       value: 
       objectReference: {fileID: 303890460}
-    - target: {fileID: 114280778051441062, guid: 0894a645a16094bfdae283f48222352b,
-        type: 2}
-      propertyPath: initialInvincibilityTime
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0894a645a16094bfdae283f48222352b, type: 2}
   m_IsPrefabParent: 0
