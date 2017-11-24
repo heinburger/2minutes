@@ -247,6 +247,20 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1986327323418164, guid: 270988181529c41cda66700564ecdb5c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212316655932874404, guid: 270988181529c41cda66700564ecdb5c,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 590134903
+      objectReference: {fileID: 0}
+    - target: {fileID: 212316655932874404, guid: 270988181529c41cda66700564ecdb5c,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 270988181529c41cda66700564ecdb5c, type: 2}
   m_IsPrefabParent: 0
@@ -859,7 +873,7 @@ Prefab:
       propertyPath: PlayerForcefield
       value: 
       objectReference: {fileID: 303890460}
-    - target: {fileID: 1749869756873854, guid: 0894a645a16094bfdae283f48222352b, type: 2}
+    - target: {fileID: 1306843407101540, guid: 0894a645a16094bfdae283f48222352b, type: 2}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
