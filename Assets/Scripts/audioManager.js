@@ -28,16 +28,12 @@ function Awake () {
 
 // --------------------------------------------------------------------- AUDIO METHODS
 function playThrottledAudio (source : AudioSource) {
-	if (!throttleAudio) {
+	if (!throttleAudio && source != null) {
 		source.Play();
-		startThrottleAudioCoroutine();
+		throttleAudio = true;
+		yield WaitForSeconds(throttleAudioLimit);
+		throttleAudio = false;
 	}
-}
-
-function startThrottleAudioCoroutine () {
-	throttleAudio = true;
-	yield WaitForSeconds(throttleAudioLimit);
-	throttleAudio = false;
 }
 
 function play (name : String) {
