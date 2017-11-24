@@ -4,9 +4,9 @@ var GameManager : gameManager;
 var startBtn : UnityEngine.UI.Button;
 
 function Awake () {
-    startBtn.onClick.AddListener(startGame);
+    startBtn.onClick.AddListener(onStartClick);
 }
 
-function startGame () {
+function onStartClick () {
 	GameManager.instance.initGame();
 }

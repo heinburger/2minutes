@@ -11,6 +11,7 @@ TagManager:
   - ForcefieldPowerUp
   - PlayerForcefield
   - Explosion
+  - Bomb
   layers:
   - Default
   - TransparentFX

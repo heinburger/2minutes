@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 82161677569257930}
   m_Layer: 8
   m_Name: Bomb
-  m_TagString: ForcefieldPowerUp
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

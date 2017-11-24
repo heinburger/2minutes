@@ -37,6 +37,7 @@ function Update () {
 // --------------------------------------------------------------------- GAME METHODS
 
 function initGame () {
+	Cursor.visible = false;
 	SceneManagement.SceneManager.LoadScene("Main");
 	time = 0f;
 	gameRunning = true;
@@ -44,17 +45,31 @@ function initGame () {
 	isHighestTime = false;
 }
 
+function initInstructions () {
+	Cursor.visible = true;
+	SceneManagement.SceneManager.LoadScene("Instructions");
+}
+
+function initGameOver () {
+	gameRunning = false;
+	Cursor.visible = true;
+	SceneManagement.SceneManager.LoadScene("GameOver");
+	lastGameTimeFormatted = timeFormatted;
+	if (isHighestTime) {
+		hasHighestTime = true;
+		highestTime = time;
+		highestTimeFormatted = timeFormatted;
+		PlayerPrefs.SetFloat("highestTime", time);
+	}
+}
+
+function exitGame () {
+	Application.Quit();
+}
+
 function checkGameOver () {
 	if (isGameOver) {
-		gameRunning = false;
-		SceneManagement.SceneManager.LoadScene("GameOver");
-		lastGameTimeFormatted = timeFormatted;
-		if (isHighestTime) {
-			hasHighestTime = true;
-			highestTime = time;
-			highestTimeFormatted = timeFormatted;
-			PlayerPrefs.SetFloat("highestTime", time);
-		}
+		initGameOver();
 	}
 }
 
@@ -71,5 +86,12 @@ function formatTime (time : float) {
 	var milli : int = jsTime % 1000;
 	var sec : int = Mathf.Floor(jsTime / 1000) % 60;
 	var min : int = Mathf.Floor(jsTime / 60000);
-	return min + ":" + sec + ":" + milli;
+	var minS : String = min < 10 ? "0" + min : min + "";
+	var secS : String = sec < 10 ? "0" + sec : sec + "";
+	var milliS : String = milli < 100 ? "0" + milli : milli + "";
+	milliS = milli < 10 ? "00" + milli : milliS;
+	milliS = milli == 0 ? "000" : milliS;
+
+
+	return minS + ":" + secS + ":" + milliS;
 }
