@@ -209,7 +209,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 200
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -486,10 +486,6 @@ MonoBehaviour:
   AudioManager: {fileID: 114122309087782278, guid: bb6047978812c409bae1a9bd8d2b6b91,
     type: 2}
   PlayerBody: {fileID: 1330747373748582}
-  maxThrust: 1000
-  gain: 30
-  adjustVelocity: 31
-  maxVelocity: 1000
 --- !u!198 &198507562458644880
 ParticleSystem:
   m_ObjectHideFlags: 1

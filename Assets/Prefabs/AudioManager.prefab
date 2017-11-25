@@ -75,7 +75,7 @@ MonoBehaviour:
     name: starPickUp
     clip: {fileID: 8300000, guid: f4c4475132fdc4c8a9762ce0b395347b, type: 3}
     loop: 0
-    volume: 0.557
+    volume: 0.15
     pitch: 1
   - source: {fileID: 0}
     name: forcefieldBreak

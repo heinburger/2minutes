@@ -667,16 +667,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 50501968188455558, guid: 74494d9cf014b4ab1b90b115a6fcde21,
-        type: 2}
-      propertyPath: m_Mass
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 114242648700048568, guid: 74494d9cf014b4ab1b90b115a6fcde21,
-        type: 2}
-      propertyPath: forcefieldPowerUpTime
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74494d9cf014b4ab1b90b115a6fcde21, type: 2}
   m_IsPrefabParent: 0
@@ -971,7 +961,7 @@ Prefab:
     - target: {fileID: 114742311633548738, guid: 016762e07e95943e59730c6d6e4dec1b,
         type: 2}
       propertyPath: initialCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 016762e07e95943e59730c6d6e4dec1b, type: 2}

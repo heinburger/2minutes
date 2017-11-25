@@ -89,6 +89,9 @@ function handleScaling () {
 	} else if (magnitude < (0f - padding)) { // shrink
 		transform.localScale += transform.localScale * factor * shrinkSpeed * Time.deltaTime;
 	}
+	var ps : ParticleSystem = PlayerInvincibleTrail.gameObject.GetComponent.<ParticleSystem>();
+	ps.main.startSizeMultiplier = scaleTo.x / 2f;
+	ps.main.startSpeedMultiplier = scaleTo.x;
 }
 
 function handleGameOver () {
