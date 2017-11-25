@@ -48,6 +48,9 @@ function initGame () {
 
 function initInstructions () {
 	Cursor.visible = true;
+	time = 0f;
+	gameRunning = true;
+	isGameOver = false;
 	SceneManagement.SceneManager.LoadScene("Instructions");
 }
 

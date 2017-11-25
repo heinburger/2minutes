@@ -25,7 +25,7 @@ function Update () {
 		Destroy(gameObject);
 	}
 	if (circleCollider.radius < maxRadius) {
-		circleCollider.radius += Time.deltaTime * maxRadius * lifeTime;
+		circleCollider.radius += Time.deltaTime * maxRadius * 5f;
 	}
 }
 
