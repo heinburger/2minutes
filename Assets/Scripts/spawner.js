@@ -18,7 +18,7 @@ var spawnTimeMax : float;
 var spawnTimeFixed : float;
 var spawnAcceleration : float;
 
-// --------------------------------------------------------------------- UNITY METHODS
+// ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	positionUtils = GetComponent.<positionUtils>();
 	var parentName = SpawnObject.name + "Spawns";
@@ -46,7 +46,7 @@ function Update () {
 	}
 }
 
-// --------------------------------------------------------------------- COROUTINES
+// ----------------------------------------------------------------------------- COROUTINES
 function spawnCoroutine () {
 	spawnerRunning = true;
 	while (spawnerRunning) {
@@ -59,7 +59,7 @@ function spawnCoroutine () {
 	}
 }
 
-// --------------------------------------------------------------------- SPAWN METHODS
+// ----------------------------------------------------------------------------- SPAWN METHODS
 function spawnInitial () {
 	initialSpawned = true;
 	if (initialCount > 0) {

@@ -3,6 +3,7 @@
 var GameManager : gameManager;
 var AudioManager : audioManager;
 
+// ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	if (GameManager.instance == null) {
 		Instantiate(GameManager);

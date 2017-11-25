@@ -7,7 +7,7 @@ var sounds : Sound[];
 
 private var throttleAudio : boolean = false;
 
-// --------------------------------------------------------------------- UNITY METHODS
+// ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	if (instance == null) {
 		instance = this;
@@ -27,18 +27,13 @@ function Awake () {
 	}
 }
 
-// --------------------------------------------------------------------- AUDIO METHODS
+// ----------------------------------------------------------------------------- AUDIO METHODS
 function playThrottledAudio (source : AudioSource) {
 	if (!throttleAudio && source.enabled) {
 		source.Play();
 		throttleAudio = true;
 		throttleCoroutine();
 	}
-}
-
-function throttleCoroutine () {
-	yield WaitForSeconds(throttleAudioLimit);
-	throttleAudio = false;
 }
 
 function play (name : String) {
@@ -67,4 +62,10 @@ function stop (name : String) {
 	} else {
 		soundToPlay.source.Stop();
 	}
+}
+
+// ----------------------------------------------------------------------------- COROUTINES
+function throttleCoroutine () {
+	yield WaitForSeconds(throttleAudioLimit);
+	throttleAudio = false;
 }

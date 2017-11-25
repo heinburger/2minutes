@@ -9,7 +9,7 @@ private var rb2D : Rigidbody2D;
 private var animator : Animator;
 private var bounceAudioSource : AudioSource;
 
-// --------------------------------------------------------------------- UNITY METHODS
+// ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	player = GameObject.FindGameObjectWithTag("Player");
 	if (player) {
@@ -36,7 +36,7 @@ function OnCollisionEnter2D (other : Collision2D) {
 	}
 }
 
-// --------------------------------------------------------------------- ENEMY METHODS
+// ----------------------------------------------------------------------------- ENEMY METHODS
 function handlePlayerCollisions () {
 	if (playerScript.isInvincible) {
 		Physics2D.IgnoreCollision(player.GetComponent.<Collider2D>(), GetComponent.<Collider2D>(), true);

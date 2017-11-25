@@ -10,6 +10,7 @@ private var rb2D : Rigidbody2D;
 private var timeLeft : float = 0f;
 private var playerToLarge : boolean;
 
+// ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
   rb2D = GetComponent.<Rigidbody2D>();
   transform.position = Player.transform.position;
@@ -29,6 +30,7 @@ function FixedUpdate () {
   rb2D.AddForce(force);
 }
 
+// ----------------------------------------------------------------------------- HANDLER METHODS
 function handleActive () {
   timeLeft = timeLeft <= 0f ? 0f : timeLeft - Time.deltaTime;
   if (timeLeft <= 0f || playerToLarge) {

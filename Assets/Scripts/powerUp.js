@@ -23,6 +23,7 @@ private var animating : boolean = false;
 // hole
 // arrow (direction to apply force to all enemies)
 
+// ----------------------------------------------------------------------------- UNITY METHODS
 function Start () {
 	spawnTime = GameManager.instance.time;
 	SpriteRenderer = GetComponent.<SpriteRenderer>();
@@ -40,6 +41,7 @@ function Update () {
 	}
 }
 
+// ----------------------------------------------------------------------------- COROUTINES
 function lowLifeAnimationCoroutine () {
 	animating = true;
 	while (gameObject.activeInHierarchy) {

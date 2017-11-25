@@ -10,6 +10,7 @@ private var spawnTime : float;
 private var timeAlive : float;
 private var circleCollider : CircleCollider2D;
 
+// ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	circleCollider = GetComponent.<CircleCollider2D>();
 }

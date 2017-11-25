@@ -7,6 +7,7 @@ var exitBtn : UnityEngine.UI.Button;
 var timeText : UnityEngine.UI.Text;
 var highestTimeText : UnityEngine.UI.Text;
 
+// ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
     timeText.text = GameManager.instance.lastGameTimeFormatted;
     highestTimeText.text = "(" + GameManager.instance.highestTimeFormatted + ")";
@@ -15,6 +16,7 @@ function Awake () {
     exitBtn.onClick.AddListener(onExitClick);
 }
 
+// ----------------------------------------------------------------------------- ONCLICK METHODS
 function onRestartClick () {
 	GameManager.instance.initGame();
 }

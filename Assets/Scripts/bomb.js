@@ -11,6 +11,7 @@ private var timeLeft : float;
 private var spawnTime : float;
 private var timeAlive : float;
 
+// ----------------------------------------------------------------------------- UNITY METHODS
 function Start () {
 	spawnTime = GameManager.instance.time;
 	lifeTime = Random.Range(lifeTimeMin, lifeTimeMax);

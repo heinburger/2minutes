@@ -26,7 +26,7 @@ private var playerForcefieldScript : playerForcefield;
 private var invincibleAudioSource : AudioSource;
 private var absorbAudioSource : AudioSource;
 
-// --------------------------------------------------------------------- UNITY METHODS
+// ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	rb2D = GetComponent.<Rigidbody2D>();
 	animator = GetComponent.<Animator>();
@@ -83,7 +83,7 @@ function OnCollisionEnter2D (other : Collision2D) {
 	}
 }
 
-// --------------------------------------------------------------------- HANDLER METHODS
+// ----------------------------------------------------------------------------- HANDLER METHODS
 function handlePowers () {
 	invincibilityTimeLeft = invincibilityTimeLeft <= 0f ? 0f : invincibilityTimeLeft - Time.deltaTime;
 	if (invincibilityTimeLeft <= 0f) {
@@ -140,7 +140,7 @@ function handleGameOver () {
 }
 
 
-// --------------------------------------------------------------------- TRIGGER AND FLAG METHODS
+// ----------------------------------------------------------------------------- TRIGGER AND FLAG METHODS
 function setInvincibilityFor (time : float) {
 	if (!isInvincible) {
 		invincibleAudioSource.Play();

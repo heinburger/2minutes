@@ -6,6 +6,7 @@ var Bottom : BoxCollider2D;
 var Right : BoxCollider2D;
 var Left : BoxCollider2D;
 
+// ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	Top.size = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 2f, 0f, 0f)).x, 1f);
 	Top.offset = new Vector2(0f, Camera.main.ScreenToWorldPoint(new Vector3(0f, Screen.height, 0f)).y + 0.5f + offFrameUnits);

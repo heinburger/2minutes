@@ -13,7 +13,7 @@ var isHighestTime : boolean = false;
 var highestTime : float;
 var highestTimeFormatted : String;
 
-// --------------------------------------------------------------------- UNITY METHODS
+// ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	if (instance == null) {
 		instance = this;
@@ -35,7 +35,7 @@ function Update () {
 	}
 }
 
-// --------------------------------------------------------------------- GAME METHODS
+// ----------------------------------------------------------------------------- GAME METHODS
 
 function initGame () {
 	Cursor.visible = false;
@@ -85,6 +85,7 @@ function calcTime () {
 	}
 }
 
+// ----------------------------------------------------------------------------- UTIL METHODS
 function formatTime (time : float) {
 	var jsTime : int = Mathf.Floor(time * 1000);
 	var milli : int = jsTime % 1000;
