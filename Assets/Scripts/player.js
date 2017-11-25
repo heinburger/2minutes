@@ -79,6 +79,10 @@ function handlePowers () {
 		invincibleAudioSource.Stop();
 		PlayerInvincibleTrail.SetActive(false);
 	}
+	forcefieldTimeLeft = forcefieldTimeLeft <= 0f ? 0f : forcefieldTimeLeft - Time.deltaTime;
+	if (forcefieldTimeLeft <= 0f) {
+		PlayerForcefield.SetActive(false);
+	}
 }
 
 function handleScaling () {
@@ -113,16 +117,17 @@ function triggerHeart () {
 function triggerInvincibility () {
 	AudioManager.instance.play("starPickUp");
 	PlayerInvincibleTrail.SetActive(true);
+	animator.SetBool("isInvincible", true);
 	if (!invincibleAudioSource.isPlaying) {
 		invincibleAudioSource.Play();
 	}
 	invincibilityTimeLeft += starPowerUpInvincibilityTime;
-	animator.SetBool("isInvincible", true);
 }
 
 function triggerForcefield () {
-	//forcefieldPowerUpTime
 	AudioManager.instance.play("forcefieldPickUp");
+	PlayerForcefield.SetActive(true);
+	forcefieldTimeLeft += forcefieldPowerUpTime;
 }
 
 function triggerCrown () {

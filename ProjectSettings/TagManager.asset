@@ -6,13 +6,13 @@ TagManager:
   tags:
   - HeartPowerUp
   - Enemy
-  - EnemyBoundry
   - StarPowerUp
   - ForcefieldPowerUp
   - PlayerForcefield
   - Explosion
   - Bomb
   - CrownPowerUp
+  - EnemyBoundary
   layers:
   - Default
   - TransparentFX

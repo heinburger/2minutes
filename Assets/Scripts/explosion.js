@@ -31,7 +31,7 @@ function Update () {
 }
 
 function OnCollisionEnter2D (other : Collision2D) {
-	if (other.gameObject.tag != "EnemyBoundry") {
+	if (other.gameObject.tag != "EnemyBoundary") {
 		var rb : Rigidbody2D = other.gameObject.GetComponent.<Rigidbody2D>();
 		var distance = Vector3.Distance(other.gameObject.transform.position, transform.position);
 		var adjustedForce : float = (1f / distance) * force;
