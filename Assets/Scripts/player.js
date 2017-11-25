@@ -16,11 +16,10 @@ var enemyHitGrowthAmount : float;
 private var invincibilityTimeLeft : float;
 private var forcefieldTimeLeft : float;
 private var scaleTo : Vector3;
-private var moveTo : Vector3;
-private var clickTimer : float;
 
 private var rb2D : Rigidbody2D;
 private var animator : Animator;
+private var playerControls : playerControls;
 private var invincibleAudioSource : AudioSource;
 private var absorbAudioSource : AudioSource;
 
@@ -28,6 +27,7 @@ private var absorbAudioSource : AudioSource;
 function Awake () {
 	rb2D = GetComponent.<Rigidbody2D>();
 	animator = GetComponent.<Animator>();
+	playerControls = GetComponent.<playerControls>();
 	var audioSources = GetComponents(AudioSource);
 	invincibleAudioSource = audioSources[0] as AudioSource;
 	absorbAudioSource = audioSources[1] as AudioSource;
@@ -41,11 +41,7 @@ function Update () {
 		handleGameOver();
 		handlePowers();
 		handleScaling();
-		if (GameManager.instance.isMobile) {
-			handleMovementMobile();
-		} else {
-			handleMovement();
-		}
+		playerControls.handleActive();
 	}
 }
 
@@ -83,34 +79,6 @@ function handlePowers () {
 		invincibleAudioSource.Stop();
 		PlayerInvincibleTrail.SetActive(false);
 	}
-}
-
-function handleMovementMobile () {
-	var target : Vector2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-	if (Input.GetMouseButton(0)) {
-		clickTimer += Time.deltaTime;
-		moveTo = new Vector3(target.x, target.y, 0f);
-	}
-	if (Input.GetMouseButtonUp(0)) {
-		clickTimer = 0f;
-	}
-	if (clickTimer > 0.2f) {
-		// takes 1 second
-		var percent = (clickTimer - 0.2f) < 1f ? clickTimer - 0.2f : 1f;
-		var offset : float = 1.5f * percent;
-		var shrinkRatio : float = Input.mousePosition.y > 0f
-			? (Input.mousePosition.y / Camera.main.orthographicSize) / (offset * 8f)
-			: 1f;
-		var offsetY : float = shrinkRatio > 1f ? offset : offset * shrinkRatio;
-		moveTo = new Vector3(target.x, target.y + offsetY, 0f);
-	}
-	transform.position = Vector3.MoveTowards(transform.position, moveTo, 50f * Time.deltaTime);
-}
-
-function handleMovement () {
-	var target : Vector2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-	var newPosition : Vector3 = new Vector3(target.x, target.y, 0f);
-	transform.position = newPosition;
 }
 
 function handleScaling () {
