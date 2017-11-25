@@ -4,6 +4,7 @@ var GameManager : gameManager;
 var AudioManager : audioManager;
 var PlayerCrown : GameObject;
 var PlayerInvincibleTrail : GameObject;
+var PlayerTarget : GameObject;
 var PlayerForcefield : GameObject;
 
 var starPowerUpInvincibilityTime : float;
@@ -17,17 +18,13 @@ private var invincibilityTimeLeft : float;
 private var forcefieldTimeLeft : float;
 private var scaleTo : Vector3;
 
-private var rb2D : Rigidbody2D;
 private var animator : Animator;
-private var playerControls : playerControls;
 private var invincibleAudioSource : AudioSource;
 private var absorbAudioSource : AudioSource;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
-	rb2D = GetComponent.<Rigidbody2D>();
 	animator = GetComponent.<Animator>();
-	playerControls = GetComponent.<playerControls>();
 	var audioSources = GetComponents(AudioSource);
 	invincibleAudioSource = audioSources[0] as AudioSource;
 	absorbAudioSource = audioSources[1] as AudioSource;
@@ -41,7 +38,6 @@ function Update () {
 		handleGameOver();
 		handlePowers();
 		handleScaling();
-		playerControls.handleActive();
 	}
 }
 
