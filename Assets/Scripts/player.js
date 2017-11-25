@@ -2,27 +2,27 @@
 
 var GameManager : gameManager;
 var AudioManager : audioManager;
-var PlayerForcefield : GameObject;
 var PlayerCrown : GameObject;
 var PlayerInvincibleTrail : GameObject;
+var PlayerForcefield : GameObject;
 
 var isInvincible : boolean;
 var initialInvincibilityTime : float;
-var invincibilityTimeLeft : float;
 var starPowerUpInvincibilityTime : float;
+var forcefieldPowerUpTime : float;
 var shrinkSpeed : float;
 var growthSpeed : float;
 var heartPowerUpShrinkAmount : float;
 var enemyHitGrowthAmount : float;
-var forcefieldPowerUpTime : float;
 
+private var invincibilityTimeLeft : float;
+private var forcefieldTimeLeft : float;
 private var scaleTo : Vector3;
 private var moveTo : Vector3;
 private var clickTimer : float;
 
 private var rb2D : Rigidbody2D;
 private var animator : Animator;
-private var playerForcefieldScript : playerForcefield;
 private var invincibleAudioSource : AudioSource;
 private var absorbAudioSource : AudioSource;
 
@@ -30,13 +30,11 @@ private var absorbAudioSource : AudioSource;
 function Awake () {
 	rb2D = GetComponent.<Rigidbody2D>();
 	animator = GetComponent.<Animator>();
-
-	playerForcefieldScript = PlayerForcefield.GetComponent.<playerForcefield>();
 	var audioSources = GetComponents(AudioSource);
 	invincibleAudioSource = audioSources[0] as AudioSource;
 	absorbAudioSource = audioSources[1] as AudioSource;
-	isInvincible = true;
-	setInvincibilityFor(initialInvincibilityTime);
+
+	invincibilityTimeLeft = initialInvincibilityTime;
 	scaleTo = transform.localScale;
 }
 
@@ -55,30 +53,26 @@ function Update () {
 
 function OnTriggerEnter2D (other : Collider2D) {
 	if (other.tag == "HeartPowerUp") {
-		scaleTo -= scaleTo * heartPowerUpShrinkAmount;
-		AudioManager.instance.play("heartPickUp");
+		triggerHeart();
 		Destroy(other.gameObject);
 	}
 	if (other.tag == "StarPowerUp") {
-		setInvincibilityFor(starPowerUpInvincibilityTime);
+		triggerInvincibility();
 		Destroy(other.gameObject);
 	}
 }
 
 function OnCollisionEnter2D (other : Collision2D) {
 	if (other.gameObject.tag == "ForcefieldPowerUp") {
-		playerForcefieldScript.activateFor(forcefieldPowerUpTime);
-		AudioManager.instance.play("forcefieldPickUp");
+		triggerForcefield();
 		Destroy(other.gameObject);
 	}
 	if (other.gameObject.tag == "CrownPowerUp") {
-		AudioManager.instance.play("crownClapping");
-		PlayerCrown.SetActive(true);
+		triggerCrown();
 		Destroy(other.gameObject);
 	}
 	if (!isInvincible && other.gameObject.tag == "Enemy") {
-		scaleTo += scaleTo * enemyHitGrowthAmount;
-		absorbAudioSource.Play();
+		triggerEnemyHit();
 		Destroy(other.gameObject);
 	}
 }
@@ -141,12 +135,33 @@ function handleGameOver () {
 
 
 // ----------------------------------------------------------------------------- TRIGGER AND FLAG METHODS
-function setInvincibilityFor (time : float) {
+function triggerEnemyHit () {
+	absorbAudioSource.Play();
+	scaleTo += scaleTo * enemyHitGrowthAmount;
+}
+
+function triggerHeart () {
+	AudioManager.instance.play("heartPickUp");
+	scaleTo -= scaleTo * heartPowerUpShrinkAmount;
+}
+
+function triggerInvincibility () {
+	AudioManager.instance.play("starPickUp");
 	if (!isInvincible) {
 		invincibleAudioSource.Play();
 		PlayerInvincibleTrail.SetActive(true);
 	}
-	invincibilityTimeLeft += time;
+	invincibilityTimeLeft += starPowerUpInvincibilityTime;
 	isInvincible = true;
 	animator.SetBool("isInvincible", true);
+}
+
+function triggerForcefield () {
+	//forcefieldPowerUpTime
+	AudioManager.instance.play("forcefieldPickUp");
+}
+
+function triggerCrown () {
+	AudioManager.instance.play("crownClapping");
+	PlayerCrown.SetActive(true);
 }
