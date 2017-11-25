@@ -77,3 +77,9 @@ MonoBehaviour:
     loop: 0
     volume: 0.557
     pitch: 1
+  - source: {fileID: 0}
+    name: forcefieldBreak
+    clip: {fileID: 8300000, guid: 22deb696550ef4c4bb7b22a7d45e0861, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1.88

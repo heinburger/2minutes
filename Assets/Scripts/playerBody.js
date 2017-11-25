@@ -4,7 +4,6 @@ var GameManager : gameManager;
 var AudioManager : audioManager;
 var PlayerCrown : GameObject;
 var PlayerInvincibleTrail : GameObject;
-var PlayerTarget : GameObject;
 var PlayerForcefield : GameObject;
 
 var starPowerUpInvincibilityTime : float;

@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4458186644254522}
   - component: {fileID: 58508959999391188}
-  - component: {fileID: 50982357480831744}
   - component: {fileID: 212880663548215728}
   - component: {fileID: 95478572971612740}
   - component: {fileID: 82778081199375236}
@@ -45,26 +44,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50982357480831744
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1216534454433682}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 300
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &58508959999391188
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -90,8 +69,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5dc155a22f038410d8b6d25c4e2e535b, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 0.44
   Loop: 0
   Mute: 0
@@ -190,9 +169,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
     type: 2}
-  lifeTime: 1.5
+  lifeTime: 1
   force: 1000
-  maxRadius: 4
+  maxRadius: 3
 --- !u!212 &212880663548215728
 SpriteRenderer:
   m_ObjectHideFlags: 1

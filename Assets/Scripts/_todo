@@ -1,7 +1,6 @@
-- forcefield attached to player
+
 - game sound levels
 - if time < 2 { play game over sound and cancel all other sounds }
-- forcefield shatter
 - slow down powerup
 - scale star particles with size
 - explosion scale - random bomb size

@@ -2,28 +2,24 @@
 
 var GameManager : gameManager;
 
-private var rb2D : Rigidbody2D;
-private var moveTo : Vector3;
-private var moveFrom : Vector3;
-private var appliedMovementForce : Vector3;
 private var clickTimer : float;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
-function Awake () {
-	rb2D = GetComponent.<Rigidbody2D>();
+function Start () {
+	setPosition();
 }
 
 function Update () {
-	moveTo = GameManager.instance.isMobile
+	setPosition();
+}
+
+// ----------------------------------------------------------------------------- POSITION METHODS
+function setPosition () {
+	transform.position = GameManager.instance.isMobile
 		? getMousePosition() // FIXME NOW
 		: getMousePosition();
 }
 
-function FixedUpdate () {
-	rb2D.MovePosition(moveTo);
-}
-
-// ----------------------------------------------------------------------------- POSITION METHODS
 function getMousePosition () : Vector3 {
 	var target : Vector2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 	return new Vector3(target.x, target.y, 0f);
