@@ -6,8 +6,6 @@ var PlayerCrown : GameObject;
 var PlayerInvincibleTrail : GameObject;
 var PlayerForcefield : GameObject;
 
-var isInvincible : boolean;
-var initialInvincibilityTime : float;
 var starPowerUpInvincibilityTime : float;
 var forcefieldPowerUpTime : float;
 var shrinkSpeed : float;
@@ -34,7 +32,7 @@ function Awake () {
 	invincibleAudioSource = audioSources[0] as AudioSource;
 	absorbAudioSource = audioSources[1] as AudioSource;
 
-	invincibilityTimeLeft = initialInvincibilityTime;
+	invincibilityTimeLeft = 1f; // allow for adjustments when game starts
 	scaleTo = transform.localScale;
 }
 
@@ -71,7 +69,7 @@ function OnCollisionEnter2D (other : Collision2D) {
 		triggerCrown();
 		Destroy(other.gameObject);
 	}
-	if (!isInvincible && other.gameObject.tag == "Enemy") {
+	if (!isInvincible() && other.gameObject.tag == "Enemy") {
 		triggerEnemyHit();
 		Destroy(other.gameObject);
 	}
@@ -81,7 +79,6 @@ function OnCollisionEnter2D (other : Collision2D) {
 function handlePowers () {
 	invincibilityTimeLeft = invincibilityTimeLeft <= 0f ? 0f : invincibilityTimeLeft - Time.deltaTime;
 	if (invincibilityTimeLeft <= 0f) {
-		isInvincible = false;
 		animator.SetBool("isInvincible", false);
 		invincibleAudioSource.Stop();
 		PlayerInvincibleTrail.SetActive(false);
@@ -147,12 +144,11 @@ function triggerHeart () {
 
 function triggerInvincibility () {
 	AudioManager.instance.play("starPickUp");
-	if (!isInvincible) {
+	PlayerInvincibleTrail.SetActive(true);
+	if (!invincibleAudioSource.isPlaying) {
 		invincibleAudioSource.Play();
-		PlayerInvincibleTrail.SetActive(true);
 	}
 	invincibilityTimeLeft += starPowerUpInvincibilityTime;
-	isInvincible = true;
 	animator.SetBool("isInvincible", true);
 }
 
@@ -164,4 +160,9 @@ function triggerForcefield () {
 function triggerCrown () {
 	AudioManager.instance.play("crownClapping");
 	PlayerCrown.SetActive(true);
+}
+
+// ----------------------------------------------------------------------------- STATUS METHODS
+function isInvincible () : boolean {
+	return invincibilityTimeLeft > 0f;
 }
