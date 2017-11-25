@@ -79,7 +79,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 0.0001
 --- !u!82 &82778081199375236
 AudioSource:
   m_ObjectHideFlags: 1
@@ -191,7 +191,8 @@ MonoBehaviour:
   GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
     type: 2}
   lifeTime: 1.5
-  force: 100
+  force: 1000
+  maxRadius: 4
 --- !u!212 &212880663548215728
 SpriteRenderer:
   m_ObjectHideFlags: 1

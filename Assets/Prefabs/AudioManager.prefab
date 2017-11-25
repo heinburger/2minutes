@@ -69,5 +69,5 @@ MonoBehaviour:
     name: crownClapping
     clip: {fileID: 8300000, guid: ce85f6819db394d46bf1186d05493f5f, type: 3}
     loop: 0
-    volume: 0.602
+    volume: 1
     pitch: 1
