@@ -2,8 +2,6 @@
 
 var GameManager : gameManager;
 
-var sensitivity : float;
-
 private var rb2D : Rigidbody2D;
 private var moveTo : Vector3;
 private var moveFrom : Vector3;
