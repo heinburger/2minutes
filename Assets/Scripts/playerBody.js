@@ -13,13 +13,17 @@ var bronze : Sprite;
 private var player : player;
 private var animator : Animator;
 private var absorbAudioSource : AudioSource;
+private var crownRenderer : SpriteRenderer;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	animator = GetComponent.<Animator>();
 	absorbAudioSource = GetComponent.<AudioSource>();
 	player = Player.GetComponent.<player>();
-	var crownRenderer : SpriteRenderer = PlayerCrown.GetComponent.<SpriteRenderer>();
+	crownRenderer = PlayerCrown.GetComponent.<SpriteRenderer>();
+}
+
+function Start () {
 	if (GameManager.instance.gameMode == 'gold') {
 		crownRenderer.sprite = gold;
 	} else if (GameManager.instance.gameMode == 'silver') {
@@ -40,28 +44,29 @@ function Update () {
 	}
 }
 
-function OnTriggerEnter2D (other : Collider2D) {
-	if (other.tag == "HeartPowerUp") {
+function OnCollisionEnter2D (other : Collision2D) {
+	if (!player.isInvincible() && other.gameObject.tag == "Enemy") {
+		triggerEnemyHit();
+		Destroy(other.gameObject);
+	}
+	else if (other.gameObject.tag == "HeartPowerUp") {
 		triggerHeartPickUp();
 		Destroy(other.gameObject);
 	}
-	if (other.tag == "StarPowerUp") {
-		triggerStarPickUp();
-		Destroy(other.gameObject);
-	}
-}
-
-function OnCollisionEnter2D (other : Collision2D) {
-	if (other.gameObject.tag == "ForcefieldPowerUp") {
+	else if (other.gameObject.tag == "ForcefieldPowerUp") {
 		triggerForcefieldPickUp();
 		Destroy(other.gameObject);
 	}
-	if (other.gameObject.tag == "CrownPowerUp") {
-		triggerCrownPickUp();
+	else if (other.gameObject.tag == "StarPowerUp") {
+		triggerStarPickUp();
 		Destroy(other.gameObject);
 	}
-	if (!player.isInvincible() && other.gameObject.tag == "Enemy") {
-		triggerEnemyHit();
+	else if (other.gameObject.tag == "TurtlePowerUp") {
+		triggerTurtlePickUp();
+		Destroy(other.gameObject);
+	}
+	else if (other.gameObject.tag == "CrownPowerUp") {
+		triggerCrownPickUp();
 		Destroy(other.gameObject);
 	}
 }
@@ -87,6 +92,11 @@ function triggerForcefieldPickUp () {
 	AudioManager.instance.play("forcefieldPickUp");
 	PlayerForcefield.SetActive(true);
 	player.handleForcefieldPickUp();
+}
+
+function triggerTurtlePickUp () {
+	AudioManager.instance.play("turtlePickUp");
+	player.handleTurtlePickUp();
 }
 
 function triggerCrownPickUp () {

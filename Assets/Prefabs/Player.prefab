@@ -453,9 +453,9 @@ MonoBehaviour:
   PlayerCrown: {fileID: 1155824075237536}
   PlayerInvincibleTrail: {fileID: 1046251047058874}
   PlayerForcefield: {fileID: 1251468920300388}
-  gold: {fileID: 0}
-  silver: {fileID: 0}
-  bronze: {fileID: 0}
+  gold: {fileID: 21300000, guid: 01be0b3d7bf4843aeae6bc4e5f799ca4, type: 3}
+  silver: {fileID: 21300000, guid: 2c0bd5a8294514dcaa805b7f137b9e95, type: 3}
+  bronze: {fileID: 21300000, guid: efb028f18fd314085a608f7be49e49d7, type: 3}
 --- !u!114 &114864427415494084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -474,6 +474,7 @@ MonoBehaviour:
   PlayerInvincibleTrail: {fileID: 1046251047058874}
   starPowerUpInvincibilityTime: 3
   forcefieldPowerUpTime: 5
+  turtleBrakingForce: 2.5
   shrinkSpeed: 1
   growthSpeed: 1
   heartPowerUpShrinkAmount: 0.15

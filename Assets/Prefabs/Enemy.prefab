@@ -184,6 +184,7 @@ MonoBehaviour:
     type: 2}
   thrust: 200
   maxVelocity: 20
+  brakingForce: 0
 --- !u!212 &212730939322793900
 SpriteRenderer:
   m_ObjectHideFlags: 1

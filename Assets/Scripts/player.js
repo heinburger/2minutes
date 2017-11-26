@@ -6,6 +6,7 @@ var PlayerInvincibleTrail : GameObject;
 
 var starPowerUpInvincibilityTime : float;
 var forcefieldPowerUpTime : float;
+var turtleBrakingForce : float;
 var shrinkSpeed : float;
 var growthSpeed : float;
 var heartPowerUpShrinkAmount : float;
@@ -74,6 +75,13 @@ function handleHeartPickUp () {
 
 function handleStarPickUp () {
 	invincibilityTimeLeft += starPowerUpInvincibilityTime;
+}
+
+function handleTurtlePickUp () {
+	var Enemies : GameObject[] = GameObject.FindGameObjectsWithTag("Enemy");
+	for (var Enemy : GameObject in Enemies) {
+		Enemy.gameObject.GetComponent.<enemy>().brakingForce += turtleBrakingForce;
+	}
 }
 
 function handleForcefieldPickUp () {

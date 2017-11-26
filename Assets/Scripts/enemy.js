@@ -5,6 +5,9 @@ var thrust : float;
 @Range(0, 25)
 var maxVelocity : float;
 
+@HideInInspector
+var brakingForce : float;
+
 private var rb2D : Rigidbody2D;
 private var bounceAudioSource : AudioSource;
 
@@ -19,6 +22,11 @@ function Awake () {
 
 function FixedUpdate () {
 	rb2D.velocity = Vector2.ClampMagnitude(rb2D.velocity, maxVelocity);
+	if (brakingForce > 0f) {
+		var direction = -rb2D.velocity.normalized;
+		rb2D.AddForce(direction * brakingForce);
+		brakingForce = brakingForce - Time.deltaTime < 0f ? 0f : brakingForce - Time.deltaTime;
+	}
 }
 
 function OnCollisionEnter2D (other : Collision2D) {

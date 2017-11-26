@@ -8,6 +8,10 @@ private var rb2D : Rigidbody2D;
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
   rb2D = GetComponent.<Rigidbody2D>();
+  // var PlayerForcefield : GameObject = GameObject.FindGameObjectWithTag("PlayerForcefield");
+	// if (PlayerForcefield) {
+	// 	Physics2D.IgnoreCollision(PlayerForcefield.GetComponent.<Collider2D>(), GetComponent.<Collider2D>());
+	// }
 }
 
 function OnEnable () {
