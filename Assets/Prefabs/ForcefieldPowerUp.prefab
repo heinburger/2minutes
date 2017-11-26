@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 212009180361475810}
   - component: {fileID: 114217893218959910}
   - component: {fileID: 82686670583974854}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ForcefieldPowerUp
   m_TagString: ForcefieldPowerUp
   m_Icon: {fileID: 0}

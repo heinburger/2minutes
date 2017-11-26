@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 50402941864216198}
   - component: {fileID: 212465320755891958}
   - component: {fileID: 114381440771034848}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: PlayerForcefield
   m_TagString: PlayerForcefield
   m_Icon: {fileID: 0}

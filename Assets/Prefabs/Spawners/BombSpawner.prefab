@@ -69,10 +69,11 @@ MonoBehaviour:
     type: 2}
   SpawnParent: {fileID: 0}
   offscreen: 0
+  initialSpawnDelay: 0
   initialCount: 0
   continuousSpawnDelay: 0
   continuousSpawn: 1
   spawnTimeMin: 0
-  spawnTimeMax: 45
+  spawnTimeMax: 40
   spawnTimeFixed: 0
   spawnAcceleration: 0

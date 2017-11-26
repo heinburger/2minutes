@@ -16,7 +16,7 @@ private var spawnerRunning : boolean = false;
 var spawnTimeMin : float;
 var spawnTimeMax : float;
 var spawnTimeFixed : float;
-var spawnAcceleration : float;
+var spawnAccelerationFixed : float;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
@@ -56,6 +56,7 @@ function spawnCoroutine () {
 			: Random.Range(spawnTimeMin, spawnTimeMax);
 		yield WaitForSeconds(time);
 		spawn();
+		spawnTimeFixed -= spawnTimeFixed > Time.deltaTime ? spawnAccelerationFixed * Time.deltaTime : 0f;
 	}
 }
 
