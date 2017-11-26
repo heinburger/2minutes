@@ -94,10 +94,16 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 994d79015fd9349ddadf4f4e550d1104, type: 3}
     loop: 0
     volume: 0.626
-    pitch: 1.14
+    pitch: 0.94
   - source: {fileID: 0}
     name: turtleOut
     clip: {fileID: 8300000, guid: 22deb696550ef4c4bb7b22a7d45e0861, type: 3}
     loop: 0
     volume: 1
     pitch: 1
+  - source: {fileID: 0}
+    name: invincibleDestroy
+    clip: {fileID: 8300000, guid: fae3b6025e234482591df40f1b018549, type: 3}
+    loop: 0
+    volume: 0.395
+    pitch: 1.26

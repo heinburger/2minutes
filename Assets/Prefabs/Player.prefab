@@ -472,6 +472,7 @@ MonoBehaviour:
   AudioManager: {fileID: 114122309087782278, guid: bb6047978812c409bae1a9bd8d2b6b91,
     type: 2}
   PlayerInvincibleTrail: {fileID: 1046251047058874}
+  initialInvincibilityTime: 0.5
   starPowerUpInvincibilityTime: 3
   forcefieldPowerUpTime: 5
   turtleBrakingForce: 2.5

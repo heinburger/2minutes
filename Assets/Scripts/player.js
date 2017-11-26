@@ -4,6 +4,7 @@ var GameManager : gameManager;
 var AudioManager : audioManager;
 var PlayerInvincibleTrail : GameObject;
 
+var initialInvincibilityTime : float;
 var starPowerUpInvincibilityTime : float;
 var forcefieldPowerUpTime : float;
 var turtleBrakingForce : float;
@@ -21,7 +22,7 @@ private var scaleTo : Vector3;
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
 	win = false;
-	invincibilityTimeLeft = 1f; // allow for adjustments when game starts
+	invincibilityTimeLeft = initialInvincibilityTime; // allow for adjustments when game starts
 	scaleTo = transform.localScale;
 	ps = PlayerInvincibleTrail.gameObject.GetComponent.<ParticleSystem>();
 }
@@ -90,7 +91,7 @@ function handleForcefieldPickUp () {
 
 // ----------------------------------------------------------------------------- STATUS METHODS
 function isInvincible () : boolean {
-	return invincibilityTimeLeft > 0f;
+	return invincibilityTimeLeft > 0f && GameManager.instance.time > initialInvincibilityTime;
 }
 
 function hasForcefield () : boolean {

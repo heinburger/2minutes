@@ -45,8 +45,12 @@ function Update () {
 }
 
 function OnCollisionEnter2D (other : Collision2D) {
-	if (!player.isInvincible() && other.gameObject.tag == "Enemy") {
-		triggerEnemyHit();
+	if (other.gameObject.tag == "Enemy") {
+		if (!player.isInvincible()) {
+			triggerEnemyHit();
+		} else {
+			AudioManager.instance.play("invincibleDestroy");
+		}
 		Destroy(other.gameObject);
 	}
 	else if (other.gameObject.tag == "HeartPowerUp") {
@@ -68,6 +72,12 @@ function OnCollisionEnter2D (other : Collision2D) {
 	else if (other.gameObject.tag == "CrownPowerUp") {
 		triggerCrownPickUp();
 		Destroy(other.gameObject);
+	}
+	else if (other.gameObject.tag == "Bomb") {
+		if (player.isInvincible()) {
+			AudioManager.instance.play("invincibleDestroy");
+			Destroy(other.gameObject);
+		}
 	}
 }
 
