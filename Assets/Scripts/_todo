@@ -1,7 +1,6 @@
-
-- game sound levels
-- if time < 2 { play game over sound and cancel all other sounds }
 - slow down powerup
 - difficulties
 - difficulty screen and playerprefs
 - make boundaries very very large
+- mute audio
+- pause?

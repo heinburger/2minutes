@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 61012572349240942}
   - component: {fileID: 50350124875128926}
   - component: {fileID: 212009180361475810}
-  - component: {fileID: 114834552709955838}
   - component: {fileID: 114217893218959910}
+  - component: {fileID: 114553456713471788}
   - component: {fileID: 82686670583974854}
   m_Layer: 8
   m_Name: CrownPowerUp
@@ -184,7 +184,7 @@ MonoBehaviour:
   GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
     type: 2}
   lifeTime: 0
---- !u!114 &114834552709955838
+--- !u!114 &114553456713471788
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -192,9 +192,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1451698221322482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 414eb04dd74bb41fba56cc7abafbfdcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 272ee039947034c47bef87f840a1b640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
+    type: 2}
+  gold: {fileID: 21300000, guid: 01be0b3d7bf4843aeae6bc4e5f799ca4, type: 3}
+  silver: {fileID: 21300000, guid: 2c0bd5a8294514dcaa805b7f137b9e95, type: 3}
+  bronze: {fileID: 21300000, guid: efb028f18fd314085a608f7be49e49d7, type: 3}
 --- !u!212 &212009180361475810
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -227,7 +232,7 @@ SpriteRenderer:
   m_SortingLayerID: 604685611
   m_SortingLayer: -3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 01be0b3d7bf4843aeae6bc4e5f799ca4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -235,5 +240,5 @@ SpriteRenderer:
   m_Size: {x: 0.7, y: 0.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0

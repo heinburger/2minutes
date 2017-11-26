@@ -6,6 +6,9 @@ var Player : GameObject;
 var PlayerCrown : GameObject;
 var PlayerInvincibleTrail : GameObject;
 var PlayerForcefield : GameObject;
+var gold : Sprite;
+var silver : Sprite;
+var bronze : Sprite;
 
 private var player : player;
 private var animator : Animator;
@@ -16,6 +19,14 @@ function Awake () {
 	animator = GetComponent.<Animator>();
 	absorbAudioSource = GetComponent.<AudioSource>();
 	player = Player.GetComponent.<player>();
+	var crownRenderer : SpriteRenderer = PlayerCrown.GetComponent.<SpriteRenderer>();
+	if (GameManager.instance.gameMode == 'gold') {
+		crownRenderer.sprite = gold;
+	} else if (GameManager.instance.gameMode == 'silver') {
+		crownRenderer.sprite = silver;
+	} else {
+		crownRenderer.sprite = bronze;
+	}
 }
 
 function Update () {

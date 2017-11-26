@@ -4,6 +4,7 @@ var AudioManager : audioManager;
 static var instance : gameManager;
 
 var isMobile : boolean;
+var gameMode : String;
 var gameRunning : boolean = true;
 var time : float = 0f;
 var timeFormatted : String = "00:00:000";
@@ -25,9 +26,14 @@ function Awake () {
 	DontDestroyOnLoad(gameObject);
 
 	isMobile = SystemInfo.deviceType != DeviceType.Desktop;
-	highestTime = PlayerPrefs.GetFloat("highestTime");
+
+	gameMode = PlayerPrefs.HasKey("gameMode")
+		? PlayerPrefs.GetString("gameMode")
+		: 'bronze';
+
+	hasHighestTime = PlayerPrefs.HasKey(gameMode + "HighestTime");
+	highestTime = PlayerPrefs.GetFloat(gameMode + "HighestTime");
 	highestTimeFormatted = formatTime(highestTime);
-	hasHighestTime = !!highestTime;
 }
 
 function Update () {
@@ -71,7 +77,7 @@ function initGameOver () {
 		hasHighestTime = true;
 		highestTime = time;
 		highestTimeFormatted = timeFormatted;
-		PlayerPrefs.SetFloat("highestTime", time);
+		PlayerPrefs.SetFloat(gameMode + "HighestTime", time);
 	}
 }
 
