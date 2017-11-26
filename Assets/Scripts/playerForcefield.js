@@ -15,10 +15,6 @@ function OnEnable () {
   transform.position = PlayerBody.transform.position;
 }
 
-function Update () {
-  transform.localScale = PlayerBody.transform.localScale * 1.33f;
-}
-
 function FixedUpdate () {
   rb2D.MovePosition(PlayerBody.transform.position);
 }

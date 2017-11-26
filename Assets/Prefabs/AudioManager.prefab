@@ -72,14 +72,20 @@ MonoBehaviour:
     volume: 1
     pitch: 1
   - source: {fileID: 0}
-    name: starPickUp
+    name: win
     clip: {fileID: 8300000, guid: f4c4475132fdc4c8a9762ce0b395347b, type: 3}
     loop: 0
-    volume: 0.15
+    volume: 0.59
     pitch: 1
+  - source: {fileID: 0}
+    name: lose
+    clip: {fileID: 8300000, guid: 65e19f1bda267424298753fefa81a297, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 0.72
   - source: {fileID: 0}
     name: forcefieldBreak
     clip: {fileID: 8300000, guid: 22deb696550ef4c4bb7b22a7d45e0861, type: 3}
     loop: 0
     volume: 1
-    pitch: 1.88
+    pitch: 1.54
