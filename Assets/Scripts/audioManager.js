@@ -64,6 +64,11 @@ function stop (name : String) {
 	}
 }
 
+function stopAll () {
+	for (var s : Sound in sounds) {
+		s.source.Stop();
+	}
+}
 // ----------------------------------------------------------------------------- COROUTINES
 function throttleCoroutine () {
 	yield WaitForSeconds(throttleAudioLimit);

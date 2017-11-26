@@ -1,5 +1,6 @@
 ﻿#pragma strict
 
+var AudioManager : audioManager;
 static var instance : gameManager;
 
 var isMobile : boolean;
@@ -12,6 +13,7 @@ var hasHighestTime : boolean = false;
 var isHighestTime : boolean = false;
 var highestTime : float;
 var highestTimeFormatted : String;
+var win : boolean = false;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
@@ -57,6 +59,12 @@ function initInstructions () {
 function initGameOver () {
 	gameRunning = false;
 	Cursor.visible = true;
+	if (win) {
+		AudioManager.instance.play("crownClapping");
+		AudioManager.instance.play("win");
+	} else {
+		AudioManager.instance.play("lose");
+	}
 	SceneManagement.SceneManager.LoadScene("GameOver");
 	lastGameTimeFormatted = timeFormatted;
 	if (isHighestTime) {

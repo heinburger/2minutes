@@ -81,4 +81,5 @@ function triggerForcefieldPickUp () {
 function triggerCrownPickUp () {
 	AudioManager.instance.play("crownClapping");
 	PlayerCrown.SetActive(true);
+	player.handleCrownPickUp();
 }

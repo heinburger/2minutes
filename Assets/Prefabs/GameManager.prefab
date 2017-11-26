@@ -51,8 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb20a0cbf288f46a0b4148e86222ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioManager: {fileID: 114122309087782278, guid: bb6047978812c409bae1a9bd8d2b6b91,
+    type: 2}
+  isMobile: 0
   gameRunning: 1
-  cursorOffset: 0
   time: 0
   timeFormatted: 00:00:000
   lastGameTimeFormatted: 
@@ -61,3 +63,4 @@ MonoBehaviour:
   isHighestTime: 0
   highestTime: 0
   highestTimeFormatted: 
+  win: 0

@@ -11,6 +11,7 @@ var growthSpeed : float;
 var heartPowerUpShrinkAmount : float;
 var enemyHitGrowthAmount : float;
 
+private var win : boolean;
 private var ps : ParticleSystem;
 private var invincibilityTimeLeft : float;
 private var forcefieldTimeLeft : float;
@@ -18,6 +19,7 @@ private var scaleTo : Vector3;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
+	win = false;
 	invincibilityTimeLeft = 1f; // allow for adjustments when game starts
 	scaleTo = transform.localScale;
 	ps = PlayerInvincibleTrail.gameObject.GetComponent.<ParticleSystem>();
@@ -32,6 +34,14 @@ function Update () {
 }
 
 // ----------------------------------------------------------------------------- HANDLER METHODS
+function handleGameOver () {
+	if (transform.localScale.x > 50f) {
+		AudioManager.instance.stopAll();
+		GameManager.instance.isGameOver = true;
+		GameManager.instance.win = win;
+	}
+}
+
 function handleTimers () {
 	invincibilityTimeLeft = invincibilityTimeLeft <= 0f ? 0f : invincibilityTimeLeft - Time.deltaTime;
 	forcefieldTimeLeft = forcefieldTimeLeft <= 0f ? 0f : forcefieldTimeLeft - Time.deltaTime;
@@ -50,14 +60,12 @@ function handleScaling () {
 	ps.main.startSpeedMultiplier = transform.localScale.x;
 }
 
-function handleGameOver () {
-	if (transform.localScale.x > 50f) {
-		GameManager.instance.isGameOver = true;
-	}
-}
-
 function handleEnemyHit () {
 	scaleTo += scaleTo * enemyHitGrowthAmount;
+}
+
+function handleCrownPickUp () {
+	win = true;
 }
 
 function handleHeartPickUp () {
