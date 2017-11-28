@@ -58,11 +58,9 @@ MonoBehaviour:
   gameRunning: 1
   time: 0
   timeDelta: 0
-  goalTime: 10
-  displayTime: 
+  goalTime: 120
   isGameOver: 0
   hasHighestTime: 0
   isHighestTime: 0
   highestTime: 0
-  highestTimeFormatted: 
   playerWin: 0

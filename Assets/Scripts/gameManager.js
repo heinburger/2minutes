@@ -5,6 +5,10 @@ static var instance : gameManager;
 
 var isMobile : boolean;
 var gameMode : String;
+var gameModeUnlocked : boolean;
+var hasBronze : boolean;
+var hasSilver : boolean;
+var hasGold : boolean;
 var gameRunning : boolean = true;
 var time : float = 0f;
 var timeDelta : float = 0f;
@@ -29,6 +33,7 @@ function Awake () {
 		? PlayerPrefs.GetString("gameMode")
 		: 'bronze';
 
+	setGameModes();
 	hasHighestTime = PlayerPrefs.HasKey(gameMode + "HighestTime");
 	highestTime = PlayerPrefs.GetFloat(gameMode + "HighestTime");
 }
@@ -41,7 +46,6 @@ function Update () {
 }
 
 // ----------------------------------------------------------------------------- GAME METHODS
-
 function initGame () {
 	Cursor.visible = false;
 	SceneManagement.SceneManager.LoadScene("Main");
@@ -53,6 +57,7 @@ function initGame () {
 }
 
 function initInstructions () {
+	setGameModes();
 	Cursor.visible = true;
 	time = 0f;
 	gameRunning = true;
@@ -63,7 +68,8 @@ function initInstructions () {
 function initGameOver () {
 	gameRunning = false;
 	Cursor.visible = true;
-	if (playerWin) {
+	if (time >= goalTime) {
+		playerWin = true;
 		AudioManager.instance.play("crownClapping");
 		AudioManager.instance.play("win");
 	} else {
@@ -87,10 +93,24 @@ function checkGameOver () {
 	}
 }
 
+function setGameModes () {
+	hasBronze = PlayerPrefs.HasKey("bronzeUnlocked");
+	hasSilver = PlayerPrefs.HasKey("silverUnlocked");
+	hasGold = PlayerPrefs.HasKey("goldUnlocked");
+}
+
 function calcTime () {
 	time += Time.deltaTime;
 	timeDelta = goalTime - time;
 	if (!isHighestTime && time > highestTime) {
 		isHighestTime = true;
 	}
+}
+
+function unlockGameMode () {
+	var count : int = PlayerPrefs.HasKey(gameMode + "Unlocked")
+		? PlayerPrefs.GetInt(gameMode + "Unlocked") + 1
+		: 1;
+	PlayerPrefs.SetInt(gameMode + "Unlocked", count);
+	gameModeUnlocked = count == 1;
 }

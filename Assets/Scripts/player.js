@@ -64,7 +64,7 @@ function handleEnemyHit () {
 }
 
 function handleCrownPickUp () {
-	GameManager.instance.playerWin = true;
+	GameManager.instance.unlockGameMode();
 }
 
 function handleHeartPickUp () {
