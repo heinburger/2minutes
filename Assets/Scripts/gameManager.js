@@ -29,9 +29,6 @@ function Awake () {
 	DontDestroyOnLoad(gameObject);
 
 	isMobile = SystemInfo.deviceType != DeviceType.Desktop;
-	gameMode = PlayerPrefs.HasKey("gameMode")
-		? PlayerPrefs.GetString("gameMode")
-		: 'bronze';
 
 	setGameModes();
 	hasHighestTime = PlayerPrefs.HasKey(gameMode + "HighestTime");
@@ -105,6 +102,10 @@ function calcTime () {
 	if (!isHighestTime && time > highestTime) {
 		isHighestTime = true;
 	}
+}
+
+function setGameMode (mode : String) {
+	gameMode = mode;
 }
 
 function unlockGameMode () {
