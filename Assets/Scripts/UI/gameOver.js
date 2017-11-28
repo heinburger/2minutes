@@ -1,6 +1,8 @@
 ﻿#pragma strict
 
 var GameManager : gameManager;
+private var timeUtils : timeUtils;
+
 var restartBtn : UnityEngine.UI.Button;
 var homeBtn : UnityEngine.UI.Button;
 var exitBtn : UnityEngine.UI.Button;
@@ -9,11 +11,12 @@ var highestTimeText : UnityEngine.UI.Text;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
-    timeText.text = GameManager.instance.lastGameTimeFormatted;
-    highestTimeText.text = "(" + GameManager.instance.highestTimeFormatted + ")";
-    restartBtn.onClick.AddListener(onRestartClick);
-    homeBtn.onClick.AddListener(onHomeClick);
-    exitBtn.onClick.AddListener(onExitClick);
+  timeUtils = GetComponent.<timeUtils>();
+  timeText.text = timeUtils.formatTime(GameManager.instance.time);
+  highestTimeText.text = "(" + timeUtils.formatTime(GameManager.instance.highestTime) + ")";
+  restartBtn.onClick.AddListener(onRestartClick);
+  homeBtn.onClick.AddListener(onHomeClick);
+  exitBtn.onClick.AddListener(onExitClick);
 }
 
 // ----------------------------------------------------------------------------- ONCLICK METHODS

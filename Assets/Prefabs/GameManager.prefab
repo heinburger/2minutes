@@ -54,13 +54,15 @@ MonoBehaviour:
   AudioManager: {fileID: 114122309087782278, guid: bb6047978812c409bae1a9bd8d2b6b91,
     type: 2}
   isMobile: 0
+  gameMode: 
   gameRunning: 1
   time: 0
-  timeFormatted: 00:00:000
-  lastGameTimeFormatted: 
+  timeDelta: 0
+  goalTime: 10
+  displayTime: 
   isGameOver: 0
   hasHighestTime: 0
   isHighestTime: 0
   highestTime: 0
   highestTimeFormatted: 
-  win: 0
+  playerWin: 0
