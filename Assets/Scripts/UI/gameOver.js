@@ -19,7 +19,7 @@ var bronze : Sprite;
 var unlockedText : UnityEngine.UI.Text;
 var unlockedImage : UnityEngine.UI.Image;
 var titleText : UnityEngine.UI.Text;
-var restartBtn : UnityEngine.UI.Button;
+var replayBtn : UnityEngine.UI.Button;
 var homeBtn : UnityEngine.UI.Button;
 var exitBtn : UnityEngine.UI.Button;
 var timeText : UnityEngine.UI.Text;
@@ -33,11 +33,14 @@ function Awake () {
     if (GameManager.instance.gameModeUnlocked) {
       unlockedText.enabled = true;
       if (GameManager.instance.gameMode == "bronze") {
-        unlockedImage.enabled = bronze;
+        unlockedImage.enabled = true;
+        unlockedImage.sprite = bronze;
       } else if (GameManager.instance.gameMode == "silver") {
-        unlockedImage.enabled = silver;
+        unlockedImage.enabled = true;
+        unlockedImage.sprite = silver;
       } else if (GameManager.instance.gameMode == "gold") {
-        unlockedImage.enabled = gold;
+        unlockedImage.enabled = true;
+        unlockedImage.sprite = gold;
       }
     } else {
       unlockedText.enabled = false;
@@ -47,13 +50,13 @@ function Awake () {
   timeUtils = GetComponent.<timeUtils>();
   timeText.text = timeUtils.formatTime(GameManager.instance.time);
   highestTimeText.text = "(" + timeUtils.formatTime(GameManager.instance.highestTime) + ")";
-  restartBtn.onClick.AddListener(onRestartClick);
+  replayBtn.onClick.AddListener(onReplayClick);
   homeBtn.onClick.AddListener(onHomeClick);
   exitBtn.onClick.AddListener(onExitClick);
 }
 
 // ----------------------------------------------------------------------------- ONCLICK METHODS
-function onRestartClick () {
+function onReplayClick () {
 	GameManager.instance.initGame();
 }
 

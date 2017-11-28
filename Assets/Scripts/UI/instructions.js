@@ -54,8 +54,8 @@ function setGameModeSelect () {
   bronze.SetActive(true);
   silver.SetActive(true);
   gold.SetActive(true);
-  silverBtn.interactable = GameManager.instance.hasSilver;
-  goldBtn.interactable = GameManager.instance.hasBronze;
+  silverBtn.interactable = GameManager.instance.hasBronze;
+  goldBtn.interactable = GameManager.instance.hasSilver;
   bronzeRequiredText.enabled = !GameManager.instance.hasBronze;
   bronzeRequiredImage.enabled = !GameManager.instance.hasBronze;
   silverRequiredImage.enabled = !GameManager.instance.hasSilver;

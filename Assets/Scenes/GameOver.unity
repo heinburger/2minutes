@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 453527473}
   - component: {fileID: 453527472}
   m_Layer: 5
-  m_Name: text_StartBtnText
+  m_Name: text_HomeBtnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 706629011}
   - component: {fileID: 706629010}
   m_Layer: 5
-  m_Name: btn_RestartBtn
+  m_Name: btn_ReplayBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -962,7 +962,7 @@ RectTransform:
   m_GameObject: {fileID: 1618047498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.025656836, y: 0.025656836, z: 0.025656836}
+  m_LocalScale: {x: 0.028758671, y: 0.028758671, z: 0.028758671}
   m_Children:
   - {fileID: 1184322329}
   m_Father: {fileID: 0}
@@ -1234,7 +1234,7 @@ GameObject:
   - component: {fileID: 2010643755}
   - component: {fileID: 2010643754}
   m_Layer: 5
-  m_Name: text_StartBtnText
+  m_Name: text_ReplayBtnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1290,7 +1290,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: restart
+  m_Text: replay
 --- !u!222 &2010643755
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1308,7 +1308,7 @@ GameObject:
   - component: {fileID: 2070391894}
   - component: {fileID: 2070391893}
   m_Layer: 5
-  m_Name: text_StartBtnText
+  m_Name: text_ExitBtnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
