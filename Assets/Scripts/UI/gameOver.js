@@ -48,7 +48,7 @@ function Awake () {
   }
 
   timeUtils = GetComponent.<timeUtils>();
-  timeText.text = timeUtils.formatTime(GameManager.instance.time);
+  timeText.text = timeUtils.formatTime(GameManager.instance.gameTime);
   highestTimeText.text = "(" + timeUtils.formatTime(GameManager.instance.highestTime) + ")";
   replayBtn.onClick.AddListener(onReplayClick);
   homeBtn.onClick.AddListener(onHomeClick);

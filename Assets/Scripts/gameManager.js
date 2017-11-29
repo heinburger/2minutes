@@ -17,6 +17,7 @@ var isGameOver : boolean = false;
 var hasHighestTime : boolean = false;
 var isHighestTime : boolean = false;
 var highestTime : float;
+var gameTime : float;
 var playerWin : boolean = false;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
@@ -63,6 +64,7 @@ function initInstructions () {
 }
 
 function initGameOver () {
+	gameTime = time;
 	highestTime = PlayerPrefs.GetFloat(gameMode + "HighestTime");
 	gameRunning = false;
 	Cursor.visible = true;
