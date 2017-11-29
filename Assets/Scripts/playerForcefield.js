@@ -1,10 +1,10 @@
 ﻿#pragma strict
 
 var AudioManager : audioManager;
+var Player : GameObject;
 var PlayerBody : GameObject;
 
 private var rb2D : Rigidbody2D;
-private var touchWallCount : int = 0;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
@@ -18,7 +18,7 @@ function OnEnable () {
 }
 
 function Update () {
-  if (touchWallCount > 2) {
+  if (Player.transform.localScale.x > 10f) {
     AudioManager.instance.play("forcefieldBreak");
     gameObject.SetActive(false);
   }
@@ -32,14 +32,5 @@ function OnCollisionEnter2D (other : Collision2D) {
   if (other.gameObject.tag == "Explosion") {
     AudioManager.instance.play("forcefieldBreak");
     gameObject.SetActive(false);
-  }
-  if (other.gameObject.tag == "EnemyBoundary") {
-    touchWallCount++;
-  }
-}
-
-function OnCollisionExit2D (other : Collision2D) {
-  if (other.gameObject.tag == "EnemyBoundary") {
-    touchWallCount--;
   }
 }

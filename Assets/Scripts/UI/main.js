@@ -16,7 +16,7 @@ function Update () {
   var time = timeUtils.formatTime(GameManager.instance.timeDelta);
   if (GameManager.instance.timeDelta < 0f) {
     extraTimeText.enabled = true;
-    extraTimeText.text = "+ " + time;
+    extraTimeText.text = "+" + time;
     timeText.text = "0:00:000";
   } else {
     timeText.text = time;
