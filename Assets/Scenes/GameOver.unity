@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 1137644381}
   - component: {fileID: 1137644380}
   m_Layer: 5
-  m_Name: text_HighestTime
+  m_Name: text_HighScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -653,7 +653,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 0:00:000
 --- !u!222 &1137644381
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1151,7 +1151,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 00:00:000
+  m_Text: 0:00:000
 --- !u!222 &1683331090
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   homeBtn: {fileID: 1669839513}
   exitBtn: {fileID: 329049031}
   timeText: {fileID: 1683331089}
-  highestTimeText: {fileID: 1137644380}
+  highScoreText: {fileID: 1137644380}
 --- !u!4 &1824063188
 Transform:
   m_ObjectHideFlags: 0

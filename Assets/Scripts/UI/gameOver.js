@@ -23,7 +23,7 @@ var replayBtn : UnityEngine.UI.Button;
 var homeBtn : UnityEngine.UI.Button;
 var exitBtn : UnityEngine.UI.Button;
 var timeText : UnityEngine.UI.Text;
-var highestTimeText : UnityEngine.UI.Text;
+var highScoreText : UnityEngine.UI.Text;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
@@ -49,7 +49,7 @@ function Awake () {
 
   timeUtils = GetComponent.<timeUtils>();
   timeText.text = timeUtils.formatTime(GameManager.instance.gameTime);
-  highestTimeText.text = "(" + timeUtils.formatTime(GameManager.instance.highestTime) + ")";
+  highScoreText.text = timeUtils.formatTime(GameManager.instance.highScore);
   replayBtn.onClick.AddListener(onReplayClick);
   homeBtn.onClick.AddListener(onHomeClick);
   exitBtn.onClick.AddListener(onExitClick);

@@ -6,19 +6,26 @@ static var instance : gameManager;
 var isMobile : boolean;
 var gameMode : String;
 var gameModeUnlocked : boolean;
-var hasBronze : boolean;
-var hasSilver : boolean;
-var hasGold : boolean;
 var gameRunning : boolean = true;
 var time : float = 0f;
 var timeDelta : float = 0f;
 var goalTime : float;
 var isGameOver : boolean = false;
-var hasHighestTime : boolean = false;
-var isHighestTime : boolean = false;
-var highestTime : float;
+var hasHighScore : boolean = false;
+var isHighScore : boolean = false;
+var highScore : float;
 var gameTime : float;
 var playerWin : boolean = false;
+
+var hasBronze : boolean;
+var hasSilver : boolean;
+var hasGold : boolean;
+var hasBronzeHighScore : boolean;
+var hasSilverHighScore : boolean;
+var hasGoldHighScore : boolean;
+var bronzeHighScore : float;
+var silverHighScore : float;
+var goldHighScore : float;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
@@ -32,7 +39,7 @@ function Awake () {
 
 	isMobile = SystemInfo.deviceType != DeviceType.Desktop;
 
-	setGameModes();
+	checkPlayerPrefs();
 }
 
 function Update () {
@@ -51,12 +58,12 @@ function initGame () {
 	gameRunning = true;
 	isGameOver = false;
 	playerWin = false;
-	isHighestTime = false;
-	hasHighestTime = PlayerPrefs.HasKey(gameMode + "HighestTime");
+	isHighScore = false;
+	hasHighScore = PlayerPrefs.HasKey(gameMode + "HighScore");
 }
 
 function initInstructions () {
-	setGameModes();
+	checkPlayerPrefs();
 	Cursor.visible = true;
 	time = 0f;
 	gameRunning = true;
@@ -66,8 +73,8 @@ function initInstructions () {
 
 function initGameOver () {
 	gameTime = time;
-	highestTime = hasHighestTime
-		? PlayerPrefs.GetFloat(gameMode + "HighestTime")
+	highScore = hasHighScore
+		? PlayerPrefs.GetFloat(gameMode + "HighScore")
 		: time;
 	gameRunning = false;
 	Cursor.visible = true;
@@ -79,9 +86,9 @@ function initGameOver () {
 		AudioManager.instance.play("lose");
 	}
 	SceneManagement.SceneManager.LoadScene("GameOver");
-	if (isHighestTime) {
-		highestTime = time;
-		PlayerPrefs.SetFloat(gameMode + "HighestTime", time);
+	if (isHighScore) {
+		highScore = time;
+		PlayerPrefs.SetFloat(gameMode + "HighScore", time);
 	}
 }
 
@@ -95,17 +102,23 @@ function checkGameOver () {
 	}
 }
 
-function setGameModes () {
+function checkPlayerPrefs () {
 	hasBronze = PlayerPrefs.HasKey("bronzeUnlocked");
 	hasSilver = PlayerPrefs.HasKey("silverUnlocked");
 	hasGold = PlayerPrefs.HasKey("goldUnlocked");
+	hasBronzeHighScore = PlayerPrefs.HasKey("bronzeHighScore");
+	hasSilverHighScore = PlayerPrefs.HasKey("silverHighScore");
+	hasGoldHighScore = PlayerPrefs.HasKey("goldHighScore");
+	bronzeHighScore = hasBronzeHighScore ? PlayerPrefs.GetFloat("bronzeHighScore") : 0f;
+	silverHighScore = hasSilverHighScore ? PlayerPrefs.GetFloat("silverHighScore"): 0f;
+	goldHighScore = hasGoldHighScore ? PlayerPrefs.GetFloat("goldHighScore"): 0f;
 }
 
 function calcTime () {
 	time += Time.deltaTime;
 	timeDelta = goalTime - time;
-	if (!isHighestTime && time > highestTime) {
-		isHighestTime = true;
+	if (!isHighScore && time > highScore) {
+		isHighScore = true;
 	}
 }
 

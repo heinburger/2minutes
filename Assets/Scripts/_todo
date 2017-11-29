@@ -3,3 +3,9 @@
 - pause?
 - explosion residue
 - big enemies
+
+- explosion fire on enemies
+- turtle effect more visual
+- homing enemies
+
+- BUG! found a scenario where player can go fully offscreen and cannot win

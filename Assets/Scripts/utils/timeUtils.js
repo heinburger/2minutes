@@ -1,6 +1,6 @@
 ﻿#pragma strict
 
-function formatTime (time : float) {
+function formatTime (time : float) : String {
 	var jsTime : int = time < 0f ? Mathf.Floor(time * -1000) : Mathf.Floor(time * 1000);
 	var milli : int = jsTime % 1000;
 	var sec : int = Mathf.Floor(jsTime / 1000) % 60;
