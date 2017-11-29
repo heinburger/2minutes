@@ -1,7 +1,7 @@
 ﻿#pragma strict
 
 var AudioManager : audioManager;
-var thrust : float;
+var initialThrust : float;
 @Range(0, 25)
 var maxVelocity : float;
 
@@ -17,7 +17,7 @@ function Awake () {
 	bounceAudioSource = GetComponent.<AudioSource>();
 	var AudioSources = GetComponents(AudioSource);
 	var direction = Vector3(Random.Range(-1.0, 1.0), Random.Range(-1.0, 1.0), 0);
-	rb2D.AddForce(direction * thrust);
+	rb2D.AddForce(direction * initialThrust);
 }
 
 function FixedUpdate () {
