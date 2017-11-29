@@ -31,8 +31,6 @@ function Awake () {
 	isMobile = SystemInfo.deviceType != DeviceType.Desktop;
 
 	setGameModes();
-	hasHighestTime = PlayerPrefs.HasKey(gameMode + "HighestTime");
-	highestTime = PlayerPrefs.GetFloat(gameMode + "HighestTime");
 }
 
 function Update () {
@@ -47,10 +45,12 @@ function initGame () {
 	Cursor.visible = false;
 	SceneManagement.SceneManager.LoadScene("Main");
 	time = 0f;
+	gameModeUnlocked = false;
 	gameRunning = true;
 	isGameOver = false;
 	playerWin = false;
 	isHighestTime = false;
+	hasHighestTime = PlayerPrefs.HasKey(gameMode + "HighestTime");
 }
 
 function initInstructions () {
@@ -63,6 +63,7 @@ function initInstructions () {
 }
 
 function initGameOver () {
+	highestTime = PlayerPrefs.GetFloat(gameMode + "HighestTime");
 	gameRunning = false;
 	Cursor.visible = true;
 	if (time >= goalTime) {
@@ -74,7 +75,6 @@ function initGameOver () {
 	}
 	SceneManagement.SceneManager.LoadScene("GameOver");
 	if (isHighestTime) {
-		hasHighestTime = true;
 		highestTime = time;
 		PlayerPrefs.SetFloat(gameMode + "HighestTime", time);
 	}

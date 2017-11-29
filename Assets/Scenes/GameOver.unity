@@ -1194,7 +1194,7 @@ MonoBehaviour:
   unlockedText: {fileID: 2101792778}
   unlockedImage: {fileID: 1515797792}
   titleText: {fileID: 786983757}
-  restartBtn: {fileID: 706629010}
+  replayBtn: {fileID: 706629010}
   homeBtn: {fileID: 1669839513}
   exitBtn: {fileID: 329049031}
   timeText: {fileID: 1683331089}

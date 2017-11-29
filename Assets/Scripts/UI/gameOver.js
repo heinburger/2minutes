@@ -30,23 +30,23 @@ function Awake () {
   if (GameManager.instance.playerWin) {
     Camera.main.backgroundColor = Color.HSVToRGB(0.53f, 0.53f, 0.78f);
     titleText.text = winningPhrases[Random.Range(0, winningPhrases.length - 1)];
-    if (GameManager.instance.gameModeUnlocked) {
-      unlockedText.enabled = true;
-      if (GameManager.instance.gameMode == "bronze") {
-        unlockedImage.enabled = true;
-        unlockedImage.sprite = bronze;
-      } else if (GameManager.instance.gameMode == "silver") {
-        unlockedImage.enabled = true;
-        unlockedImage.sprite = silver;
-      } else if (GameManager.instance.gameMode == "gold") {
-        unlockedImage.enabled = true;
-        unlockedImage.sprite = gold;
-      }
-    } else {
-      unlockedText.enabled = false;
-      unlockedImage.enabled = false;
-    }
   }
+
+  if (GameManager.instance.gameModeUnlocked) {
+    unlockedText.enabled = true;
+    unlockedImage.enabled = true;
+    if (GameManager.instance.gameMode == "bronze") {
+      unlockedImage.sprite = bronze;
+    } else if (GameManager.instance.gameMode == "silver") {
+      unlockedImage.sprite = silver;
+    } else if (GameManager.instance.gameMode == "gold") {
+      unlockedImage.sprite = gold;
+    }
+  } else {
+    unlockedText.enabled = false;
+    unlockedImage.enabled = false;
+  }
+
   timeUtils = GetComponent.<timeUtils>();
   timeText.text = timeUtils.formatTime(GameManager.instance.time);
   highestTimeText.text = "(" + timeUtils.formatTime(GameManager.instance.highestTime) + ")";
