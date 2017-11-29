@@ -1038,7 +1038,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &967830559
 MonoBehaviour:
@@ -1693,7 +1693,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4223861109656552, guid: 270988181529c41cda66700564ecdb5c, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 212316655932874404, guid: 270988181529c41cda66700564ecdb5c,
         type: 2}

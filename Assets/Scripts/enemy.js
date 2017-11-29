@@ -26,10 +26,10 @@ function Awake () {
   handleGameModes();
 
   transform.localScale = transform.localScale * scaleMultiplier;
-  // rb2D.mass = rb2D.mass * scaleMultiplier;
+  rb2D.mass = rb2D.mass * scaleMultiplier;
 
   var direction = Vector3(Random.Range(-1.0, 1.0), Random.Range(-1.0, 1.0), 0);
-  rb2D.AddForce(direction * initialThrust);
+  rb2D.AddForce(direction * initialThrust, ForceMode2D.Impulse);
 }
 
 function FixedUpdate () {
