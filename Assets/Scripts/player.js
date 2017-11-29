@@ -20,77 +20,77 @@ private var scaleTo : Vector3;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
-	invincibilityTimeLeft = initialInvincibilityTime; // allow for adjustments when game starts
-	scaleTo = transform.localScale;
-	ps = PlayerInvincibleTrail.gameObject.GetComponent.<ParticleSystem>();
+  invincibilityTimeLeft = initialInvincibilityTime; // allow for adjustments when game starts
+  scaleTo = transform.localScale;
+  ps = PlayerInvincibleTrail.gameObject.GetComponent.<ParticleSystem>();
 }
 
 function Update () {
-	if (GameManager.instance.gameRunning) {
-		handleGameOver();
-		handleTimers();
-		handleScaling();
-	}
+  if (GameManager.instance.gameRunning) {
+    handleGameOver();
+    handleTimers();
+    handleScaling();
+  }
 }
 
 // ----------------------------------------------------------------------------- HANDLER METHODS
 function handleGameOver () {
-	if (transform.localScale.x > 50f) {
-		AudioManager.instance.stopAll();
-		GameManager.instance.isGameOver = true;
-	}
+  if (transform.localScale.x > 50f) {
+    AudioManager.instance.stopAll();
+    GameManager.instance.isGameOver = true;
+  }
 }
 
 function handleTimers () {
-	invincibilityTimeLeft = invincibilityTimeLeft <= 0f ? 0f : invincibilityTimeLeft - Time.deltaTime;
-	forcefieldTimeLeft = forcefieldTimeLeft <= 0f ? 0f : forcefieldTimeLeft - Time.deltaTime;
+  invincibilityTimeLeft = invincibilityTimeLeft <= 0f ? 0f : invincibilityTimeLeft - Time.deltaTime;
+  forcefieldTimeLeft = forcefieldTimeLeft <= 0f ? 0f : forcefieldTimeLeft - Time.deltaTime;
 }
 
 function handleScaling () {
-	var padding : float = 0.1;
-	var magnitude : float = scaleTo.x - transform.localScale.x;
-	var factor : float = magnitude > 20f ? 20f : magnitude;
-	if (magnitude > (0f + padding)) { // grow
-		transform.localScale += transform.localScale * factor * growthSpeed * Time.deltaTime;
-	} else if (magnitude < (0f - padding)) { // shrink
-		transform.localScale += transform.localScale * factor * shrinkSpeed * Time.deltaTime;
-	}
-	ps.main.startSizeMultiplier = transform.localScale.x / 2f;
-	ps.main.startSpeedMultiplier = transform.localScale.x;
+  var padding : float = 0.1;
+  var magnitude : float = scaleTo.x - transform.localScale.x;
+  var factor : float = magnitude > 20f ? 20f : magnitude;
+  if (magnitude > (0f + padding)) { // grow
+    transform.localScale += transform.localScale * factor * growthSpeed * Time.deltaTime;
+  } else if (magnitude < (0f - padding)) { // shrink
+    transform.localScale += transform.localScale * factor * shrinkSpeed * Time.deltaTime;
+  }
+  ps.main.startSizeMultiplier = transform.localScale.x / 2f;
+  ps.main.startSpeedMultiplier = transform.localScale.x;
 }
 
 function handleEnemyHit () {
-	scaleTo += scaleTo * enemyHitGrowthAmount;
+  scaleTo += scaleTo * enemyHitGrowthAmount;
 }
 
 function handleCrownPickUp () {
-	GameManager.instance.unlockGameMode();
+  GameManager.instance.unlockGameMode();
 }
 
 function handleHeartPickUp () {
-	scaleTo -= scaleTo * heartPowerUpShrinkAmount;
+  scaleTo -= scaleTo * heartPowerUpShrinkAmount;
 }
 
 function handleStarPickUp () {
-	invincibilityTimeLeft += starPowerUpInvincibilityTime;
+  invincibilityTimeLeft += starPowerUpInvincibilityTime;
 }
 
 function handleTurtlePickUp () {
-	var Enemies : GameObject[] = GameObject.FindGameObjectsWithTag("Enemy");
-	for (var Enemy : GameObject in Enemies) {
-		Enemy.gameObject.GetComponent.<enemy>().brakingForce += turtleBrakingForce;
-	}
+  var Enemies : GameObject[] = GameObject.FindGameObjectsWithTag("Enemy");
+  for (var Enemy : GameObject in Enemies) {
+    Enemy.gameObject.GetComponent.<enemy>().brakingForce += turtleBrakingForce;
+  }
 }
 
 function handleForcefieldPickUp () {
-	forcefieldTimeLeft += forcefieldPowerUpTime;
+  forcefieldTimeLeft += forcefieldPowerUpTime;
 }
 
 // ----------------------------------------------------------------------------- STATUS METHODS
 function isInvincible () : boolean {
-	return invincibilityTimeLeft > 0f && GameManager.instance.time > initialInvincibilityTime;
+  return invincibilityTimeLeft > 0f && GameManager.instance.time > initialInvincibilityTime;
 }
 
 function hasForcefield () : boolean {
-	return forcefieldTimeLeft > 0f;
+  return forcefieldTimeLeft > 0f;
 }

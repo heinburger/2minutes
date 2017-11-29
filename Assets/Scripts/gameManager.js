@@ -29,107 +29,107 @@ var goldHighScore : float;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
-	if (instance == null) {
-		instance = this;
-	} else if (instance != this) {
-		Destroy(gameObject);
-	}
-	DontDestroyOnLoad(gameObject);
-	PlayerPrefs.DeleteAll();
+  if (instance == null) {
+    instance = this;
+  } else if (instance != this) {
+    Destroy(gameObject);
+  }
+  DontDestroyOnLoad(gameObject);
+  PlayerPrefs.DeleteAll();
 
-	isMobile = SystemInfo.deviceType != DeviceType.Desktop;
+  isMobile = SystemInfo.deviceType != DeviceType.Desktop;
 
-	checkPlayerPrefs();
+  checkPlayerPrefs();
 }
 
 function Update () {
-	if (gameRunning) {
-		checkGameOver();
-		calcTime();
-	}
+  if (gameRunning) {
+    checkGameOver();
+    calcTime();
+  }
 }
 
 // ----------------------------------------------------------------------------- GAME METHODS
 function initGame () {
-	Cursor.visible = false;
-	SceneManagement.SceneManager.LoadScene("Main");
-	time = 0f;
-	gameModeUnlocked = false;
-	gameRunning = true;
-	isGameOver = false;
-	playerWin = false;
-	isHighScore = false;
-	hasHighScore = PlayerPrefs.HasKey(gameMode + "HighScore");
+  Cursor.visible = false;
+  SceneManagement.SceneManager.LoadScene("Main");
+  time = 0f;
+  gameModeUnlocked = false;
+  gameRunning = true;
+  isGameOver = false;
+  playerWin = false;
+  isHighScore = false;
+  hasHighScore = PlayerPrefs.HasKey(gameMode + "HighScore");
 }
 
 function initInstructions () {
-	checkPlayerPrefs();
-	Cursor.visible = true;
-	time = 0f;
-	gameRunning = true;
-	isGameOver = false;
-	SceneManagement.SceneManager.LoadScene("Instructions");
+  checkPlayerPrefs();
+  Cursor.visible = true;
+  time = 0f;
+  gameRunning = true;
+  isGameOver = false;
+  SceneManagement.SceneManager.LoadScene("Instructions");
 }
 
 function initGameOver () {
-	gameTime = time;
-	highScore = hasHighScore
-		? PlayerPrefs.GetFloat(gameMode + "HighScore")
-		: time;
-	gameRunning = false;
-	Cursor.visible = true;
-	if (time >= goalTime) {
-		playerWin = true;
-		AudioManager.instance.play("crownClapping");
-		AudioManager.instance.play("win");
-	} else {
-		AudioManager.instance.play("lose");
-	}
-	SceneManagement.SceneManager.LoadScene("GameOver");
-	if (isHighScore) {
-		highScore = time;
-		PlayerPrefs.SetFloat(gameMode + "HighScore", time);
-	}
+  gameTime = time;
+  highScore = hasHighScore
+    ? PlayerPrefs.GetFloat(gameMode + "HighScore")
+    : time;
+  gameRunning = false;
+  Cursor.visible = true;
+  if (time >= goalTime) {
+    playerWin = true;
+    AudioManager.instance.play("crownClapping");
+    AudioManager.instance.play("win");
+  } else {
+    AudioManager.instance.play("lose");
+  }
+  SceneManagement.SceneManager.LoadScene("GameOver");
+  if (isHighScore) {
+    highScore = time;
+    PlayerPrefs.SetFloat(gameMode + "HighScore", time);
+  }
 }
 
 function exitGame () {
-	Application.Quit();
+  Application.Quit();
 }
 
 function checkGameOver () {
-	if (isGameOver) {
-		initGameOver();
-	}
+  if (isGameOver) {
+    initGameOver();
+  }
 }
 
 function checkPlayerPrefs () {
-	hasBronze = PlayerPrefs.HasKey("bronzeUnlocked");
-	hasSilver = PlayerPrefs.HasKey("silverUnlocked");
-	hasGold = PlayerPrefs.HasKey("goldUnlocked");
-	hasBronzeHighScore = PlayerPrefs.HasKey("bronzeHighScore");
-	hasSilverHighScore = PlayerPrefs.HasKey("silverHighScore");
-	hasGoldHighScore = PlayerPrefs.HasKey("goldHighScore");
-	bronzeHighScore = hasBronzeHighScore ? PlayerPrefs.GetFloat("bronzeHighScore") : 0f;
-	silverHighScore = hasSilverHighScore ? PlayerPrefs.GetFloat("silverHighScore"): 0f;
-	goldHighScore = hasGoldHighScore ? PlayerPrefs.GetFloat("goldHighScore"): 0f;
+  hasBronze = PlayerPrefs.HasKey("bronzeUnlocked");
+  hasSilver = PlayerPrefs.HasKey("silverUnlocked");
+  hasGold = PlayerPrefs.HasKey("goldUnlocked");
+  hasBronzeHighScore = PlayerPrefs.HasKey("bronzeHighScore");
+  hasSilverHighScore = PlayerPrefs.HasKey("silverHighScore");
+  hasGoldHighScore = PlayerPrefs.HasKey("goldHighScore");
+  bronzeHighScore = hasBronzeHighScore ? PlayerPrefs.GetFloat("bronzeHighScore") : 0f;
+  silverHighScore = hasSilverHighScore ? PlayerPrefs.GetFloat("silverHighScore"): 0f;
+  goldHighScore = hasGoldHighScore ? PlayerPrefs.GetFloat("goldHighScore"): 0f;
 }
 
 function calcTime () {
-	time += Time.deltaTime;
-	timeDelta = goalTime - time;
-	if (!isHighScore && time > highScore) {
-		isHighScore = true;
-	}
+  time += Time.deltaTime;
+  timeDelta = goalTime - time;
+  if (!isHighScore && time > highScore) {
+    isHighScore = true;
+  }
 }
 
 function setGameMode (mode : String) {
-	gameMode = mode;
+  gameMode = mode;
 }
 
 function unlockGameMode () {
-	var count : int = PlayerPrefs.HasKey(gameMode + "Unlocked")
-		? PlayerPrefs.GetInt(gameMode + "Unlocked") + 1
-		: 1;
-	PlayerPrefs.SetInt(gameMode + "Unlocked", count);
-	gameModeUnlocked = count == 1;
+  var count : int = PlayerPrefs.HasKey(gameMode + "Unlocked")
+    ? PlayerPrefs.GetInt(gameMode + "Unlocked") + 1
+    : 1;
+  PlayerPrefs.SetInt(gameMode + "Unlocked", count);
+  gameModeUnlocked = count == 1;
 }

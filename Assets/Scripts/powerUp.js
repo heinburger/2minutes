@@ -25,28 +25,28 @@ private var animating : boolean = false;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Start () {
-	spawnTime = GameManager.instance.time;
-	SpriteRenderer = GetComponent.<SpriteRenderer>();
+  spawnTime = GameManager.instance.time;
+  SpriteRenderer = GetComponent.<SpriteRenderer>();
 }
 
 function Update () {
-	timeAlive = GameManager.instance.time - spawnTime;
-	timeLeft = lifeTime - timeAlive;
-	if (lifeTime) {
-		if (lifeTime < timeAlive) {
-			Destroy(gameObject);
-		} else if (timeLeft < 5f && !animating) {
-			lowLifeAnimationCoroutine();
-		}
-	}
+  timeAlive = GameManager.instance.time - spawnTime;
+  timeLeft = lifeTime - timeAlive;
+  if (lifeTime) {
+    if (lifeTime < timeAlive) {
+      Destroy(gameObject);
+    } else if (timeLeft < 5f && !animating) {
+      lowLifeAnimationCoroutine();
+    }
+  }
 }
 
 // ----------------------------------------------------------------------------- COROUTINES
 function lowLifeAnimationCoroutine () {
-	animating = true;
-	while (gameObject.activeInHierarchy) {
-		var flashTime = timeLeft < 2f ? 0.2f : 0.6f;
-		yield WaitForSeconds(SpriteRenderer.enabled ? flashTime : 0.2f);
-		SpriteRenderer.enabled = !SpriteRenderer.enabled;
-	}
+  animating = true;
+  while (gameObject.activeInHierarchy) {
+    var flashTime = timeLeft < 2f ? 0.2f : 0.6f;
+    yield WaitForSeconds(SpriteRenderer.enabled ? flashTime : 0.2f);
+    SpriteRenderer.enabled = !SpriteRenderer.enabled;
+  }
 }

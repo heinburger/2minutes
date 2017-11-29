@@ -20,62 +20,62 @@ var spawnAccelerationFixed : float;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
-	positionUtils = GetComponent.<positionUtils>();
-	var parentName = SpawnObject.name + "Spawns";
-	SpawnParent = SpawnParent || GameObject.Find(parentName);
-	if (!SpawnParent) {
-		SpawnParent = new GameObject(parentName);
-	}
+  positionUtils = GetComponent.<positionUtils>();
+  var parentName = SpawnObject.name + "Spawns";
+  SpawnParent = SpawnParent || GameObject.Find(parentName);
+  if (!SpawnParent) {
+    SpawnParent = new GameObject(parentName);
+  }
 }
 
 function Start () {
-	if (!initialSpawnDelay) {
-		spawnInitial();
-	}
+  if (!initialSpawnDelay) {
+    spawnInitial();
+  }
 }
 
 function Update () {
-	continuousSpawn = continuousSpawn || (
-		continuousSpawnDelay != 0f && continuousSpawnDelay < GameManager.instance.time
-	);
-	if (continuousSpawn && !spawnerRunning) {
-		spawnCoroutine();
-	}
-	if (!initialSpawned && initialSpawnDelay < GameManager.instance.time) {
-		spawnInitial();
-	}
+  continuousSpawn = continuousSpawn || (
+    continuousSpawnDelay != 0f && continuousSpawnDelay < GameManager.instance.time
+  );
+  if (continuousSpawn && !spawnerRunning) {
+    spawnCoroutine();
+  }
+  if (!initialSpawned && initialSpawnDelay < GameManager.instance.time) {
+    spawnInitial();
+  }
 }
 
 // ----------------------------------------------------------------------------- COROUTINES
 function spawnCoroutine () {
-	spawnerRunning = true;
-	while (spawnerRunning) {
-		spawnerRunning = continuousSpawn;
-		var time : float = spawnTimeFixed > 0f
-			? spawnTimeFixed
-			: Random.Range(spawnTimeMin, spawnTimeMax);
-		yield WaitForSeconds(time);
-		spawn();
-		spawnTimeFixed -= spawnTimeFixed > Time.deltaTime ? spawnAccelerationFixed * Time.deltaTime : 0f;
-	}
+  spawnerRunning = true;
+  while (spawnerRunning) {
+    spawnerRunning = continuousSpawn;
+    var time : float = spawnTimeFixed > 0f
+      ? spawnTimeFixed
+      : Random.Range(spawnTimeMin, spawnTimeMax);
+    yield WaitForSeconds(time);
+    spawn();
+    spawnTimeFixed -= spawnTimeFixed > Time.deltaTime ? spawnAccelerationFixed * Time.deltaTime : 0f;
+  }
 }
 
 // ----------------------------------------------------------------------------- SPAWN METHODS
 function spawnInitial () {
-	initialSpawned = true;
-	if (initialCount > 0) {
-		for (var i : int = 0; i < initialCount; i++) {
-			spawn();
-		}
-	}
+  initialSpawned = true;
+  if (initialCount > 0) {
+    for (var i : int = 0; i < initialCount; i++) {
+      spawn();
+    }
+  }
 }
 
 function spawn () {
-	var position : Vector3 = offscreen
-		? positionUtils.getRandomPositionOffBoard()
-		: positionUtils.getRandomPositionOnBoard();
-	var instance : GameObject = Instantiate(SpawnObject, position, Quaternion.identity);
-	if (SpawnParent) {
-		instance.transform.SetParent(SpawnParent.transform);
-	}
+  var position : Vector3 = offscreen
+    ? positionUtils.getRandomPositionOffBoard()
+    : positionUtils.getRandomPositionOnBoard();
+  var instance : GameObject = Instantiate(SpawnObject, position, Quaternion.identity);
+  if (SpawnParent) {
+    instance.transform.SetParent(SpawnParent.transform);
+  }
 }

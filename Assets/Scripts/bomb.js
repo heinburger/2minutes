@@ -13,15 +13,15 @@ private var timeAlive : float;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Start () {
-	spawnTime = GameManager.instance.time;
-	lifeTime = Random.Range(lifeTimeMin, lifeTimeMax);
+  spawnTime = GameManager.instance.time;
+  lifeTime = Random.Range(lifeTimeMin, lifeTimeMax);
 }
 
 function Update () {
-	timeAlive = GameManager.instance.time - spawnTime;
-	timeLeft = lifeTime - timeAlive;
-	if (timeLeft < 0f) {
-		Instantiate(Explosion, transform.position, Quaternion.identity);
-		Destroy(gameObject);
-	}
+  timeAlive = GameManager.instance.time - spawnTime;
+  timeLeft = lifeTime - timeAlive;
+  if (timeLeft < 0f) {
+    Instantiate(Explosion, transform.position, Quaternion.identity);
+    Destroy(gameObject);
+  }
 }
