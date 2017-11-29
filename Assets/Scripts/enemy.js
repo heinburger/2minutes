@@ -3,7 +3,8 @@
 var AudioManager : audioManager;
 var GameManager : gameManager;
 
-var initialThrust : float;
+var initialThrustBronze : float;
+var initialThrustSilverGold : float;
 @Range(0, 25)
 var maxVelocity : float;
 
@@ -13,6 +14,7 @@ var brakingForce : float;
 private var Player : GameObject;
 private var rb2D : Rigidbody2D;
 private var bounceAudioSource : AudioSource;
+private var initialForce : Vector3;
 private var homingForceMultiplier : float;
 private var scaleMultiplier : float;
 
@@ -26,10 +28,9 @@ function Awake () {
   handleGameModes();
 
   transform.localScale = transform.localScale * scaleMultiplier;
-  rb2D.mass = rb2D.mass * scaleMultiplier;
+  rb2D.mass = rb2D.mass * scaleMultiplier * scaleMultiplier;
 
-  var direction = Vector3(Random.Range(-1.0, 1.0), Random.Range(-1.0, 1.0), 0);
-  rb2D.AddForce(direction * initialThrust, ForceMode2D.Impulse);
+  rb2D.AddForce(initialForce, ForceMode2D.Impulse);
 }
 
 function FixedUpdate () {
@@ -53,6 +54,7 @@ function OnCollisionEnter2D (other : Collision2D) {
 }
 
 function handleGameModes () {
+  var direction : Vector3 = Vector3(Random.Range(-1.0, 1.0), Random.Range(-1.0, 1.0), 0);
   if (GameManager.instance.gameMode == "gold") {
     homingForceMultiplier = Random.value > .9f ? 20f : 0f;
     if (homingForceMultiplier > 0f) {
@@ -64,7 +66,9 @@ function handleGameModes () {
 
   if (GameManager.instance.gameMode == "silver" || GameManager.instance.gameMode == "gold") {
     scaleMultiplier = Random.Range(1f, 4f);
+    initialForce = direction * initialThrustSilverGold;
   } else {
     scaleMultiplier = 1f;
+    initialForce = direction * initialThrustBronze;
   }
 }

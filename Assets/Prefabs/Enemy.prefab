@@ -184,7 +184,8 @@ MonoBehaviour:
     type: 2}
   GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
     type: 2}
-  initialThrust: 5
+  initialThrustBronze: 4
+  initialThrustSilverGold: 12
   maxVelocity: 20
   brakingForce: 0
 --- !u!212 &212730939322793900

@@ -55,12 +55,23 @@ MonoBehaviour:
     type: 2}
   isMobile: 0
   gameMode: 
-  gameRunning: 1
+  gameRunning: 0
   time: 0
   timeDelta: 0
   goalTime: 120
   isGameOver: 0
-  hasHighestTime: 0
-  isHighestTime: 0
-  highestTime: 0
+  hasHighScore: 0
+  isHighScore: 0
+  highScore: 0
+  gameTime: 0
   playerWin: 0
+  gameModeUnlocked: 0
+  hasBronze: 0
+  hasSilver: 0
+  hasGold: 0
+  hasBronzeHighScore: 0
+  hasSilverHighScore: 0
+  hasGoldHighScore: 0
+  bronzeHighScore: 0
+  silverHighScore: 0
+  goldHighScore: 0

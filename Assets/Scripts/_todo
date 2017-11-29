@@ -2,5 +2,3 @@
 - pause?
 - explosion fire on enemies
 - turtle effect more visual
-
-- BUG! found a scenario where player can go fully offscreen and cannot win

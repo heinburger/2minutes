@@ -5,27 +5,28 @@ static var instance : gameManager;
 
 var isMobile : boolean;
 var gameMode : String;
-var gameModeUnlocked : boolean;
-var gameRunning : boolean = true;
-var time : float = 0f;
-var timeDelta : float = 0f;
+
+var gameRunning : boolean;
+var time : float;
+var timeDelta : float;
 var goalTime : float;
-var isGameOver : boolean = false;
-var hasHighScore : boolean = false;
-var isHighScore : boolean = false;
+var isGameOver : boolean;
+var hasHighScore : boolean;
+var isHighScore : boolean;
 var highScore : float;
 var gameTime : float;
-var playerWin : boolean = false;
+var playerWin : boolean;
 
-var hasBronze : boolean;
-var hasSilver : boolean;
-var hasGold : boolean;
-var hasBronzeHighScore : boolean;
-var hasSilverHighScore : boolean;
-var hasGoldHighScore : boolean;
-var bronzeHighScore : float;
-var silverHighScore : float;
-var goldHighScore : float;
+@HideInInspector var gameModeUnlocked : boolean;
+@HideInInspector var hasBronze : boolean;
+@HideInInspector var hasSilver : boolean;
+@HideInInspector var hasGold : boolean;
+@HideInInspector var hasBronzeHighScore : boolean;
+@HideInInspector var hasSilverHighScore : boolean;
+@HideInInspector var hasGoldHighScore : boolean;
+@HideInInspector var bronzeHighScore : float;
+@HideInInspector var silverHighScore : float;
+@HideInInspector var goldHighScore : float;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
@@ -37,7 +38,7 @@ function Awake () {
   DontDestroyOnLoad(gameObject);
   // PlayerPrefs.DeleteAll();
 
-  isMobile = SystemInfo.deviceType != DeviceType.Desktop;
+  isMobile = SystemInfo.deviceType == DeviceType.Desktop;
 
   checkPlayerPrefs();
 }
@@ -59,6 +60,7 @@ function initGame () {
   playerWin = false;
   isHighScore = false;
   hasHighScore = PlayerPrefs.HasKey(gameMode + "HighScore");
+
   SceneManagement.SceneManager.LoadScene("Main");
 }
 
@@ -68,14 +70,12 @@ function initInstructions () {
   time = 0f;
   gameRunning = true;
   isGameOver = false;
+
   SceneManagement.SceneManager.LoadScene("Instructions");
 }
 
 function initGameOver () {
   gameTime = time;
-  highScore = hasHighScore
-    ? PlayerPrefs.GetFloat(gameMode + "HighScore")
-    : time;
   gameRunning = false;
   Cursor.visible = true;
   if (time >= goalTime) {
@@ -85,11 +85,16 @@ function initGameOver () {
   } else {
     AudioManager.instance.play("lose");
   }
-  SceneManagement.SceneManager.LoadScene("GameOver");
+
+  highScore = hasHighScore
+    ? PlayerPrefs.GetFloat(gameMode + "HighScore")
+    : time;
   if (isHighScore) {
     highScore = time;
     PlayerPrefs.SetFloat(gameMode + "HighScore", time);
   }
+
+  SceneManagement.SceneManager.LoadScene("GameOver");
 }
 
 function exitGame () {
