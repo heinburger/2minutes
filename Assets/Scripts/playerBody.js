@@ -47,7 +47,7 @@ function Update () {
 function OnCollisionEnter2D (other : Collision2D) {
   if (other.gameObject.tag == "Enemy") {
     if (!player.isInvincible()) {
-      triggerEnemyHit();
+      triggerEnemyHit(other.gameObject.transform.localScale.x);
     } else {
       AudioManager.instance.play("invincibleDestroy");
     }
@@ -82,9 +82,9 @@ function OnCollisionEnter2D (other : Collision2D) {
 }
 
 // ----------------------------------------------------------------------------- TRIGGER METHODS
-function triggerEnemyHit () {
+function triggerEnemyHit (difficultyScale : float) {
   absorbAudioSource.Play();
-  player.handleEnemyHit();
+  player.handleEnemyHit(difficultyScale);
 }
 
 function triggerHeartPickUp () {

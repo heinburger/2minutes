@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offFrameUnits: 3
+  thicknessUnits: 500
   Top: {fileID: 61718346685167822}
   Bottom: {fileID: 61044263187016714}
   Right: {fileID: 61591975722735412}

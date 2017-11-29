@@ -59,8 +59,8 @@ function handleScaling () {
   ps.main.startSpeedMultiplier = transform.localScale.x;
 }
 
-function handleEnemyHit () {
-  scaleTo += scaleTo * enemyHitGrowthAmount;
+function handleEnemyHit (difficultyScale : float) {
+  scaleTo += scaleTo * enemyHitGrowthAmount * difficultyScale;
 }
 
 function handleCrownPickUp () {

@@ -1,6 +1,7 @@
 ﻿#pragma strict
 
 var AudioManager : audioManager;
+var GameManager : gameManager;
 var initialThrust : float;
 @Range(0, 25)
 var maxVelocity : float;
@@ -18,6 +19,7 @@ function Awake () {
   var AudioSources = GetComponents(AudioSource);
   var direction = Vector3(Random.Range(-1.0, 1.0), Random.Range(-1.0, 1.0), 0);
   rb2D.AddForce(direction * initialThrust);
+  handleDifficulty();
 }
 
 function FixedUpdate () {
@@ -32,5 +34,14 @@ function FixedUpdate () {
 function OnCollisionEnter2D (other : Collision2D) {
   if (other.gameObject.tag == "PlayerForcefield") {
     AudioManager.instance.playThrottledAudio(bounceAudioSource);
+  }
+}
+
+// ----------------------------------------------------------------------------- UNITY METHODS
+function handleDifficulty () {
+  if (GameManager.instance.gameMode == "bronze") {
+    var sizeScale : float = Random.Range(1f, 4f);
+    transform.localScale = transform.localScale * sizeScale;
+    rb2D.mass = rb2D.mass * sizeScale;
   }
 }

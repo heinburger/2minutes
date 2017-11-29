@@ -182,6 +182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioManager: {fileID: 114122309087782278, guid: bb6047978812c409bae1a9bd8d2b6b91,
     type: 2}
+  GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
+    type: 2}
   initialThrust: 200
   maxVelocity: 20
   brakingForce: 0

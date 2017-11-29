@@ -480,7 +480,7 @@ MonoBehaviour:
   shrinkSpeed: 1
   growthSpeed: 1
   heartPowerUpShrinkAmount: 0.15
-  enemyHitGrowthAmount: 0.1
+  enemyHitGrowthAmount: 0.2
 --- !u!198 &198546104890308776
 ParticleSystem:
   m_ObjectHideFlags: 1
