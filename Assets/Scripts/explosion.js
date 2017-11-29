@@ -1,6 +1,7 @@
 ﻿#pragma strict
 
 var GameManager : gameManager;
+var ExplosionResidue : GameObject;
 
 var lifeTime : float;
 var force : float;
@@ -25,6 +26,9 @@ function Awake () {
 
 function Start () {
 	audioSource.Play();
+	createResidue();
+	createResidue();
+	createResidue();
 	spawnTime = GameManager.instance.time;
 }
 
@@ -56,4 +60,10 @@ function shakeCamera () {
 		(Camera.main.transform.position.y + random.y * scale) * timeLeft,
 		Camera.main.transform.position.z
 	);
+}
+
+function createResidue () {
+	var residue = Instantiate(ExplosionResidue, transform.position, Quaternion.identity);
+	residue.transform.Rotate(new Vector3(Random.Range(0f, 30f), Random.Range(0f, 30f), Random.Range(0f, 360f)));
+	residue.transform.localScale = residue.transform.localScale * scale * Random.Range(0.33f, 1f);
 }
