@@ -28,6 +28,7 @@ function Awake () {
 		Destroy(gameObject);
 	}
 	DontDestroyOnLoad(gameObject);
+	PlayerPrefs.DeleteAll();
 
 	isMobile = SystemInfo.deviceType != DeviceType.Desktop;
 
@@ -65,7 +66,9 @@ function initInstructions () {
 
 function initGameOver () {
 	gameTime = time;
-	highestTime = PlayerPrefs.GetFloat(gameMode + "HighestTime");
+	highestTime = hasHighestTime
+		? PlayerPrefs.GetFloat(gameMode + "HighestTime")
+		: time;
 	gameRunning = false;
 	Cursor.visible = true;
 	if (time >= goalTime) {
