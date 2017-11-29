@@ -52,7 +52,6 @@ function Update () {
 // ----------------------------------------------------------------------------- GAME METHODS
 function initGame () {
   Cursor.visible = false;
-  SceneManagement.SceneManager.LoadScene("Main");
   time = 0f;
   gameModeUnlocked = false;
   gameRunning = true;
@@ -60,6 +59,7 @@ function initGame () {
   playerWin = false;
   isHighScore = false;
   hasHighScore = PlayerPrefs.HasKey(gameMode + "HighScore");
+  SceneManagement.SceneManager.LoadScene("Main");
 }
 
 function initInstructions () {
