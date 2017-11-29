@@ -35,7 +35,7 @@ function Awake () {
     Destroy(gameObject);
   }
   DontDestroyOnLoad(gameObject);
-  PlayerPrefs.DeleteAll();
+  // PlayerPrefs.DeleteAll();
 
   isMobile = SystemInfo.deviceType != DeviceType.Desktop;
 

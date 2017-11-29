@@ -53,7 +53,7 @@ function OnCollisionEnter2D (other : Collision2D) {
 }
 
 function handleGameModes () {
-  if (GameManager.instance.gameMode == "bronze") {
+  if (GameManager.instance.gameMode == "gold") {
     homingForceMultiplier = Random.value > .9f ? 20f : 0f;
     if (homingForceMultiplier > 0f) {
       GetComponent.<SpriteRenderer>().color = Color.HSVToRGB(0.85f, 1f, 1f);
@@ -62,7 +62,7 @@ function handleGameModes () {
     homingForceMultiplier = 0f;
   }
 
-  if (GameManager.instance.gameMode == "silver" || GameManager.instance.gameMode == "bronze") {
+  if (GameManager.instance.gameMode == "silver" || GameManager.instance.gameMode == "gold") {
     scaleMultiplier = Random.Range(1f, 4f);
   } else {
     scaleMultiplier = 1f;
