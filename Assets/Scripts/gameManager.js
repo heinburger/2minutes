@@ -80,7 +80,7 @@ function initGameOver () {
   gameTime = time;
   gameRunning = false;
   Cursor.visible = true;
-  if (time >= goalTime) {
+  if (gameTime >= goalTime) {
     playerWin = true;
     AudioManager.instance.play("crownClapping");
     AudioManager.instance.play("win");
@@ -88,12 +88,11 @@ function initGameOver () {
     AudioManager.instance.play("lose");
   }
 
-  highScore = hasHighScore
-    ? PlayerPrefs.GetFloat(gameMode + "HighScore")
-    : time;
-  if (isHighScore) {
-    highScore = time;
+  if (isHighScore || !hasHighScore) {
+    highScore = gameTime;
     PlayerPrefs.SetFloat(gameMode + "HighScore", time);
+  } else {
+    highScore = PlayerPrefs.GetFloat(gameMode + "HighScore");
   }
 
   SceneManagement.SceneManager.LoadScene("GameOver");
@@ -124,7 +123,7 @@ function checkPlayerPrefs () {
 function calcTime () {
   time += Time.deltaTime;
   timeDelta = goalTime - time;
-  if (!isHighScore && time > highScore) {
+  if (hasHighScore && time > highScore) {
     isHighScore = true;
   }
 }
