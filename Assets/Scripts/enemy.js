@@ -34,6 +34,7 @@ function Awake () {
 
   transform.localScale = transform.localScale * scaleMultiplier;
   ps.main.startSizeMultiplier = ps.main.startSizeMultiplier * scaleMultiplier;
+  ps.main.startSizeMultiplier = ps.main.startSpeedMultiplier * scaleMultiplier * scaleMultiplier;
   rb2D.mass = rb2D.mass * scaleMultiplier * scaleMultiplier;
 
   rb2D.AddForce(initialForce, ForceMode2D.Impulse);
@@ -50,7 +51,7 @@ function FixedUpdate () {
   rb2D.velocity = Vector2.ClampMagnitude(rb2D.velocity, maxVelocity);
   if (brakingForce > 0f) {
     var direction = -rb2D.velocity.normalized;
-    rb2D.AddForce(direction * brakingForce);
+    rb2D.AddForce(direction * brakingForce * scaleMultiplier);
     brakingForce = brakingForce - Time.deltaTime < 0f ? 0f : brakingForce - Time.deltaTime;
   }
 

@@ -49,7 +49,7 @@ function OnCollisionEnter2D (other : Collision2D) {
     var rb : Rigidbody2D = other.gameObject.GetComponent.<Rigidbody2D>();
     var distance = Vector3.Distance(other.gameObject.transform.position, transform.position);
     var adjustedForce : float = (1f / distance) * force * scale;
-    rb.AddForce(other.contacts[0].normal * adjustedForce, ForceMode2D.Impulse);
+    rb.AddForce(other.contacts[0].normal * adjustedForce * rb.mass, ForceMode2D.Impulse);
   }
 }
 
