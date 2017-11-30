@@ -2,35 +2,48 @@
 
 var AudioManager : audioManager;
 var GameManager : gameManager;
+var EnemyFlameTrail : GameObject;
 
 var initialThrustBronze : float;
 var initialThrustSilverGold : float;
 @Range(0, 25)
 var maxVelocity : float;
+var burnTime : float;
 
 @HideInInspector
 var brakingForce : float;
 
+private var ps : ParticleSystem;
 private var Player : GameObject;
 private var rb2D : Rigidbody2D;
 private var bounceAudioSource : AudioSource;
 private var initialForce : Vector3;
 private var homingForceMultiplier : float;
 private var scaleMultiplier : float;
+private var burnTimeLeft : float;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
   Player = GameObject.FindGameObjectWithTag("Player");
   rb2D = GetComponent.<Rigidbody2D>();
   bounceAudioSource = GetComponent.<AudioSource>();
+  ps = EnemyFlameTrail.gameObject.GetComponent.<ParticleSystem>();
   var AudioSources = GetComponents(AudioSource);
 
   handleGameModes();
 
   transform.localScale = transform.localScale * scaleMultiplier;
+  ps.main.startSizeMultiplier = ps.main.startSizeMultiplier * scaleMultiplier;
   rb2D.mass = rb2D.mass * scaleMultiplier * scaleMultiplier;
 
   rb2D.AddForce(initialForce, ForceMode2D.Impulse);
+}
+
+function Update () {
+  burnTimeLeft = burnTimeLeft <= 0f ? 0f : burnTimeLeft - Time.deltaTime;
+  if (burnTimeLeft <= 0f) {
+    ps.Stop();
+  }
 }
 
 function FixedUpdate () {
@@ -50,6 +63,10 @@ function FixedUpdate () {
 function OnCollisionEnter2D (other : Collision2D) {
   if (other.gameObject.tag == "PlayerForcefield") {
     AudioManager.instance.playThrottledAudio(bounceAudioSource);
+  }
+  if (other.gameObject.tag == "Explosion") {
+    burnTimeLeft = burnTime;
+    ps.Play();
   }
 }
 

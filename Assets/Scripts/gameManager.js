@@ -37,6 +37,8 @@ function Awake () {
   }
   DontDestroyOnLoad(gameObject);
   // PlayerPrefs.DeleteAll();
+  time = 0f;
+  gameRunning = true;
 
   isMobile = SystemInfo.deviceType != DeviceType.Desktop;
 
