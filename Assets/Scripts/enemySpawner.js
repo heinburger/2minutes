@@ -40,7 +40,7 @@ function spawnCoroutine () {
     spawnerRunning = continuousSpawn;
     yield WaitForSeconds(spawnTime);
     spawnOffScreen();
-    spawnTime -= spawnTime > Time.deltaTime ? spawnAcceleration * Time.deltaTime : 0f;
+    spawnTime -= spawnTime > Time.deltaTime ? spawnAcceleration * 0.0167f : 0f;
   }
 }
 
