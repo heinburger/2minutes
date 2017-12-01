@@ -4,19 +4,22 @@ var AudioManager : audioManager;
 static var instance : gameManager;
 
 var isMobile : boolean;
-var gameMode : String;
-
-var gameRunning : boolean;
-var time : float;
-var timeDelta : float;
 var goalTime : float;
-var isGameOver : boolean;
-var hasHighScore : boolean;
-var isHighScore : boolean;
-var highScore : float;
-var gameTime : float;
-var playerWin : boolean;
+var gameMode : String;
+var settings : Settings;
+var bronzeSettings : Settings;
+var silverSettings : Settings;
+var goldSettings : Settings;
 
+@HideInInspector var gameRunning : boolean;
+@HideInInspector var time : float;
+@HideInInspector var timeDelta : float;
+@HideInInspector var isGameOver : boolean;
+@HideInInspector var playerWin : boolean;
+@HideInInspector var gameTime : float;
+@HideInInspector var hasHighScore : boolean;
+@HideInInspector var isHighScore : boolean;
+@HideInInspector var highScore : float;
 @HideInInspector var gameModeUnlocked : String;
 @HideInInspector var hasBronze : boolean;
 @HideInInspector var hasSilver : boolean;
@@ -36,13 +39,14 @@ function Awake () {
     Destroy(gameObject);
   }
   DontDestroyOnLoad(gameObject);
-  // PlayerPrefs.DeleteAll();
+  PlayerPrefs.DeleteAll();
   time = 0f;
   gameRunning = true;
 
   isMobile = SystemInfo.deviceType != DeviceType.Desktop;
 
   checkPlayerPrefs();
+  setDifficulty();
 }
 
 function Update () {
@@ -52,7 +56,22 @@ function Update () {
   }
 }
 
-// ----------------------------------------------------------------------------- GAME METHODS
+// ----------------------------------------------------------------------------- GAME RUNNING METHODS
+function checkGameOver () {
+  if (isGameOver) {
+    initGameOver();
+  }
+}
+
+function calcTime () {
+  time += Time.deltaTime;
+  timeDelta = goalTime - time;
+  if (hasHighScore && time > highScore) {
+    isHighScore = true;
+  }
+}
+
+// ----------------------------------------------------------------------------- ROUTING METHODS
 function initGame () {
   Cursor.visible = false;
   time = 0f;
@@ -62,12 +81,13 @@ function initGame () {
   playerWin = false;
   isHighScore = false;
   hasHighScore = PlayerPrefs.HasKey(gameMode + "HighScore");
-
+  setDifficulty();
   SceneManagement.SceneManager.LoadScene("Main");
 }
 
 function initInstructions () {
   checkPlayerPrefs();
+  setDifficulty();
   Cursor.visible = true;
   time = 0f;
   gameRunning = true;
@@ -102,13 +122,9 @@ function exitGame () {
   Application.Quit();
 }
 
-function checkGameOver () {
-  if (isGameOver) {
-    initGameOver();
-  }
-}
-
+// ----------------------------------------------------------------------------- MISC GAME METHODS
 function checkPlayerPrefs () {
+  gameMode = PlayerPrefs.HasKey("gameMode") ? PlayerPrefs.GetString("gameMode") : "bronze";
   hasBronze = PlayerPrefs.HasKey("bronzeUnlocked");
   hasSilver = PlayerPrefs.HasKey("silverUnlocked");
   hasGold = PlayerPrefs.HasKey("goldUnlocked");
@@ -120,16 +136,16 @@ function checkPlayerPrefs () {
   goldHighScore = hasGoldHighScore ? PlayerPrefs.GetFloat("goldHighScore"): 0f;
 }
 
-function calcTime () {
-  time += Time.deltaTime;
-  timeDelta = goalTime - time;
-  if (hasHighScore && time > highScore) {
-    isHighScore = true;
+function setDifficulty () {
+  switch (gameMode) {
+    default:
+      settings = bronzeSettings;
   }
 }
 
 function setGameMode (mode : String) {
   gameMode = mode;
+  PlayerPrefs.SetString("gameMode", mode);
 }
 
 function unlockGameMode () {
