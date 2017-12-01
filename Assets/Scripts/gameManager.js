@@ -141,6 +141,7 @@ function setDifficulty () {
     default:
       settings = bronzeSettings;
   }
+  settings.crown.timeUntilSpawn = goalTime;
 }
 
 function setGameMode (mode : String) {

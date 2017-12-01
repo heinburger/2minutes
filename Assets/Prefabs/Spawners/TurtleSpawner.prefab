@@ -9,18 +9,18 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1333178396726050}
+  m_RootGameObject: {fileID: 1045169891528184}
   m_IsPrefabParent: 1
---- !u!1 &1333178396726050
+--- !u!1 &1045169891528184
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4192695265833876}
-  - component: {fileID: 114897460089650198}
-  - component: {fileID: 114418339877361834}
+  - component: {fileID: 4831212326856800}
+  - component: {fileID: 114690467102529734}
+  - component: {fileID: 114228113401775492}
   m_Layer: 0
   m_Name: TurtleSpawner
   m_TagString: Untagged
@@ -28,50 +28,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4192695265833876
+--- !u!4 &4831212326856800
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1333178396726050}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1045169891528184}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114418339877361834
+--- !u!114 &114228113401775492
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1333178396726050}
+  m_GameObject: {fileID: 1045169891528184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cb3248d1e0484c32b070bfe166a6ad9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9527d40211fd240638007afb7db85fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
     type: 2}
-  SpawnObject: {fileID: 1451698221322482, guid: ebe5ceacf859a4d919c474e9da013506,
-    type: 2}
-  SpawnParent: {fileID: 0}
-  offscreen: 0
-  initialSpawnDelay: 60
-  initialCount: 1
-  continuousSpawnDelay: 60
-  continuousSpawn: 0
-  spawnTimeMin: 10
-  spawnTimeMax: 15
-  spawnTimeFixed: 0
-  spawnAcceleration: 0
---- !u!114 &114897460089650198
+  PowerUp: {fileID: 1451698221322482, guid: ebe5ceacf859a4d919c474e9da013506, type: 2}
+  continuousSpawn: 1
+--- !u!114 &114690467102529734
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1333178396726050}
+  m_GameObject: {fileID: 1045169891528184}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4208676b74a2a47a3b1b31502b04056e, type: 3}

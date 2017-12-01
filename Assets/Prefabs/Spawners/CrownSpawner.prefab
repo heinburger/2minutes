@@ -9,18 +9,18 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1953018943231074}
+  m_RootGameObject: {fileID: 1929987485561486}
   m_IsPrefabParent: 1
---- !u!1 &1953018943231074
+--- !u!1 &1929987485561486
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4532655641247772}
-  - component: {fileID: 114213209819585976}
-  - component: {fileID: 114543737037695696}
+  - component: {fileID: 4403317160250312}
+  - component: {fileID: 114173910956257848}
+  - component: {fileID: 114466108097621214}
   m_Layer: 0
   m_Name: CrownSpawner
   m_TagString: Untagged
@@ -28,52 +28,42 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4532655641247772
+--- !u!4 &4403317160250312
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1953018943231074}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1929987485561486}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114213209819585976
+--- !u!114 &114173910956257848
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1953018943231074}
+  m_GameObject: {fileID: 1929987485561486}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4208676b74a2a47a3b1b31502b04056e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114543737037695696
+--- !u!114 &114466108097621214
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1953018943231074}
+  m_GameObject: {fileID: 1929987485561486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cb3248d1e0484c32b070bfe166a6ad9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9527d40211fd240638007afb7db85fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 114310379872737506, guid: 51d219d3caeca4e439fd8f55f6320fea,
     type: 2}
-  SpawnObject: {fileID: 1451698221322482, guid: b4dcdfbf97dfb43f085dbd8e6e73c52e,
-    type: 2}
-  SpawnParent: {fileID: 0}
-  offscreen: 0
-  initialSpawnDelay: 120
-  initialCount: 1
-  continuousSpawnDelay: 0
+  PowerUp: {fileID: 1451698221322482, guid: b4dcdfbf97dfb43f085dbd8e6e73c52e, type: 2}
   continuousSpawn: 0
-  spawnTimeMin: 0
-  spawnTimeMax: 0
-  spawnTimeFixed: 0
-  spawnAcceleration: 0

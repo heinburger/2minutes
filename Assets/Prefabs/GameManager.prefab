@@ -54,17 +54,153 @@ MonoBehaviour:
   AudioManager: {fileID: 114122309087782278, guid: bb6047978812c409bae1a9bd8d2b6b91,
     type: 2}
   isMobile: 0
+  goalTime: 120
   gameMode: 
+  settings:
+    initialEnemyCount: 0
+    enemySpawnTime: 0
+    enemySpawnAcceleration: 0
+    heart:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    forcefield:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    star:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    turtle:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    bomb:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    crown:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+  bronzeSettings:
+    initialEnemyCount: 20
+    enemySpawnTime: 0.6
+    enemySpawnAcceleration: 0.06
+    heart:
+      timeUntilSpawn: 0
+      initialCount: 1
+      spawnTimeMin: 3
+      spawnTimeMax: 12
+    forcefield:
+      timeUntilSpawn: 20
+      initialCount: 1
+      spawnTimeMin: 10
+      spawnTimeMax: 20
+    star:
+      timeUntilSpawn: 35
+      initialCount: 1
+      spawnTimeMin: 5
+      spawnTimeMax: 15
+    turtle:
+      timeUntilSpawn: 60
+      initialCount: 1
+      spawnTimeMin: 10
+      spawnTimeMax: 15
+    bomb:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 20
+      spawnTimeMax: 40
+    crown:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+  silverSettings:
+    initialEnemyCount: 0
+    enemySpawnTime: 0
+    enemySpawnAcceleration: 0
+    heart:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    forcefield:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    star:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    turtle:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    bomb:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    crown:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+  goldSettings:
+    initialEnemyCount: 0
+    enemySpawnTime: 0
+    enemySpawnAcceleration: 0
+    heart:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    forcefield:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    star:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    turtle:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    bomb:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
+    crown:
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
   gameRunning: 0
   time: 0
   timeDelta: 0
-  goalTime: 120
   isGameOver: 0
+  playerWin: 0
+  gameTime: 0
   hasHighScore: 0
   isHighScore: 0
   highScore: 0
-  gameTime: 0
-  playerWin: 0
   gameModeUnlocked: 0
   hasBronze: 0
   hasSilver: 0

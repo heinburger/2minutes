@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114553456713471788}
   - component: {fileID: 82686670583974854}
   m_Layer: 9
-  m_Name: CrownPowerUp
+  m_Name: Crown
   m_TagString: CrownPowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
