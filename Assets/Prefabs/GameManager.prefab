@@ -100,17 +100,17 @@ MonoBehaviour:
       spawnTimeMin: 3
       spawnTimeMax: 12
     forcefield:
-      timeUntilSpawn: 20
-      initialCount: 1
-      spawnTimeMin: 10
-      spawnTimeMax: 20
+      timeUntilSpawn: 0
+      initialCount: 0
+      spawnTimeMin: 0
+      spawnTimeMax: 0
     star:
-      timeUntilSpawn: 35
+      timeUntilSpawn: 25
       initialCount: 1
       spawnTimeMin: 5
       spawnTimeMax: 15
     turtle:
-      timeUntilSpawn: 60
+      timeUntilSpawn: 45
       initialCount: 1
       spawnTimeMin: 10
       spawnTimeMax: 15
@@ -121,75 +121,75 @@ MonoBehaviour:
       spawnTimeMax: 40
     crown:
       timeUntilSpawn: 0
-      initialCount: 0
+      initialCount: 1
       spawnTimeMin: 0
       spawnTimeMax: 0
   silverSettings:
-    initialEnemyCount: 0
-    enemySpawnTime: 0
-    enemySpawnAcceleration: 0
+    initialEnemyCount: 15
+    enemySpawnTime: 0.7
+    enemySpawnAcceleration: 0.06
     heart:
       timeUntilSpawn: 0
-      initialCount: 0
-      spawnTimeMin: 0
-      spawnTimeMax: 0
+      initialCount: 1
+      spawnTimeMin: 8
+      spawnTimeMax: 12
     forcefield:
       timeUntilSpawn: 0
       initialCount: 0
       spawnTimeMin: 0
       spawnTimeMax: 0
     star:
-      timeUntilSpawn: 0
-      initialCount: 0
-      spawnTimeMin: 0
-      spawnTimeMax: 0
+      timeUntilSpawn: 30
+      initialCount: 1
+      spawnTimeMin: 10
+      spawnTimeMax: 20
     turtle:
-      timeUntilSpawn: 0
-      initialCount: 0
-      spawnTimeMin: 0
-      spawnTimeMax: 0
+      timeUntilSpawn: 45
+      initialCount: 1
+      spawnTimeMin: 10
+      spawnTimeMax: 15
     bomb:
-      timeUntilSpawn: 0
+      timeUntilSpawn: 20
       initialCount: 0
-      spawnTimeMin: 0
-      spawnTimeMax: 0
+      spawnTimeMin: 15
+      spawnTimeMax: 30
     crown:
       timeUntilSpawn: 0
-      initialCount: 0
+      initialCount: 1
       spawnTimeMin: 0
       spawnTimeMax: 0
   goldSettings:
-    initialEnemyCount: 0
-    enemySpawnTime: 0
-    enemySpawnAcceleration: 0
+    initialEnemyCount: 20
+    enemySpawnTime: 0.7
+    enemySpawnAcceleration: 0.06
     heart:
       timeUntilSpawn: 0
-      initialCount: 0
-      spawnTimeMin: 0
-      spawnTimeMax: 0
+      initialCount: 1
+      spawnTimeMin: 5
+      spawnTimeMax: 10
     forcefield:
-      timeUntilSpawn: 0
-      initialCount: 0
-      spawnTimeMin: 0
-      spawnTimeMax: 0
+      timeUntilSpawn: 20
+      initialCount: 1
+      spawnTimeMin: 10
+      spawnTimeMax: 20
     star:
-      timeUntilSpawn: 0
-      initialCount: 0
-      spawnTimeMin: 0
-      spawnTimeMax: 0
+      timeUntilSpawn: 25
+      initialCount: 1
+      spawnTimeMin: 15
+      spawnTimeMax: 20
     turtle:
-      timeUntilSpawn: 0
-      initialCount: 0
-      spawnTimeMin: 0
-      spawnTimeMax: 0
+      timeUntilSpawn: 45
+      initialCount: 1
+      spawnTimeMin: 15
+      spawnTimeMax: 20
     bomb:
       timeUntilSpawn: 0
       initialCount: 0
       spawnTimeMin: 0
-      spawnTimeMax: 0
+      spawnTimeMax: 30
     crown:
       timeUntilSpawn: 0
-      initialCount: 0
+      initialCount: 1
       spawnTimeMin: 0
       spawnTimeMax: 0
   gameRunning: 0

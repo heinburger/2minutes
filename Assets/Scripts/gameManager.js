@@ -39,7 +39,7 @@ function Awake () {
     Destroy(gameObject);
   }
   DontDestroyOnLoad(gameObject);
-  PlayerPrefs.DeleteAll();
+  // PlayerPrefs.DeleteAll();
   time = 0f;
   gameRunning = true;
 
@@ -137,9 +137,12 @@ function checkPlayerPrefs () {
 }
 
 function setDifficulty () {
-  switch (gameMode) {
-    default:
-      settings = bronzeSettings;
+  if (gameMode == 'gold') {
+    settings = goldSettings;
+  } else if (gameMode == 'silver') {
+    settings = silverSettings;
+  } else {
+    settings = bronzeSettings;
   }
   settings.crown.timeUntilSpawn = goalTime;
 }

@@ -28,7 +28,6 @@ function Awake () {
 function Start () {
   var settings : PowerUpSettings = GameManager.instance.settings.getPowerUpSettings(PowerUp.name);
   timeUntilSpawn = settings.timeUntilSpawn;
-  print(this.name + ' ' + timeUntilSpawn);
   initialCount = settings.initialCount;
   spawnTimeMin = settings.spawnTimeMin;
   spawnTimeMax = settings.spawnTimeMax;
