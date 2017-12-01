@@ -63,9 +63,9 @@ MonoBehaviour:
   continuousSpawnDelay: 0
   continuousSpawn: 1
   spawnTimeMin: 3
-  spawnTimeMax: 15
+  spawnTimeMax: 12
   spawnTimeFixed: 0
-  spawnAcceleration: 0
+  spawnAccelerationFixed: 0
 --- !u!114 &114521637030188768
 MonoBehaviour:
   m_ObjectHideFlags: 1

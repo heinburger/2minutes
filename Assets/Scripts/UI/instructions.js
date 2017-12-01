@@ -31,11 +31,7 @@ function Awake () {
 }
 
 function Start () {
-  if (!GameManager.instance.gameMode) {
-    setIntro();
-  } else {
-    setGameModeSelect();
-  }
+  setIntro();
 }
 
 // ----------------------------------------------------------------------------- PANEL METHODS

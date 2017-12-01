@@ -17,7 +17,7 @@ var highScore : float;
 var gameTime : float;
 var playerWin : boolean;
 
-@HideInInspector var gameModeUnlocked : boolean;
+@HideInInspector var gameModeUnlocked : String;
 @HideInInspector var hasBronze : boolean;
 @HideInInspector var hasSilver : boolean;
 @HideInInspector var hasGold : boolean;
@@ -56,7 +56,7 @@ function Update () {
 function initGame () {
   Cursor.visible = false;
   time = 0f;
-  gameModeUnlocked = false;
+  gameModeUnlocked = "";
   gameRunning = true;
   isGameOver = false;
   playerWin = false;
@@ -137,5 +137,5 @@ function unlockGameMode () {
     ? PlayerPrefs.GetInt(gameMode + "Unlocked") + 1
     : 1;
   PlayerPrefs.SetInt(gameMode + "Unlocked", count);
-  gameModeUnlocked = count == 1;
+  gameModeUnlocked = count == 1 ? gameMode : '';
 }
