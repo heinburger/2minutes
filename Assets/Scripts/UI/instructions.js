@@ -33,7 +33,11 @@ function Awake () {
 }
 
 function Start () {
-  setIntro();
+  if (GameManager.instance.replay) {
+    setGameModeSelect();
+  } else {
+    setIntro();
+  }
 }
 
 function startFPSCoroutine () {

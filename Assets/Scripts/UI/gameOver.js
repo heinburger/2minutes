@@ -57,10 +57,12 @@ function Awake () {
 
 // ----------------------------------------------------------------------------- ONCLICK METHODS
 function onReplayClick () {
-  GameManager.instance.initGame();
+  GameManager.instance.replay = true;
+  GameManager.instance.initInstructions();
 }
 
 function onHomeClick () {
+  GameManager.instance.replay = false;
   GameManager.instance.initInstructions();
 }
 

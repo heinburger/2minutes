@@ -1,16 +1,22 @@
 ﻿#pragma strict
 
 var GameManager : gameManager;
+var AudioManager : audioManager;
 private var timeUtils : timeUtils;
 
 var timeText : UnityEngine.UI.Text;
 var extraTimeText : UnityEngine.UI.Text;
+var newRecordText : UnityEngine.UI.Text;
 var fpsText : UnityEngine.UI.Text;
+
+private var highScoreShown : boolean;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
   timeUtils = GetComponent.<timeUtils>();
   extraTimeText.enabled = false;
+  newRecordText.enabled = false;
+  highScoreShown = false;
   startFPSCoroutine();
 }
 
@@ -23,11 +29,34 @@ function Update () {
   } else {
     timeText.text = time;
   }
+
+  if (GameManager.instance.isHighScore && !highScoreShown) {
+    highScoreShown = true;
+    AudioManager.instance.play("newHighScore");
+    startNewRecordTextCoroutine();
+  }
 }
 
+// ----------------------------------------------------------------------------- COROUTINES
 function startFPSCoroutine () {
   while (true) {
     yield WaitForSeconds(0.5);
     fpsText.text = "fps: " + 1 / Time.deltaTime;
   }
+}
+
+function startNewRecordTextCoroutine () {
+  newRecordText.enabled = true;
+  yield WaitForSeconds(0.5);
+  newRecordText.enabled = false;
+  yield WaitForSeconds(0.5);
+  newRecordText.enabled = true;
+  yield WaitForSeconds(0.5);
+  newRecordText.enabled = false;
+  yield WaitForSeconds(0.5);
+  newRecordText.enabled = true;
+  yield WaitForSeconds(0.5);
+  newRecordText.enabled = false;
+  yield WaitForSeconds(0.5);
+  newRecordText.enabled = true;
 }

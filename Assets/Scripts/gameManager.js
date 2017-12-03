@@ -6,6 +6,7 @@ static var instance : gameManager;
 var isMobile : boolean;
 var goalTime : float;
 var gameMode : String;
+var replay : boolean;
 var settings : Settings;
 var bronzeSettings : Settings;
 var silverSettings : Settings;
@@ -83,6 +84,9 @@ function initGame () {
   playerWin = false;
   isHighScore = false;
   hasHighScore = PlayerPrefs.HasKey(gameMode + "HighScore");
+  if (hasHighScore) {
+    highScore = PlayerPrefs.GetFloat(gameMode + "HighScore");
+  }
   setDifficulty();
   SceneManagement.SceneManager.LoadScene("Main");
 }

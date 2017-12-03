@@ -101,3 +101,9 @@ MonoBehaviour:
     loop: 0
     volume: 0.5
     pitch: 1.25
+  - source: {fileID: 0}
+    name: newHighScore
+    clip: {fileID: 8300000, guid: 008b8ec7b6f384bd0a0a637e9dbacfcf, type: 3}
+    loop: 0
+    volume: 0.5
+    pitch: 1.25
