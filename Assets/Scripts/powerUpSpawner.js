@@ -82,5 +82,6 @@ function spawn () {
   var position : Vector3 = positionUtils.getRandomPositionOnBoard();
   var instance : GameObject = getPooledPowerUp();
   instance.transform.position = position;
+  instance.transform.rotation = Quaternion.identity;
   instance.SetActive(true);
 }
