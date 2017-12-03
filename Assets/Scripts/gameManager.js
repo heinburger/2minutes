@@ -42,6 +42,7 @@ function Awake () {
   // PlayerPrefs.DeleteAll();
   time = 0f;
   gameRunning = true;
+  gameModeUnlocked = "";
 
   isMobile = SystemInfo.deviceType != DeviceType.Desktop;
 
@@ -157,5 +158,5 @@ function unlockGameMode () {
     ? PlayerPrefs.GetInt(gameMode + "Unlocked") + 1
     : 1;
   PlayerPrefs.SetInt(gameMode + "Unlocked", count);
-  gameModeUnlocked = count == 1 ? gameMode : '';
+  gameModeUnlocked = count == 1 ? gameMode : "";
 }

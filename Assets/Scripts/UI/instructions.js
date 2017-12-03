@@ -20,6 +20,7 @@ var goldBtn : UnityEngine.UI.Button;
 var goldHighScoreText : UnityEngine.UI.Text;
 var silverRequiredText : UnityEngine.UI.Text;
 var silverRequiredImage : UnityEngine.UI.Image;
+var fpsText : UnityEngine.UI.Text;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
 function Awake () {
@@ -28,11 +29,20 @@ function Awake () {
   bronzeBtn.onClick.AddListener(onBronzeClick);
   silverBtn.onClick.AddListener(onSilverClick);
   goldBtn.onClick.AddListener(onGoldClick);
+  startFPSCoroutine();
 }
 
 function Start () {
   setIntro();
 }
+
+function startFPSCoroutine () {
+  while (true) {
+    yield WaitForSeconds(0.5);
+    fpsText.text = "fps: " + 1 / Time.deltaTime;
+  }
+}
+
 
 // ----------------------------------------------------------------------------- PANEL METHODS
 function setIntro () {

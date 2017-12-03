@@ -51,7 +51,7 @@ function OnCollisionEnter2D (other : Collision2D) {
     } else {
       AudioManager.instance.play("invincibleDestroy");
     }
-    Destroy(other.gameObject);
+    other.gameObject.SetActive(false);
   }
   else if (other.gameObject.tag == "HeartPowerUp") {
     triggerHeartPickUp();

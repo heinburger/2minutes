@@ -9,6 +9,7 @@ var initialThrustSilverGold : float;
 @Range(0, 25)
 var maxVelocity : float;
 var burnTime : float;
+var brakingTime : float;
 
 @HideInInspector
 var brakingForce : float;
@@ -28,9 +29,10 @@ function Awake () {
   rb2D = GetComponent.<Rigidbody2D>();
   bounceAudioSource = GetComponent.<AudioSource>();
   ps = EnemyFlameTrail.gameObject.GetComponent.<ParticleSystem>();
-  var AudioSources = GetComponents(AudioSource);
+}
 
-  handleGameModes();
+function OnEnable () {
+  setParameters();
 
   transform.localScale = transform.localScale * scaleMultiplier;
   ps.main.startSizeMultiplier = ps.main.startSizeMultiplier * scaleMultiplier;
@@ -52,7 +54,8 @@ function FixedUpdate () {
   if (brakingForce > 0f) {
     var direction = -rb2D.velocity.normalized;
     rb2D.AddForce(direction * brakingForce * scaleMultiplier);
-    brakingForce = brakingForce - Time.deltaTime < 0f ? 0f : brakingForce - Time.deltaTime;
+    var forceDelta = brakingForce * Time.deltaTime / brakingTime;
+    brakingForce = brakingForce - forceDelta < 0f ? 0f : brakingForce - forceDelta;
   }
 
   if (homingForceMultiplier > 0f && Player) {
@@ -71,7 +74,7 @@ function OnCollisionEnter2D (other : Collision2D) {
   }
 }
 
-function handleGameModes () {
+function setParameters () {
   var direction : Vector3 = Vector3(Random.Range(-1.0, 1.0), Random.Range(-1.0, 1.0), 0);
   if (GameManager.instance.gameMode == "gold") {
     homingForceMultiplier = Random.value > .9f ? 20f : 0f;

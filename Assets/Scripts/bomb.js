@@ -12,9 +12,10 @@ private var spawnTime : float;
 private var timeAlive : float;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
-function Start () {
+function OnEnable () {
   spawnTime = GameManager.instance.time;
   lifeTime = Random.Range(lifeTimeMin, lifeTimeMax);
+  timeAlive = 0f;
 }
 
 function Update () {
@@ -22,6 +23,6 @@ function Update () {
   timeLeft = lifeTime - timeAlive;
   if (timeLeft < 0f) {
     Instantiate(Explosion, transform.position, Quaternion.identity);
-    Destroy(gameObject);
+    gameObject.SetActive(false);
   }
 }
