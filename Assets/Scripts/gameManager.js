@@ -83,10 +83,7 @@ function initGame () {
   isGameOver = false;
   playerWin = false;
   isHighScore = false;
-  hasHighScore = PlayerPrefs.HasKey(gameMode + "HighScore");
-  if (hasHighScore) {
-    highScore = PlayerPrefs.GetFloat(gameMode + "HighScore");
-  }
+  checkPlayerPrefs();
   setDifficulty();
   SceneManagement.SceneManager.LoadScene("Main");
 }
@@ -140,6 +137,11 @@ function checkPlayerPrefs () {
   bronzeHighScore = hasBronzeHighScore ? PlayerPrefs.GetFloat("bronzeHighScore") : 0f;
   silverHighScore = hasSilverHighScore ? PlayerPrefs.GetFloat("silverHighScore"): 0f;
   goldHighScore = hasGoldHighScore ? PlayerPrefs.GetFloat("goldHighScore"): 0f;
+
+  hasHighScore = PlayerPrefs.HasKey(gameMode + "HighScore");
+  if (hasHighScore) {
+    highScore = PlayerPrefs.GetFloat(gameMode + "HighScore");
+  }
 }
 
 function setDifficulty () {
