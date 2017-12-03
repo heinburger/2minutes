@@ -37,7 +37,7 @@ function OnEnable () {
   transform.localScale = new Vector3(0.3f, 0.3f, 0f) * scaleMultiplier;
   ps.main.startSizeMultiplier = 0.1f * scaleMultiplier;
   ps.main.startSizeMultiplier = 0.05f * scaleMultiplier * scaleMultiplier;
-  rb2D.mass = 1f * scaleMultiplier * scaleMultiplier;
+  rb2D.mass = scaleMultiplier * scaleMultiplier;
 
   rb2D.AddForce(initialForce, ForceMode2D.Impulse);
 }

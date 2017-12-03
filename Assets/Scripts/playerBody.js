@@ -55,28 +55,28 @@ function OnCollisionEnter2D (other : Collision2D) {
   }
   else if (other.gameObject.tag == "HeartPowerUp") {
     triggerHeartPickUp();
-    Destroy(other.gameObject);
+    other.gameObject.SetActive(false);
   }
   else if (other.gameObject.tag == "ForcefieldPowerUp") {
     triggerForcefieldPickUp();
-    Destroy(other.gameObject);
+    other.gameObject.SetActive(false);
   }
   else if (other.gameObject.tag == "StarPowerUp") {
     triggerStarPickUp();
-    Destroy(other.gameObject);
+    other.gameObject.SetActive(false);
   }
   else if (other.gameObject.tag == "TurtlePowerUp") {
     triggerTurtlePickUp();
-    Destroy(other.gameObject);
+    other.gameObject.SetActive(false);
   }
   else if (other.gameObject.tag == "CrownPowerUp") {
     triggerCrownPickUp();
-    Destroy(other.gameObject);
+    other.gameObject.SetActive(false);
   }
   else if (other.gameObject.tag == "Bomb") {
     if (player.isInvincible()) {
       AudioManager.instance.play("invincibleDestroy");
-      Destroy(other.gameObject);
+      other.gameObject.SetActive(false);
     }
   }
 }
