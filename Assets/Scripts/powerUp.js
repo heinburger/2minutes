@@ -24,9 +24,14 @@ private var animating : boolean = false;
 // arrow (direction to apply force to all enemies)
 
 // ----------------------------------------------------------------------------- UNITY METHODS
-function Start () {
-  spawnTime = GameManager.instance.time;
+function Awake () {
   SpriteRenderer = GetComponent.<SpriteRenderer>();
+}
+
+function OnEnable () {
+  spawnTime = GameManager.instance.time;
+  timeAlive = 0f;
+  animating = false;
 }
 
 function Update () {
@@ -34,11 +39,15 @@ function Update () {
   timeLeft = lifeTime - timeAlive;
   if (lifeTime) {
     if (lifeTime < timeAlive) {
-      Destroy(gameObject);
+      gameObject.SetActive(false);
     } else if (timeLeft < 5f && !animating) {
       lowLifeAnimationCoroutine();
     }
   }
+}
+
+function kill () {
+  gameObject.SetActive(false);
 }
 
 // ----------------------------------------------------------------------------- COROUTINES

@@ -34,8 +34,8 @@ function OnCollisionEnter2D (other : Collision2D) {
   if (other.gameObject.tag == "Explosion") {
     AudioManager.instance.play("forcefieldBreak");
     gameObject.SetActive(false);
-  } else if ((other.gameObject.tag == "Enemy" || other.gameObject.tag == "Bomb") && player.isInvincible()) {
+  } else if ((other.gameObject.tag == "Enemy") && player.isInvincible()) {
     AudioManager.instance.play("invincibleDestroy");
-    Destroy(other.gameObject);
+    other.gameObject.SetActive(false);
   }
 }

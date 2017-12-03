@@ -220,6 +220,7 @@ MonoBehaviour:
   initialThrustSilverGold: 12
   maxVelocity: 20
   burnTime: 3
+  brakingTime: 1
   brakingForce: 0
 --- !u!198 &198884709356435336
 ParticleSystem:

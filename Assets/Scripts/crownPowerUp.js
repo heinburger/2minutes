@@ -6,7 +6,7 @@ var silver : Sprite;
 var bronze : Sprite;
 
 // ----------------------------------------------------------------------------- UNITY METHODS
-function Awake () {
+function OnEnable () {
   var spriteRenderer = GetComponent.<SpriteRenderer>();
   if (GameManager.instance.gameMode == 'gold') {
     spriteRenderer.sprite = gold;
