@@ -17,7 +17,6 @@ function Awake () {
   extraTimeText.enabled = false;
   newRecordText.enabled = false;
   highScoreShown = false;
-  startFPSCoroutine();
 }
 
 function Update () {
@@ -38,13 +37,6 @@ function Update () {
 }
 
 // ----------------------------------------------------------------------------- COROUTINES
-function startFPSCoroutine () {
-  while (true) {
-    yield WaitForSeconds(0.5);
-    fpsText.text = "fps: " + 1 / Time.deltaTime;
-  }
-}
-
 function startNewRecordTextCoroutine () {
   newRecordText.enabled = true;
   yield WaitForSeconds(0.5);
