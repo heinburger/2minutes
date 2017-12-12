@@ -1,5 +1,6 @@
 ﻿#pragma strict
 
+// use unity time format thingy
 function formatTime (time : float) : String {
   var jsTime : int = time < 0f ? Mathf.Floor(time * -1000) : Mathf.Floor(time * 1000);
   var milli : int = jsTime % 1000;
