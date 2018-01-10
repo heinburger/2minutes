@@ -21,7 +21,7 @@ var goldHighScoreText : UnityEngine.UI.Text;
 var silverRequiredText : UnityEngine.UI.Text;
 var silverRequiredImage : UnityEngine.UI.Image;
 
-// ----------------------------------------------------------------------------- UNITY METHODS
+// ----------------------------------------------------------------------------- UNITY METHODS ALL
 function Awake () {
   timeUtils = GetComponent.<timeUtils>();
   startBtn.onClick.AddListener(onStartClick);
